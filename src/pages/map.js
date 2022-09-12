@@ -37,7 +37,9 @@ export default function Map() {
             </Head>
             <div>
                 <div>{test}</div>
-                <Wrapper apiKey={process.env.GOOGLE_API_KEY} render={render}>
+                <Wrapper
+                    apiKey={process.env.NEXT_PUBLIC_GOOGLE_API_KEY}
+                    render={render}>
                     <MapGen />
                 </Wrapper>
             </div>
