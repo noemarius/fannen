@@ -1,5 +1,24 @@
 With Fannen.lu we hope to offer a Luxembourg based location aggregator grouped by industry sectors. We hope to become the go-to website to visually locate related places (i.e.: buildings, events...). Furthermore we would like to allow users to customise their experience and interact with other users through the use of reviews/comments.
 
+Built with Laravel for the Back-end and NextJS for the front-end.
+
+We are using the Breeze package to manage the authentication.
+
+## Installation
+
+# Laravel:
+
+composer install
+
+# NextJS:
+
+npm install
+
+# .env:
+
+copy the content of .env.example into the env and add replace the GOOGLE MAP API key.
+
+
 # Laravel Breeze - Next.js Edition 🏝️
 
 ## Introduction
