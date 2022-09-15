@@ -6,6 +6,8 @@ import { Header } from '../Header/Header'
 
 const Content = styled.div`
     width: 90%;
+    height: auto;
+    flex: 1;
 `
 export function Layout({
     children,
