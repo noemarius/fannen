@@ -1,12 +1,20 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 import React, { useState } from 'react'
+import { device } from './Device'
+
 
 export function Dropdown(props) {
     // Use States
     const [open, setOpen] = useState(false)
 
     // Styled Components
+    const Container = styled.div`
+    @media ${device.tablet} {
+        display: none;
+    }
+    `
+
     const MenuTrigger = styled.div`
         background-color: white;
         border-radius: 50%;
@@ -32,7 +40,7 @@ export function Dropdown(props) {
     // Render
     return (
         <>
-            <div>
+            <Container>
                 <MenuTrigger
                     onClick={() => {
                         setOpen(!open)
@@ -46,7 +54,7 @@ export function Dropdown(props) {
                 <DropDownMenu>
                     <ul>{props.children}</ul>
                 </DropDownMenu>
-            </div>
+            </Container>
 
             {/* TODO Ask Jade why the transition doesn't work inside the styled component. */}
             <style jsx>{`

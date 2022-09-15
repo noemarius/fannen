@@ -1,10 +1,9 @@
-import { Dropdown } from "@/components/Dropdowns"
-import { Header } from "@/components/Header"
+import { Layout } from '@/components/Layouts/Layout'
 
 export default function test() {
-    return(
+    return (
         <>
-            <Header></Header>
+            <Layout></Layout>
         </>
     )
 }

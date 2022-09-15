@@ -1,6 +1,6 @@
 import Head from 'next/head'
-import { Footer } from './Footer'
-import { Header } from './Header'
+import { Footer } from '../Footer'
+import { Header } from '../Header'
 import styled from 'styled-components'
 
 const Container = styled.div`
