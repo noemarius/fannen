@@ -1,16 +1,13 @@
 import Head from 'next/head'
-import { Footer } from '../Footer'
-import { Header } from '../Header'
 import styled from 'styled-components'
-
-const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-`
+import { AppWrap } from '@/styles/appStyles'
+import { Footer } from '../Footer/Footer'
+import { Header } from '../Header/Header'
 
 const Content = styled.div`
-    width: 80%;
-    min-height: 86.5vh;
+    width: 90%;
+    height: auto;
+    flex: 1;
 `
 export function Layout({
     children,
@@ -21,11 +18,11 @@ export function Layout({
             <Head>
                 <title>{pageTitle}</title>
             </Head>
-            <Container>
+            <AppWrap>
                 <Header />
                 <Content>{children}</Content>
                 <Footer />
-            </Container>
+            </AppWrap>
         </>
     )
 }
