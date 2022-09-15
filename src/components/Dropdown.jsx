@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import Image from 'next/image'
 import React, { useState } from 'react'
-import { device } from './Device'
+import { device } from './Responsiveness/Device'
 
 
 export function Dropdown(props) {
