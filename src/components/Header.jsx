@@ -18,7 +18,7 @@ export function Header() {
     `
 
     const Title = styled.a`
-        color: black;
+        color: white;
         display: none;
         text-decoration: none;
         font-size: 28px;
@@ -27,8 +27,6 @@ export function Header() {
         }
 
         @media ${device.tablet} {
-            height: 100px;
-            width: 100px;
             display: inline;
         }
     `
@@ -38,6 +36,10 @@ export function Header() {
         <>
             <Navbar>
                 <Image src="/fannen.png" width={100} height={100} />
+                <Title>Hello</Title>
+                <Title>Hello</Title>
+                <Title>Hello</Title>
+                <Title>Hello</Title>
                 <Dropdown src="/more.svg" height="40" width="40">
                     <DropDownItem link="/homepage" text="AAAAAA"></DropDownItem>
                     <DropDownItem link="/homepage" text="BBBBBB"></DropDownItem>
