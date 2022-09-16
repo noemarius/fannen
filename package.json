@@ -4,6 +4,8 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
+        "build2": "vite build",
+        "dev2": "vite",
         "build": "next build",
         "start": "next start"
     },
@@ -35,6 +37,8 @@
         "postcss": "^8.4.6",
         "prettier": "2.2.1",
         "sass": "^1.32.11",
-        "tailwindcss": "^3.0.22"
+        "tailwindcss": "^3.0.22",
+        "vite": "^3.0.0",
+        "laravel-vite-plugin": "^0.6.0"
     }
 }
