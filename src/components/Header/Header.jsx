@@ -1,7 +1,9 @@
 import Image from 'next/image'
+import { Dropdown } from '../Dropdown/Dropdown'
+import { DropdownItem } from '../DropdownItem/DropdownItem'
 import { HeaderWrap } from './HeaderStyles'
 
-export function Header() {
+export function Header(props) {
     return (
         <>
             <HeaderWrap>
@@ -10,8 +12,12 @@ export function Header() {
                     src="/fannen.png"
                     width={80}
                     height={80}></Image>
-                    {/* Later Dropdown */}
-                    <p className='info'>About</p>
+                <Dropdown>
+                    <DropdownItem link="/home" text="Test"></DropdownItem>
+                    <DropdownItem link="/home" text="tEst"></DropdownItem>
+                    <DropdownItem link="/home" text="teSt"></DropdownItem>
+                    <DropdownItem link="/home" text="tesT"></DropdownItem>
+                </Dropdown>
             </HeaderWrap>
         </>
     )
