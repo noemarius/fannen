@@ -1,16 +1,12 @@
-import { Footer } from '@/components/Footer/Footer'
-import { Header } from '@/components/Header/Header'
 import HomeContent from '@/components/HomeContent/HomeContent'
-import { AppWrap } from '@/styles/appStyles'
+import { Layout } from '@/components/Layouts/Layout'
 
 export default function Home() {
     return (
         <>
-            <AppWrap>
-                <Header />
+            <Layout pageTitle="Home">
                 <HomeContent />
-                <Footer />
-            </AppWrap>
+            </Layout>
         </>
     )
 }
