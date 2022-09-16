@@ -1,25 +1,28 @@
-import { useState, useEffect, useRef } from 'react'
-import styled from 'styled-components'
+import { useMemo } from 'react'
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
+import { FLIGHT_PROPS_ID } from 'next/dist/shared/lib/constants'
 
-const mapStyle = styled.div`
-    background-color: red;
-    height: 500px;
-    width: 500px;
-`
+const mapContainerStyle = {
+    width: '400px',
+    height: '400px',
+}
 
 export default function MapGen() {
-    const ref = useRef(null)
-    const [map, setMap] = useState()
-    useEffect(() => {
-        if (ref.current && !map) {
-            setMap(
-                new window.google.maps.Map(ref.current, {
-                    center: google.maps.LatLngLiteral,
-                    zoom: 14,
-                }),
-            )
-        }
-    }, [ref, map])
+    const { isLoaded } = useLoadScript(
+        process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
+    )
+    if (!isLoaded) return <div>Loading...</div>
+    return <Map />
+}
 
-    return <div ref={ref} />
+// #TODO: Marker FLIGHT_PROPS_ID
+function Map() {
+    const mapCenter = useMemo(() => ({ lat: 49, lng: 6 }), [])
+    return (
+        <GoogleMap
+            zoom={14}
+            center={mapCenter}
+            mapContainerStyle={mapContainerStyle}
+        />
+    )
 }

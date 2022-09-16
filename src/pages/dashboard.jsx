@@ -1,11 +1,9 @@
 import { Layout } from '@/components/Layouts/Layout'
 
 export default function Dashboard() {
-    return(
+    return (
         <>
-        <Layout>
-
-        </Layout>
+            <Layout></Layout>
         </>
     )
 }

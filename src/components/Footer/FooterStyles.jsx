@@ -4,8 +4,6 @@ export const FooterWrap = styled.div`
     background-color: #002b34;
     height: auto;
     width: 100%;
-    position: absolute;
-    bottom: 0px;
 
     a {
         color: white;
