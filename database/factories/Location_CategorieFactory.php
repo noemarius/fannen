@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Location_Categorie>
  */
-class LocationCategorieFactory extends Factory
+class Location_CategorieFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -18,6 +18,8 @@ class LocationCategorieFactory extends Factory
     {
         return [
             //
+            'location_id' => fake()->numberBetween(1, 10),
+            'categorie_id' => fake()->numberBetween(1, 10),
         ];
     }
 }

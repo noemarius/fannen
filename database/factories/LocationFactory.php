@@ -18,7 +18,7 @@ class LocationFactory extends Factory
     {
         return [
             'name' => fake()->sentence(1),
-            'adress' => fake()->sentence(1),
+            'address' => fake()->sentence(1),
             'geo' => fake()->sentence(1),
             'link' => fake()->sentence(1),
             'contact' => fake()->sentence(1),

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Location;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -14,6 +15,6 @@ class LocationSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Location::factory(10)->create();
+        Location::factory(10)->create();
     }
 }

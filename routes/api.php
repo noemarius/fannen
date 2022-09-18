@@ -25,7 +25,12 @@ Route::middleware(['auth:sanctum'])->get('/user', function (Request $request) {
 
 Route::resource('test', TestController::class);
 //Route::middleware(['auth:sanctum'])->resource('test', TestController::class);
-Route::resource('comment-all', CommentController::class);
+/* Route::resource('comment-all', CommentController::class);
 Route::resource('categories-all', CategorieController::class);
 Route::resource('location-all', LocationController::class);
-Route::resource('user-all', UserController::class);
+Route::resource('user-all', UserController::class); */
+
+Route::resource('comments', CommentController::class);
+Route::resource('categories', CategorieController::class);
+Route::resource('locations', LocationController::class);
+Route::resource('users', UserController::class);
