@@ -2,12 +2,8 @@ import styled from 'styled-components'
 
 export const DropdownStyle = styled.div`
     .menuTrigger {
-        background-color: white;
         border-radius: 50%;
         height: 40px;
-        position: absolute;
-        right: 20px;
-        top: 20px;
         width: 40px;
     }
 
@@ -18,7 +14,8 @@ export const DropdownStyle = styled.div`
         left: 0px;
         background-color: white;
         padding: 10px 20px;
-        width: 100vw;
+        width: 100%;
+        z-index: 100;
     }
 
     .active {

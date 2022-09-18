@@ -6,9 +6,9 @@ export function Footer() {
             <FooterWrap>
                 <div className="container">
                     <div className="links">
-                        <a href="">Terms and Conditions</a>
-                        <a href="">Meet The Team</a>
-                        <a href="">About</a>
+                        <a href="/about">About</a>
+                        <a href="/team">Meet The Team</a>
+                        <a href="/terms">Terms and Conditions</a>
                     </div>
                     <div className='line'/>
                     <p className="copyright">

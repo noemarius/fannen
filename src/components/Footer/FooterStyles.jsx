@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const FooterWrap = styled.div`
-    background-color: #002b34;
+    background-color: #39B7FF;
     height: auto;
     width: 100%;
 
@@ -28,7 +28,7 @@ export const FooterWrap = styled.div`
     .line {
         background-color: white;
         height: 1px;
-        width: 90vw;
+        width: 90%;
     }
 
     .links {

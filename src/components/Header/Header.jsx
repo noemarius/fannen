@@ -7,16 +7,20 @@ export function Header(props) {
     return (
         <>
             <HeaderWrap>
-                <Image
-                    id="logo"
-                    src="/fannen.png"
-                    width={80}
-                    height={80}></Image>
                 <Dropdown>
                     <DropdownItem link="/home" text="Home"></DropdownItem>
-                    <DropdownItem link="/dashboard" text="Dashboard"></DropdownItem>
-                    <DropdownItem link="/home" text="teSt"></DropdownItem>
-                    <DropdownItem link="/home" text="tesT"></DropdownItem>
+                    <DropdownItem
+                        link="/dashboard"
+                        text="Dashboard"></DropdownItem>
+                    <DropdownItem link="/about" text="About"></DropdownItem>
+                    <DropdownItem
+                        link="/team"
+                        text="Meet the Team"></DropdownItem>
+                    <DropdownItem link="/login" text="Login"></DropdownItem>
+                    <DropdownItem
+                        link="/register"
+                        text="Register"></DropdownItem>
+                    <DropdownItem link="/account" text="Account"></DropdownItem>
                 </Dropdown>
             </HeaderWrap>
         </>
