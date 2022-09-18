@@ -10,6 +10,8 @@ import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
+import { Layout } from '@/components/Layouts/Layout'
+import Image from 'next/image'
 
 const Login = () => {
     const router = useRouter()
@@ -40,12 +42,12 @@ const Login = () => {
     }
 
     return (
-        <GuestLayout>
+        <Layout>
             <AuthCard
                 logo={
                     <Link href="/">
                         <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
+                        <Image src="/fannen.png" height={200} width={200}/>
                         </a>
                     </Link>
                 }>
@@ -118,7 +120,7 @@ const Login = () => {
                     </div>
                 </form>
             </AuthCard>
-        </GuestLayout>
+        </Layout>
     )
 }
 

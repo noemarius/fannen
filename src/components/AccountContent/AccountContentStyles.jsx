@@ -20,7 +20,7 @@ export const AccountContentWrap = styled.div`
 
     .button {
         align-items: center;
-        background-color: blue;
+        background-color: #39B7FF;
         border-radius: 20px;
         display: flex;
         flex-direction: column;
