@@ -5,7 +5,6 @@ export const HomeContentWrap = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-top: 120px;
     width: 100%;
 
     h3 {
@@ -16,7 +15,6 @@ export const HomeContentWrap = styled.div`
 
     .boxWrap {
         width: 90%;
-        margin-top: 20px;
 
         .search {
             align-items: center;
@@ -26,7 +24,7 @@ export const HomeContentWrap = styled.div`
             margin-top: 12px;
 
             .searchbar {
-                border-radius: 20px;
+                border-radius: 20px 0px 0px 20px;
             }
 
             .submit {
@@ -34,7 +32,7 @@ export const HomeContentWrap = styled.div`
                 width: 80px;
                 background-color: white;
                 border: 1px solid black;
-                border-radius: 20px;
+                border-radius: 0px 20px 20px 0px;
             }
         }
     }
