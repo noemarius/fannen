@@ -10,7 +10,7 @@ export function AccountContent() {
                     <h1 className="title">Username</h1>
                     <p>Email@here.com</p>
                     <div className="button">
-                        <a href="">Edit Profile</a>
+                        <a href="/settings">Edit Profile</a>
                     </div>
                 </div>
                 <div className="pContainer">

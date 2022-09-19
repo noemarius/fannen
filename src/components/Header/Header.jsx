@@ -1,4 +1,3 @@
-import Image from 'next/image'
 import { Dropdown } from '../Dropdown/Dropdown'
 import { DropdownItem } from '../DropdownItem/DropdownItem'
 import { HeaderWrap } from './HeaderStyles'
@@ -8,7 +7,7 @@ export function Header(props) {
         <>
             <HeaderWrap>
                 <Dropdown>
-                    <DropdownItem link="/home" text="Home"></DropdownItem>
+                    <DropdownItem link="/" text="Home"></DropdownItem>
                     <DropdownItem
                         link="/dashboard"
                         text="Dashboard"></DropdownItem>
