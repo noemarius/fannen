@@ -27,7 +27,7 @@ const RenderMap = props => {
             { position: { lat: 49.613494, lng: 6.128729 }, label: 'Pool' },
         ]
     }
-    console.log(markerList)
+    /* console.log(markerList) */
 
     return (
         <GoogleMap
