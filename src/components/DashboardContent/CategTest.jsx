@@ -1,6 +1,8 @@
 import * as React from 'react'
 import axios from '@/lib/axios'
 import { useState, useEffect } from 'react'
+import TreeView from '@mui/lab/TreeView'
+import TreeItem from '@mui/lab/TreeItem'
 
 async function getCategoriesAndLocations() {
     const resp = await axios.get('api/locsandcategs')
