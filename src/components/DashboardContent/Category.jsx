@@ -1,54 +1,74 @@
-import { useCallback, useEffect, useState } from 'react'
+import * as React from 'react'
 import axios from '@/lib/axios'
+import { useState, useEffect } from 'react'
+import TreeView from '@mui/lab/TreeView'
+import TreeItem from '@mui/lab/TreeItem'
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
+import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 
 async function getCategoriesAndLocations() {
     const resp = await axios.get('api/locsandcategs')
     return resp
 }
 
-function validArray(input) {
-    if (!Array.isArray(input)) {
-        return [input]
-    } else {
-        return input
-    }
-}
-
 export default function Category() {
     const [categAndLoc, setCategAndLoc] = useState([])
 
     useEffect(() => {
-        getCategoriesAndLocations().then(result => setCategAndLoc(result.data))
+        getCategoriesAndLocations().then(result => {
+            result = [result.data]
+            setCategAndLoc(result)
+        })
     }, [])
 
-    return <>{console.log(categAndLoc)}</>
-    /* (
+    return (
         <>
-            <ul>
-                {categoryList.map(tree => {
-                    return <TreeNode node={tree} />
-                })}
-            </ul>
+            <TreeView
+                aria-label="Category and Location Tree"
+                defaultCollapseIcon={<ExpandMoreIcon />}
+                defaultExpandIcon={<ChevronRightIcon />}
+                sx={{
+                    minHeight: 240,
+                    flexGrow: 1,
+                    maxWidth: '30%',
+                    overflowY: 'auto',
+                }}>
+                <Tree data={categAndLoc} />
+            </TreeView>
         </>
-    ) */
+    )
 }
 
-const TreeNode = ({ node }) => {
-    const [childVisibility, setChildVisibility] = useState(false)
-    const hasChild = node.children ? true : false
+const Tree = ({ data }) => {
     return (
-        <li>
-            <div onClick={e => setChildVisibility(v => !v)}>
-                {hasChild && (
-                    <div className={`${childVisibility ? 'active' : ''}`}></div>
-                )}
-                <div>{node.label}</div>
-            </div>
-            {hasChild && childVisibility && (
-                <div>
-                    <ul></ul>
-                </div>
-            )}
-        </li>
+        <>
+            {data &&
+                data.map(item => {
+                    var counter = 0
+                    return Object.entries(item).map(categ => {
+                        return (
+                            <>
+                                <TreeItem
+                                    nodeId={`${(counter += 1)}`}
+                                    label={categ[0]}
+                                    key={counter}>
+                                    {categ[1].map(children => {
+                                        return (
+                                            <TreeItem
+                                                nodeId={`${(counter += 1)}`}
+                                                label={children.name}
+                                                key={counter}
+                                                onClick={() => {
+                                                    console.log(children.geo)
+                                                }}
+                                            />
+                                        )
+                                    })}
+                                </TreeItem>
+                            </>
+                        )
+                    })
+                })}
+        </>
     )
 }

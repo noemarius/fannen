@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { DropdownDash } from '@/components/DropdownDash/DropdownDash'
 import { DropdownItem } from '@/components/DropdownItem/DropdownItem'
+import Category from './Category'
+import Map from './Map'
 
 export function DashboardContent() {
     // Styled components
@@ -12,15 +14,13 @@ export function DashboardContent() {
         margin-top: 12px;
         width: 100%;
     `
+
     return (
         <>
             <Container>
-                <DropdownDash>
-                    <DropdownItem text="Sports"></DropdownItem>
-                    <DropdownItem text="Business"></DropdownItem>
-                    <DropdownItem text="Events"></DropdownItem>
-                </DropdownDash>
-                <p>Google maps here I think</p>
+                <Map />
+
+                <Category />
             </Container>
         </>
     )
