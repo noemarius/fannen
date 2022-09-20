@@ -6,7 +6,7 @@ export function DropdownItem(props) {
         <>
             <DropdownItemWrap>
                 <li>
-                    <a href={props.link}>{props.text}</a>
+                    <Link href={props.link}>{props.text}</Link>
                 </li>
             </DropdownItemWrap>
         </>
