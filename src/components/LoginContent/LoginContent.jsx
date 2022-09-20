@@ -1,8 +1,6 @@
-import ApplicationLogo from '@/components/ApplicationLogo'
-import AuthCard from '@/components/AuthCard'
+import { LoginWrap } from './LoginContentStyles'
 import AuthSessionStatus from '@/components/AuthSessionStatus'
 import Button from '@/components/Button'
-import GuestLayout from '@/components/Layouts/GuestLayout'
 import Input from '@/components/Input'
 import InputError from '@/components/InputError'
 import Label from '@/components/Label'
@@ -10,10 +8,9 @@ import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
-import { Layout } from '@/components/Layouts/Layout'
 import Image from 'next/image'
 
-const Login = () => {
+export function LoginContent() {
     const router = useRouter()
 
     const { login } = useAuth({
@@ -38,28 +35,34 @@ const Login = () => {
     const submitForm = async event => {
         event.preventDefault()
 
-        login({ email, password, remember: shouldRemember, setErrors, setStatus })
+        login({
+            email,
+            password,
+            remember: shouldRemember,
+            setErrors,
+            setStatus,
+        })
     }
 
     return (
-        <Layout>
-            <AuthCard
-                logo={
+        <>
+            <LoginWrap>
+                <div className="container">
                     <Link href="/">
                         <a>
-                        <Image src="/fannen.png" height={200} width={200}/>
+                            <Image src="/fannen.png" height={250} width={250} />
                         </a>
                     </Link>
-                }>
+                </div>
 
-                {/* Session Status */}
-                <AuthSessionStatus className="mb-4" status={status} />
+                {/* TODO Ask Jade what this does */}
+                {/* Session Status
+                <AuthSessionStatus className="mb-4" status={status} /> */}
 
                 <form onSubmit={submitForm}>
-                    {/* Email Address */}
-                    <div>
+                    {/* Email */}
+                    <div className="mt-2">
                         <Label htmlFor="email">Email</Label>
-
                         <Input
                             id="email"
                             type="email"
@@ -69,7 +72,6 @@ const Login = () => {
                             required
                             autoFocus
                         />
-
                         <InputError messages={errors.email} className="mt-2" />
                     </div>
 
@@ -87,7 +89,10 @@ const Login = () => {
                             autoComplete="current-password"
                         />
 
-                        <InputError messages={errors.password} className="mt-2" />
+                        <InputError
+                            messages={errors.password}
+                            className="mt-2"
+                        />
                     </div>
 
                     {/* Remember Me */}
@@ -100,7 +105,9 @@ const Login = () => {
                                 type="checkbox"
                                 name="remember"
                                 className="rounded border-gray-300 text-indigo-600 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50"
-                                onChange={event => setShouldRemember(event.target.checked)}
+                                onChange={event =>
+                                    setShouldRemember(event.target.checked)
+                                }
                             />
 
                             <span className="ml-2 text-sm text-gray-600">
@@ -119,9 +126,7 @@ const Login = () => {
                         <Button className="ml-3">Login</Button>
                     </div>
                 </form>
-            </AuthCard>
-        </Layout>
+            </LoginWrap>
+        </>
     )
 }
-
-export default Login

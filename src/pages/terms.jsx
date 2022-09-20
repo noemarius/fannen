@@ -4,7 +4,7 @@ import { TermsContent } from '@/components/TermsContent/TermsContent'
 export default function Terms() {
     return (
         <>
-            <Layout>
+            <Layout pageTitle="Terms and Conditions">
                 <TermsContent />
             </Layout>
         </>

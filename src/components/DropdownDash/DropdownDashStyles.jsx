@@ -10,6 +10,7 @@ export const DropdownDashStyle = styled.div`
         align-items: center;
         background-color: white;
         border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         display: flex;
         height: 40px;
         justify-content: center;
@@ -22,6 +23,7 @@ export const DropdownDashStyle = styled.div`
     .dropdownMenu {
         background-color: white;
         border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         padding: 10px 20px;
     }
 
@@ -44,4 +46,5 @@ export const DropdownDashStyle = styled.div`
         gap: 12px;
         width: 100%;
     }
+    
 `
