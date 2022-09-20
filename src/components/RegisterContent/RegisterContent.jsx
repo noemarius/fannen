@@ -9,8 +9,11 @@ import Link from 'next/link'
 import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { Layout } from '@/components/Layouts/Layout'
+import Image from 'next/image'
+import { RegisterWrap } from './RegisterContentStyles'
 
-const Register = () => {
+export function RegisterContent() {
     const { register } = useAuth({
         middleware: 'guest',
         redirectIfAuthenticated: '/dashboard',
@@ -33,17 +36,14 @@ const Register = () => {
             setErrors,
         })
     }
-
     return (
-        <GuestLayout>
-            <AuthCard
-                logo={
+        <>
+            <RegisterWrap>
+                <div className="container">
                     <Link href="/">
-                        <a>
-                            <ApplicationLogo className="w-20 h-20 fill-current text-gray-500" />
-                        </a>
+                            <Image src="/fannen.png" height={250} width={250} />
                     </Link>
-                }>
+                </div>
                 <form onSubmit={submitForm}>
                     {/* Name */}
                     <div>
@@ -131,9 +131,7 @@ const Register = () => {
                         <Button className="ml-4">Register</Button>
                     </div>
                 </form>
-            </AuthCard>
-        </GuestLayout>
+            </RegisterWrap>
+        </>
     )
 }
-
-export default Register

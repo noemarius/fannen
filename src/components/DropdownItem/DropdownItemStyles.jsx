@@ -5,6 +5,7 @@ export const DropdownItemWrap = styled.div`
 
     li {
         align-items: center;
+        border-radius: 20px;
         color: black;
         display: flex;
         font-size: 24px;
@@ -13,6 +14,6 @@ export const DropdownItemWrap = styled.div`
         width: 100%;
     }
     li:hover {
-        background-color: gray;
+        background-color: rgb(211, 211, 211);
     }
 `

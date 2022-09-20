@@ -1,12 +1,12 @@
-import { Layout } from "@/components/Layouts/Layout";
-import { TeamContent } from "@/components/TeamContent/TeamContent";
+import { Layout } from '@/components/Layouts/Layout'
+import { TeamContent } from '@/components/TeamContent/TeamContent'
 
 export default function Team() {
-    return(
+    return (
         <>
-        <Layout>
-            <TeamContent/>
-        </Layout>
+            <Layout pageTitle="Meet The Team">
+                <TeamContent />
+            </Layout>
         </>
     )
 }

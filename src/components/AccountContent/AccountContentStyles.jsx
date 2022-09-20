@@ -38,6 +38,7 @@ export const AccountContentWrap = styled.div`
         align-items: center;
         background-color: white;
         border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         display: flex;
         flex-direction: column;
         gap: 12px;
@@ -50,6 +51,7 @@ export const AccountContentWrap = styled.div`
         align-items: center;
         background-color: white;
         border-radius: 20px;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
         display: flex;
         flex-direction: column;
         gap: 16px;
@@ -81,4 +83,5 @@ export const AccountContentWrap = styled.div`
         width: 100%;
         padding-left: 12px;
     }
+
 `
