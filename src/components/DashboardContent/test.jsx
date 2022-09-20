@@ -6,14 +6,13 @@ import TreeItem from '@mui/lab/TreeItem'
 /* import { Construction } from '@mui/icons-material' */
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
-import { useCallback } from 'react'
 
 async function getCategoriesAndLocations() {
     const resp = await axios.get('api/locsandcategs')
     return resp
 }
 
-export default function Category(props) {
+export default function Test(props) {
     const [categAndLoc, setCategAndLoc] = useState([])
 
     useEffect(() => {
@@ -21,18 +20,6 @@ export default function Category(props) {
             result = result.data
             setCategAndLoc(result)
         })
-    }, [])
-
-    const buildGeoLocCateg = useCallback((props, data, id) => {
-        let newJson = data[id][1].map(e => {
-            return { position: JSON.parse(e.geo), label: e.name }
-        })
-
-        props.setSharedState(newJson)
-    }, [])
-
-    const buildGeoLocCenter = useCallback((props, data) => {
-        props.setSharedCenterState(JSON.parse(data))
     }, [])
 
     return (
@@ -49,35 +36,42 @@ export default function Category(props) {
                     /* maxWidth: '30%', */
                     overflowY: 'auto',
                 }}>
-                <Tree
-                    data={categAndLoc}
-                    callbackCateG={buildGeoLocCateg}
-                    callbackCenter={buildGeoLocCenter}
-                    parentProps={props}
-                />
+                <Tree data={categAndLoc} parentProps={props} />
             </TreeView>
         </>
     )
 }
 
-const Tree = ({ callbackCateG, callbackCenter, data, parentProps }) => {
+const Tree = ({ data, parentProps }) => {
     let dataObj = Object.entries(data)
     let counter = 0
+
+    const buildGeoLocCateg = id => {
+        /*console.log(dataObj[id])*/
+        const jsonGeoLoc = () => {
+            let newJson = dataObj[id][1].map(e => {
+                return { positon: JSON.parse(e.geo), label: e.name }
+            })
+            return newJson
+        }
+
+        parentProps.setSharedState(jsonGeoLoc())
+    }
 
     return (
         <>
             {data &&
-                dataObj.map((categ, i) => {
+                dataObj.map((categ, id) => {
                     return (
-                        <React.Fragment key={i}>
+                        <>
                             <TreeItem
                                 nodeId={`${(counter += 1)}`}
                                 label={categ[0]}
                                 key={counter}
                                 onClick={() => {
-                                    callbackCateG(parentProps, dataObj, i)
+                                    buildGeoLocCateg(id)
                                 }}>
-                                {categ[1].map((children, childId) => {
+                                {categ[1].map(children => {
                                     return (
                                         <TreeItem
                                             nodeId={`${(counter += 1)}`}
@@ -85,16 +79,12 @@ const Tree = ({ callbackCateG, callbackCenter, data, parentProps }) => {
                                             key={counter}
                                             onClick={() => {
                                                 //display info about location, and comments
-                                                callbackCenter(
-                                                    parentProps,
-                                                    children.geo,
-                                                )
                                             }}
                                         />
                                     )
                                 })}
                             </TreeItem>
-                        </React.Fragment>
+                        </>
                     )
                 })}
         </>

@@ -11,6 +11,7 @@ body {
 // BUG DONT TOUCH
 * {
 box-sizing: border-box;
+font-family: 'Roboto', sans-serif;
 // outline: 1px solid black;
 }
 `

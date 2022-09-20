@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { DropdownItemWrap } from './DropdownItemStyles'
 
 export function DropdownItem(props) {
@@ -5,7 +6,7 @@ export function DropdownItem(props) {
         <>
             <DropdownItemWrap>
                 <li>
-                    <a href={props.link}>{props.text}</a>
+                    <Link href={props.link}>{props.text}</Link>
                 </li>
             </DropdownItemWrap>
         </>
