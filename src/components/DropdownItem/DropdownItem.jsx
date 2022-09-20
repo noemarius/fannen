@@ -1,5 +1,6 @@
 import Link from 'next/link'
 import { DropdownItemWrap } from './DropdownItemStyles'
+import Link from 'next/link'
 
 export function DropdownItem(props) {
     return (
@@ -12,3 +13,5 @@ export function DropdownItem(props) {
         </>
     )
 }
+
+// Why does it not work with link tag

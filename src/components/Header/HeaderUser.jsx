@@ -15,10 +15,6 @@ export function Header(props) {
                     <DropdownItem
                         link="/team"
                         text="Meet the Team"></DropdownItem>
-                    <DropdownItem link="/login" text="Login"></DropdownItem>
-                    <DropdownItem
-                        link="/register"
-                        text="Register"></DropdownItem>
                     <DropdownItem link="/account" text="Account"></DropdownItem>
                 </Dropdown>
             </HeaderWrap>
