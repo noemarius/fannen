@@ -3,7 +3,6 @@ import Link from 'next/link'
 import styled from 'styled-components'
 import { Text } from './Text'
 
-
 const ContentContainer = styled.div`
     display: flex;
     width: 100%;
@@ -19,6 +18,7 @@ export const LeftContainer = styled.div`
     flex-direction: row;
     gap: 16px;
     width: 100%;
+    padding: ${props => props.padding || '0px 8px'};
 `
 
 export function ContentButton(props) {
@@ -26,9 +26,9 @@ export function ContentButton(props) {
         <>
             <Link href={props.link}>
                 <ContentContainer>
-                    <LeftContainer>
+                    <LeftContainer padding={props.padding}>
                         <Image src={props.image} height={24} width={24} />
-                        <Text text={props.text} size={props.size}/>
+                        <Text text={props.text} size={props.size} />
                     </LeftContainer>
                     <Image src="/next.png" height={24} width={24} />
                 </ContentContainer>

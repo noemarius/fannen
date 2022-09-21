@@ -4,8 +4,9 @@ import { Text } from './Text'
 const StyledAlign = styled.div`
     align-items: left;
     display: flex;
+    flex-direction: column;
     width: 100%;
-    padding-left: 12px;
+    // padding-left: 12px;
 `
 
 export function AlignLeft({ children }) {

@@ -1,11 +1,11 @@
-import { EditPasswordContent } from '@/components/EditPasswordContent/EditPasswordContent'
+import { EditUser } from '@/components/EditUser'
 import { Layout } from '@/components/Layouts/Layout'
 
-export default function EditPassword() {
+export default function EditEmail() {
     return (
         <>
             <Layout>
-                <EditPasswordContent />
+                <EditUser id="Password" type="password"/>
             </Layout>
         </>
     )

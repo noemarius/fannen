@@ -7,7 +7,7 @@ const StyledCard = styled.div`
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: ${props => props.gap || '16px'};
     justify-content: center;
     margin: ${props => props.margin || '20px 0px'};
     padding: 16px 20px;
@@ -17,7 +17,9 @@ const StyledCard = styled.div`
 export function Card(props) {
     return (
         <>
-            <StyledCard margin={props.margin}>{props.children}</StyledCard>
+            <StyledCard gap={props.gap} margin={props.margin}>
+                {props.children}
+            </StyledCard>
         </>
     )
 }
