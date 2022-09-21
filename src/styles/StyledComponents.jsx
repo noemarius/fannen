@@ -23,40 +23,40 @@ export const Button = styled.div`
     }
 `
 
-export const Card = styled.div`
-    align-items: center;
-    background-color: white;
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    justify-content: center;
-    margin: 20px 0px;
-    padding: 16px 20px;
-`
+// export const Card = styled.div`
+//     align-items: center;
+//     background-color: white;
+//     border-radius: 20px;
+//     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+//     display: flex;
+//     flex-direction: column;
+//     gap: 12px;
+//     justify-content: center;
+//     margin: 20px 0px;
+//     padding: 16px 20px;
+// `
 
-export const ContentContainer = styled.div`
-    display: flex;
-    width: 100%;
+// export const ContentContainer = styled.div`
+//     display: flex;
+//     width: 100%;
 
-    &:hover {
-        // ask team if they want animations
-    }
-`
+//     &:hover {
+//         // ask team if they want animations
+//     }
+// `
 
-export const LeftContainer = styled.div`
-    align-items: center;
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    width: 100%;
-`
+// export const LeftContainer = styled.div`
+//     align-items: center;
+//     display: flex;
+//     flex-direction: row;
+//     gap: 16px;
+//     width: 100%;
+// `
 
-export const Title = styled.h1`
-    font-size: ${props => props.size || '32px'};
-`
+// export const Title = styled.h1`
+//     font-size: ${props => props.size || '32px'};
+// `
 
-export const Text = styled.p`
-    font-size: ${props => props.size || '16px'};
-`
+// export const Text = styled.p`
+//     font-size: ${props => props.size || '16px'};
+// `

@@ -1,10 +1,25 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import {
-    ContentContainer,
-    LeftContainer,
-    Text,
-} from '@/styles/StyledComponents'
+import styled from 'styled-components'
+import { Text } from './Text'
+
+
+const ContentContainer = styled.div`
+    display: flex;
+    width: 100%;
+
+    &:hover {
+        // ask team if they want animations
+    }
+`
+
+export const LeftContainer = styled.div`
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+`
 
 export function ContentButton(props) {
     return (
@@ -13,7 +28,7 @@ export function ContentButton(props) {
                 <ContentContainer>
                     <LeftContainer>
                         <Image src={props.image} height={24} width={24} />
-                        <Text>{props.text}</Text>
+                        <Text text={props.text} size={props.size}/>
                     </LeftContainer>
                     <Image src="/next.png" height={24} width={24} />
                 </ContentContainer>
@@ -21,3 +36,5 @@ export function ContentButton(props) {
         </>
     )
 }
+
+// DONE
