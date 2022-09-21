@@ -9,37 +9,27 @@ const mapContainerStyle = {
 
 // #TODO:marker props
 const RenderMap = props => {
+    const mapCenter = useMemo(() => ({ lat: 49.61203, lng: 6.1296 }), [])
+    let markerList = []
+
     const [location, setLocation] = useState({})
-    const [locationCenter, setLocationCenter] = useState({
-        lat: 49.61203,
-        lng: 6.1296,
-    })
+    const [locationCenter, setLocationCenter] = useState({})
 
     useEffect(() => {
-        setLocation(props.sharedState)
+        if (Object.keys(props.sharedState).length != 0) {
+            setLocation(props.sharedState)
+        } else {
+            setLocation([{ position: mapCenter, label: 'Lux Ville' }])
+        }
     }, [props.sharedState])
 
     useEffect(() => {
-        setLocationCenter(props.sharedCenterState)
+        if (Object.keys(props.sharedCenterState).length != 0) {
+            setLocationCenter(props.sharedCenterState)
+        } else {
+            setLocationCenter(mapCenter)
+        }
     }, [props.sharedCenterState])
-
-    console.log(locationCenter)
-
-    const position = { lat: 49.612035, lng: 6.129671 }
-    const mapCenter = useMemo(() => ({ lat: 49.61203, lng: 6.1296 }), [])
-    let markerList = []
-    if (location) {
-        markerList = Object.entries(location)
-    } else {
-        markerList = [
-            {
-                position: { lat: 49.612035, lng: 6.129671 },
-                label: 'Lux Ville',
-            },
-            { position: { lat: 49.613494, lng: 6.128729 }, label: 'Pool' },
-        ]
-    }
-    /* console.log(markerList) */
 
     return (
         <LoadScript
@@ -48,7 +38,7 @@ const RenderMap = props => {
                 zoom={14}
                 center={locationCenter}
                 mapContainerStyle={mapContainerStyle}>
-                {markerList.map((e, i) => {
+                {Object.entries(location).map((e, i) => {
                     return (
                         <Marker
                             key={i}

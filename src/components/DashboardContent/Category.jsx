@@ -36,6 +36,7 @@ export default function Category(props) {
 
     const buildIdDetail = useCallback((props, locationId) => {
         props.setSharedDetailState({ locationId })
+        props.setSharedCommentState({ locationId })
     }, [])
 
     return (

@@ -3,19 +3,23 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 async function getLocationDetail(id) {
-    console.log(id)
-    let resp = axios.get(`api/locations/${id}`)
-    return resp
+    let resp = await axios.get(`api/locations/${id.locationId}`)
+    return resp.data
 }
 
 export default function Detail(props) {
     const [detail, setDetail] = useState({})
     useEffect(() => {
-        setDetail(getLocationDetail(props.sharedDetailState.locationId))
+        getLocationDetail(props.sharedDetailState).then(rslt => setDetail(rslt))
     }, [props.sharedDetailState])
     return (
         <>
-            <div className={`detailContainer`}>{JSON.stringify(detail)}</div>
+            <div className={`detailContainer`}>
+                {/* TODO: Add card component */}
+                {Object.entries(detail).map((e, i) => {
+                    return <li key={i}>{JSON.stringify(e)}</li>
+                })}
+            </div>
         </>
     )
 }
