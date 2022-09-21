@@ -21,7 +21,7 @@ class LocAdminController extends Controller
      */
     public function create()
     {
-        return view('Location');
+        return view('locadminupdate');
     }
 
     /**

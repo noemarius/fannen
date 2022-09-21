@@ -102,14 +102,11 @@ class EventAdminController extends Controller
      */
     public function destroy($id)
     {
-       Event::destroy($id);
-       return view('eventadmin');
+        $res = Event::destroy($id);
 
-
-        // if ($res) {
-        //     return back()->with('success', 'Event was delete');
-            
-        // } else
-        //     return back()->with('error', 'Delete didnt work.');
-   }
+        if ($res) {
+            return back()->with('success', 'Event was delete');
+        } else
+            return back()->with('error', 'Delete didnt work.');
+    }
 }

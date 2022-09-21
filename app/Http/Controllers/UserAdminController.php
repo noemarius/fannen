@@ -88,6 +88,7 @@ class UserAdminController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->statut = $request->statut;
 
 
         // Save it in the DB and check if it worked
