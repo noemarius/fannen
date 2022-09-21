@@ -9,14 +9,15 @@ const StyledCard = styled.div`
     flex-direction: column;
     gap: 12px;
     justify-content: center;
-    margin: 20px 0px;
+    margin: ${props => props.margin || '20px 0px'};
     padding: 16px 20px;
+    width: 100%;
 `
 
-export function Card({ children }) {
+export function Card(props) {
     return (
         <>
-            <StyledCard>{children}</StyledCard>
+            <StyledCard margin={props.margin}>{props.children}</StyledCard>
         </>
     )
 }

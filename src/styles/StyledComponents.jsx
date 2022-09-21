@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
-export const AlignLeft = styled.div`
-    align-items: left;
-    display: flex;
-    width: 100%;
-    padding-left: 12px;
-`
+// export const AlignLeft = styled.div`
+//     align-items: left;
+//     display: flex;
+//     width: 100%;
+//     padding-left: 12px;
+// `
 
 export const Button = styled.div`
     align-items: center;
