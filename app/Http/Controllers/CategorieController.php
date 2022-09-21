@@ -10,6 +10,7 @@ class CategorieController extends Controller
     public function index()
     {
         return Categorie::all();
+        
     }
     /**
      * Show the form for creating a new resource.

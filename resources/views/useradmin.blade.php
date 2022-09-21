@@ -1,6 +1,6 @@
 @extends('mytemplate')
 
-@section('title', 'Administrator Page')
+@section('title', 'User Admin Page')
 
 @section('css')
     <link rel="stylesheet" href="style.css">
@@ -17,7 +17,7 @@
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>Password</th>
+                        <th>Statut</th>
 
                     </tr>
                 </thead>
@@ -32,7 +32,11 @@
                                     {{ $u->email }}
                                 </td>
                                 <td>
-                                    {{ $u->password }}
+                                    {{ $u->statut }}
+                                </td>
+                                <td>
+                                    <a href="useradmin/update/{{$u->id}}">Update</a>
+                                    <a href="useradmin/delete/{{$u->id}}">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -40,20 +44,17 @@
                 </tbody>
             </table>
         </div>
-        <div class="sidenav">
-            <aside>
-                <a href="">User Managment</a><br />
-                <a href="">Category Managment</a><br />
-                <a href="">Location Managment</a><br />
-            </aside>
-        </div>
-        
         <div class="createForm">
             <form method="post">
                 @csrf
                 <input type="text" name="name" placeholder="Please enter the user name" /><br />
                 <input type="email" name="email" placeholder="Please enter the user email" /><br />
                 <input type="password" name="password" placeholder="Please enter the user password" /><br />
+                <select name="statut">
+                    <option value="administrator">Administrator</option>
+                    <option value="organizer">Organizer</option>
+                    <option value="user">User</option>
+                </select>
                 <input type="submit" name="submitBtn" value="Create" />
 
             </form>

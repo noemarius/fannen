@@ -18,6 +18,7 @@ return new class extends Migration
             $table->integer('user_id');
             $table->string('location_id');
             $table->string('comment');
+            //$table->boolean('validation');
             $table->timestamps();
         });
     }
