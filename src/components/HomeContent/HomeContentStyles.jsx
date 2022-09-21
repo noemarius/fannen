@@ -25,6 +25,7 @@ export const HomeContentWrap = styled.div`
 
             .searchbar {
                 border-radius: 20px 0px 0px 20px;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
 
             .submit {
@@ -33,6 +34,7 @@ export const HomeContentWrap = styled.div`
                 background-color: white;
                 border: 1px solid black;
                 border-radius: 0px 20px 20px 0px;
+                box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
             }
         }
     }
