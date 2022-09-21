@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategorieController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationCategorieController;
 use App\Http\Controllers\LocationController;
 use Illuminate\Http\Request;
@@ -35,4 +36,6 @@ Route::resource('comments', CommentController::class);
 Route::resource('categories', CategorieController::class);
 Route::resource('locations', LocationController::class);
 Route::resource('users', UserController::class);
+Route::resource('event', EventController::class);
 Route::get('locsandcategs', [LocationCategorieController::class, 'index']);
+

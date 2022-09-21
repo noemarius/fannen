@@ -2,22 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\User;
+use App\Models\Location;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Validation\Rules\Password;
 
-class AdminController extends Controller
+class LocAdminController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $user = User::all();
-        return view('administrator', ['user' => $user]);
+        $location = Location::all();
+        return view('locadmin', ['location' => $location]);
+        
     }
 
     /**
@@ -27,7 +21,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        return view('user');
+        return view('Location');
     }
 
     /**
@@ -38,15 +32,18 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-       
+        $location = new Location;
+        $location->name = $request->name;
+        $location->address = $request->address;
+        $location->geo = $request->geo;
+        $location->link = $request->link;
+        $location->contact = $request->contact;
 
-        $user = new User;
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
 
-        if ($user->save())
-            return redirect('administrator')->with('success', 'Insert successfully');
+
+        // Save it in the DB and check if it worked
+        if ($location->save())
+            return redirect('home')->with('success', 'Insert successfully');
         else
             return 'Problem inserting';
     }
@@ -59,7 +56,7 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        return User::find($id);
+        return Location::find($id);
     }
 
     /**
@@ -70,7 +67,7 @@ class AdminController extends Controller
      */
     public function edit($id)
     {
-        return User::find($id);
+        return Location::find($id);
     }
 
     /**
@@ -83,14 +80,16 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
 
-        $user = User::find($id);
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = $request->password;
+        $location = Location::find($id);
+        $location->name = $request->name;
+        $location->address = $request->address;
+        $location->geo = $request->geo;
+        $location->link = $request->link;
+        $location->contact = $request->contact;
 
 
         // Save it in the DB and check if it worked
-        if ($user->save())
+        if ($location->save())
             return 'Updated successfully';
         else
             return 'Problem updating';
@@ -104,10 +103,10 @@ class AdminController extends Controller
      */
     public function destroy($id)
     {
-        $res = User::destroy($id);
+        $res = Location::destroy($id);
 
         if ($res) {
-            return back()->with('success', 'User was delete');
+            return back()->with('success', 'Location was delete');
             // return redirect('flowers');
         } else
             return back()->with('error', 'Delete didnt work.');

@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +18,14 @@
             <li>Contact</li>
         </ul>
     </nav>
-
+    <aside>
+        <p>Management</p>
+        <a href="useradmin">User </a><br />
+        <a href="catadmin">Category </a><br />
+        <a href="locadmin">Location </a><br />
+        <a href="eventadmin">Event </a><br />
+        <a href="comadmin">Comment </a><br />
+    </aside>
     <div class="content">
         @yield('content')
     </div>

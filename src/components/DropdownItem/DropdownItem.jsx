@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { DropdownItemWrap } from './DropdownItemStyles'
-import Link from 'next/link'
 
 export function DropdownItem(props) {
     return (
