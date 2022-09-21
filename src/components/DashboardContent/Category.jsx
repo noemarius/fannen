@@ -27,7 +27,6 @@ export default function Category(props) {
         let newJson = data[id][1].map(e => {
             return { position: JSON.parse(e.geo), label: e.name }
         })
-
         props.setSharedState(newJson)
     }, [])
 
@@ -35,11 +34,15 @@ export default function Category(props) {
         props.setSharedCenterState(JSON.parse(data))
     }, [])
 
+    const buildIdDetail = useCallback((props, locationId) => {
+        props.setSharedDetailState({ locationId })
+    }, [])
+
     return (
         <>
             {/* {JSON.stringify(categAndLoc)} */}
             <TreeView
-                className={`test`}
+                className={`categoryContainer`}
                 aria-label="Category and Location Tree"
                 defaultCollapseIcon={<ExpandMoreIcon />}
                 defaultExpandIcon={<ChevronRightIcon />}
@@ -53,6 +56,7 @@ export default function Category(props) {
                     data={categAndLoc}
                     callbackCateG={buildGeoLocCateg}
                     callbackCenter={buildGeoLocCenter}
+                    callbackDetail={buildIdDetail}
                     parentProps={props}
                 />
             </TreeView>
@@ -60,7 +64,13 @@ export default function Category(props) {
     )
 }
 
-const Tree = ({ callbackCateG, callbackCenter, data, parentProps }) => {
+const Tree = ({
+    callbackCateG,
+    callbackCenter,
+    callbackDetail,
+    data,
+    parentProps,
+}) => {
     let dataObj = Object.entries(data)
     let counter = 0
 
@@ -85,9 +95,18 @@ const Tree = ({ callbackCateG, callbackCenter, data, parentProps }) => {
                                             key={counter}
                                             onClick={() => {
                                                 //display info about location, and comments
+                                                callbackCateG(
+                                                    parentProps,
+                                                    dataObj,
+                                                    i,
+                                                )
                                                 callbackCenter(
                                                     parentProps,
                                                     children.geo,
+                                                )
+                                                callbackDetail(
+                                                    parentProps,
+                                                    children.id,
                                                 )
                                             }}
                                         />
