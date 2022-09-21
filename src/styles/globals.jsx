@@ -6,14 +6,16 @@ body {
     display: flex; 
     flex-direction: column; 
     font-family: 'Roboto', sans-serif;
+
 }
 
 // BUG DONT TOUCH
 * {
-box-sizing: border-box;
-// outline: 1px solid black;
+
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    // outline: 1px solid black !important;
 }
-`
 
 //     * {
 //     box-sizing: border-box;

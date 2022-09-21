@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Location extends Model
 {
     use HasFactory;
+
+    function categorie()
+    {
+        return $this->belongsToMany(Categorie::class, 'location__categories');
+    }
 }

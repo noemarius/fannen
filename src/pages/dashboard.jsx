@@ -1,5 +1,5 @@
-import { Layout } from '@/components/Layouts/Layout'
 import { DashboardContent } from '@/components/DashboardContent/DashboardContent'
+import { Layout } from '@/components/Layouts/Layout'
 
 export default function Dashboard() {
     return (
