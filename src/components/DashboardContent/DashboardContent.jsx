@@ -6,6 +6,7 @@ import Category from './Category'
 import Map from './Map'
 import Detail from './Detail'
 import Comment from './Comment'
+import Event from './Event'
 /* import Test from './test' */
 
 // Styled components
@@ -17,7 +18,6 @@ const Container = styled.div`
     margin-top: 12px;
     width: 100%;
     .categoryContainer {
-        border-radius: 20px;
         box-shadow: #fff 0px 3px 8px;
         background-color: white;
         width: 100%;
@@ -27,17 +27,17 @@ const Container = styled.div`
     .detailContainer,
     .commentContainer {
         flex: 0 0 50%;
-        border-radius: 20px;
         box-shadow: #fff 0px 3px 8px;
         background-color: white;
         padding: 8px;
         overflow: scroll;
         word-wrap: break-word;
     }
-    .infoContainer {
+    .infoContainer,
+    .treeContainer {
         display: flex;
         flex-direction: row;
-        height: 200px;
+        min-height: 200px;
         width: 100%;
         justify-items: center;
     }
@@ -62,24 +62,38 @@ export function DashboardContent() {
                 />
                 <div className={`infoContainer`}>
                     <Detail sharedDetailState={sharedDetailState} />
-
                     <Comment sharedCommentState={sharedCommentState} />
                 </div>
-
-                <Category
-                    setSharedState={val => {
-                        setSharedState(val)
-                    }}
-                    setSharedCenterState={val => {
-                        setSharedCenterState(val)
-                    }}
-                    setSharedDetailState={val => {
-                        setSharedDetailState(val)
-                    }}
-                    setSharedCommentState={val => {
-                        setSharedCommentState(val)
-                    }}
-                />
+                <div className={`treeContainer`}>
+                    <Category
+                        setSharedState={val => {
+                            setSharedState(val)
+                        }}
+                        setSharedCenterState={val => {
+                            setSharedCenterState(val)
+                        }}
+                        setSharedDetailState={val => {
+                            setSharedDetailState(val)
+                        }}
+                        setSharedCommentState={val => {
+                            setSharedCommentState(val)
+                        }}
+                    />
+                    <Event
+                        setSharedState={val => {
+                            setSharedState(val)
+                        }}
+                        setSharedCenterState={val => {
+                            setSharedCenterState(val)
+                        }}
+                        setSharedDetailState={val => {
+                            setSharedDetailState(val)
+                        }}
+                        setSharedCommentState={val => {
+                            setSharedCommentState(val)
+                        }}
+                    />
+                </div>
             </Container>
         </>
     )

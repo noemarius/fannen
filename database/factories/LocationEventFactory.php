@@ -18,13 +18,6 @@ class LocationEventFactory extends Factory
     {
         return [
             //
-            'name' => fake()->sentence(1),
-            'date' => fake()->date(),
-            'description' => fake()->sentence(10),
-            'contact' => fake()->email(),
-            'price' => fake()->numberBetween(0, 50),
-            'categorie_id' => fake()->numberBetween(0, 10),
-            'location_id' => fake()->numberBetween(0, 10)
         ];
     }
 }

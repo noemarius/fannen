@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\LocationEvent;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LocationEventController extends Controller
 {
@@ -15,6 +16,7 @@ class LocationEventController extends Controller
     public function index()
     {
         //
+        return DB::table('events')->select('*', 'categories.name as categ_name')->join('categories', 'events.categorie_id', '=', 'categories.id')->join('locations', 'events.location_id', '=', 'locations.id')->get()->groupBy('categ_name');
     }
 
     /**
