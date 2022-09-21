@@ -9,11 +9,11 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { useCallback } from 'react'
 
 async function getCategoriesAndLocations() {
-    const resp = await axios.get('api/locsandcategs')
+    const resp = await axios.get('api/locsandevents')
     return resp
 }
 
-export default function Category(props) {
+export default function Event(props) {
     const [categAndLoc, setCategAndLoc] = useState([])
 
     useEffect(() => {

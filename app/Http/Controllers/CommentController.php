@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CommentController extends Controller
 {
@@ -49,7 +50,9 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-        return Comment::find($id);
+        return DB::table("comments")->join('users', 'comments.user_id', '=', 'users.id')->select('users.name', 'comments.id', 'comments.user_id', 'comments.location_id', 'comments.comment', 'comments.created_at')
+            ->where("comments.location_id", "=", $id)->orderByDesc('comments.id')
+            ->get();
     }
 
     /**
