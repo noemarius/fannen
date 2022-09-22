@@ -12,7 +12,7 @@ import Label from '@/components/Label'
 import Link from 'next/link'
 
 export default function Register() {
-    const { register } = useAuth({
+    const { user, register } = useAuth({
         middleware: 'guest',
         redirectIfAuthenticated: '/dashboard',
     })
