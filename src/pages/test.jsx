@@ -26,12 +26,12 @@ import { Footer } from '@/components/Footer'
 import { DropdownItem } from '@/components/DropdownItem'
 import { Dropdown } from '@/components/Dropdown'
 import { DropdownDash } from '@/components/DropdownDash'
+import { HeaderTest } from '@/components/HeaderText'
 
 export default function Test() {
     return (
         <>
             <Dropdown>
-                <DropdownItem text="Test" link="/test"/>
             </Dropdown>
         </>
     )
