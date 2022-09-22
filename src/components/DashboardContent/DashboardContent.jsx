@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
-import { DropdownDash } from '@/components/DropdownDash/DropdownDash'
-import { DropdownItem } from '@/components/DropdownItem/DropdownItem'
 import Category from './Category'
 import Map from './Map'
 import Detail from './Detail'
@@ -56,14 +54,6 @@ export function DashboardContent() {
     return (
         <>
             <Container>
-                <Map
-                    sharedState={sharedState}
-                    sharedCenterState={sharedCenterState}
-                />
-                <div className={`infoContainer`}>
-                    <Detail sharedDetailState={sharedDetailState} />
-                    <Comment sharedCommentState={sharedCommentState} />
-                </div>
                 <div className={`treeContainer`}>
                     <Category
                         setSharedState={val => {
@@ -78,6 +68,7 @@ export function DashboardContent() {
                         setSharedCommentState={val => {
                             setSharedCommentState(val)
                         }}
+                        treeType={'categories'}
                     />
                     <Event
                         setSharedState={val => {
@@ -92,7 +83,16 @@ export function DashboardContent() {
                         setSharedCommentState={val => {
                             setSharedCommentState(val)
                         }}
+                        treeType={'events'}
                     />
+                </div>
+                <Map
+                    sharedState={sharedState}
+                    sharedCenterState={sharedCenterState}
+                />
+                <div className={`infoContainer`}>
+                    <Detail sharedDetailState={sharedDetailState} />
+                    <Comment sharedCommentState={sharedCommentState} />
                 </div>
             </Container>
         </>

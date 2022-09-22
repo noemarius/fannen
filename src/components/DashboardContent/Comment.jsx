@@ -3,22 +3,33 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 
 async function getLocationComment(props) {
-    let id = props.sharedCommentState
-    if (props.treeType === 'categories') {
-        let resp = await axios.get(`api/comments/${id.locationId}`)
-    } else if (props.treeType === 'events') {
-        let resp = await axios.get(`api/comments/${id.locationId}`)
-    } else {
-        let resp = await axios.get(`api/comments/${id.locationId}`)
+    let resp
+    if (props.type == 'categories') {
+        console.log('if')
+        resp = await axios.get(`api/comments/${props.id}`)
+    } else if (props.type == 'events') {
+        console.log('else if')
+        resp = await axios.get(`api/eventcomments/${props.id}`)
     }
-    return resp.data
+    console.log(resp)
+    return typeof resp !== 'undefined' ? resp.data : false
 }
 
 export default function Comment(props) {
+    console.log(props)
+    const [type, setType] = useState('')
+    const [id, setId] = useState({})
     const [comment, setComment] = useState({})
+
     useEffect(() => {
-        getLocationComment(props).then(rslt => setComment(rslt))
-    }, [props.sharedCommentState, props.treeType])
+        setId(props.sharedCommentState.locationId)
+        setType(props.sharedCommentState.type)
+    }, [props.sharedCommentState, props.type])
+
+    useEffect(() => {
+        getLocationComment({ id, type }).then(rslt => setComment(rslt))
+    }, [id, type])
+
     return (
         <>
             <div className={`commentContainer`}>
