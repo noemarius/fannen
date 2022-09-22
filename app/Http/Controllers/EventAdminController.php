@@ -97,7 +97,7 @@ class EventAdminController extends Controller
 
         // Save it in the DB and check if it worked
         if ($event->save())
-        return redirect('eventadmin')->with('success', 'Updated successfully');
+            return redirect('eventadmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }

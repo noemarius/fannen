@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('location_id');
             $table->string('comment');
-            $table->boolean('validation')->nullable();
+            $table->boolean('validation')->default(false);
             $table->timestamps();
             // $table->foreign('user_id')->references('id')->on('users');
             // $table->foreign('location_id')->references('id')->on('locations');

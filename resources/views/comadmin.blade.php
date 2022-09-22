@@ -36,7 +36,7 @@
                                         {{ $c->comment }}
                                     </td>
                                     <td>
-                                        <a href="comadmin/validate/{{$c->id}}">Validate</a>
+                                        <a href="comadminevalidate/{{$c->id}}">Validate</a>
                                         <a href="comadmin/delete/{{$c->id}}">Delete</a>
                                     </td>
 
