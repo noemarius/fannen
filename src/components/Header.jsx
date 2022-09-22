@@ -1,6 +1,6 @@
 import styled from 'styled-components'
-import { Dropdown } from './Dropdown/Dropdown'
-import { DropdownItem } from './DropdownItem/DropdownItem'
+import { Dropdown } from './Dropdown'
+import { DropdownItem } from './DropdownItem'
 
 const HeaderWrap = styled.div`
     align-items: center;

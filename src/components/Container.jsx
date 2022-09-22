@@ -12,7 +12,7 @@ const StyledContainer = styled.div`
 
 export function Container(props) {
     return (
-        <StyledContainer color={props.color} margin={props.margin}>
+        <StyledContainer color={props.color} gap={props.gap} margin={props.margin}>
             {props.children}
         </StyledContainer>
     )

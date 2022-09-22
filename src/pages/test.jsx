@@ -23,11 +23,16 @@ import Input from '@/components/Input'
 import InputError from '@/../vendor/laravel/breeze/stubs/inertia-react/resources/js/Components/InputError'
 import Link from 'next/link'
 import { Footer } from '@/components/Footer'
+import { DropdownItem } from '@/components/DropdownItem'
+import { Dropdown } from '@/components/Dropdown'
+import { DropdownDash } from '@/components/DropdownDash'
 
 export default function Test() {
     return (
         <>
-            <Footer/>
+            <Dropdown>
+                <DropdownItem text="Test" link="/test"/>
+            </Dropdown>
         </>
     )
 }
