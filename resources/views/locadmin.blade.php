@@ -3,23 +3,25 @@
 @section('title', 'Administrator Loc Page')
 
 @section('css')
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 @endsection
 
 @section('content')
-    <div class="container">
-        <h2>Location list</h2>
-
-        <div class="locationTable">
-
-            <table>
+    <div class="userContainer">
+        <div class="title">
+            <h2>Locations</h2>
+        </div>
+        <div class="wrap">
+            <table id="users">
                 <thead>
                     <tr>
                         <th>Name</th>
-                        <th>address</th>
-                        <th>geo</th>
-                        <th>link</th>
-                        <th>contact</th>
+                        <th>Address</th>
+                        <th>Coordinates</th>
+                        <th>Link</th>
+                        <th>Contact</th>
+                        <th>Update</th>
+                        <th>Delete</th>
 
                     </tr>
                 </thead>
@@ -43,8 +45,11 @@
                                     {{ $l->contact }}
                                 </td>
                                 <td>
-                                    <a href="locadminupdate/{{$l->id}}">Update</a>
-                                    <a href="locadmin/delete/{{$l->id}}">Delete</a>
+
+                                    <a href="locadmin/update/{{ $l->id }}">Update</a>
+                                </td>
+                                <td>
+                                    <a href="locadmin/delete/{{ $l->id }}">Delete</a>
                                 </td>
 
                             </tr>
@@ -53,19 +58,41 @@
                 </tbody>
             </table>
         </div>
-        <div class="createForm">
-            <form method="post">
-                @csrf
-                <input type="text" name="name" placeholder="Please enter the location name" /><br />
-                <input type="text" name="address" placeholder="Please enter the location address" /><br />
-                <input type="text" name="geo" placeholder="Please enter the location geo" /><br />
-                <input type="text" name="link" placeholder="Please enter the location link" /><br />
-                <input type="text" name="contact" placeholder="Please enter the location contact" /><br />
-                <input type="submit" name="submitBtn" value="Create" />
 
+        <div class="title">
+            <h1>Create a new Location</h1>
+        </div>
+        <div class="createForm">
+            <form class="createForm" method="post">
+                @csrf
+                <div class="formContainer">
+                    <div class="formBreak">
+                        <p class="formP">Name: </p>
+                        <input class="form" type="text" name="name" placeholder="Name" />
+                    </div>
+                    <div class="formBreak">
+                        <p class="formP">Address:</p>
+                        <input class="form" type="text" name="address" placeholder="Address" />
+                    </div>
+                    <div class="formBreak">
+                        <p class="formP">Cooridnates:</p>
+                        <input class="form" type="text" name="geo" placeholder="Coordinates" />
+                    </div>
+                    <div class="formBreak">
+                        <p class="formP">Link:</p>
+                        <input class="form" type="text" name="geo" placeholder="Link" />
+                    </div>
+                    <div class="formBreak">
+                        <p class="formP">Contact:</p>
+                        <input class="form" type="text" name="geo" placeholder="Contact" />
+                    </div>
+
+                    <input class="formButton" type="submit" name="submitBtn" value="Create Location"></input>
+                </div>
             </form>
         </div>
     </div>
+
 
 
 @endsection
