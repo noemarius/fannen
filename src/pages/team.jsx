@@ -1,4 +1,4 @@
-import { Layout } from '@/components/Layouts/Layout'
+import { Layout } from '@/components/Layout'
 import { Container } from '@/components/Container'
 import { Member } from '@/components/Member'
 import { Text } from '@/components/Text'

@@ -17,6 +17,10 @@ const StyledForm = styled.form.attrs({
     width: 100%;
 `
 
+const StyledInput = styled.input`
+    border-radius: 20px;
+`
+
 export function EditUser(props) {
     const [value, setValue] = useState('')
 
@@ -29,7 +33,7 @@ export function EditUser(props) {
                         <Label htmlFor={props.id}>{`New ${props.id}`}</Label>
                     </AlignLeft>
                     <StyledForm>
-                        <input
+                        <StyledInput
                             className="block mt-1 w-full"
                             id={props.id}
                             type={props.type}

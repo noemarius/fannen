@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Layout } from '@/components/Layouts/Layout'
+import { Layout } from '@/components/Layout'
 import { Container } from '@/components/Container'
 import { Title } from '@/components/Title'
 import { Text } from '@/components/Text'

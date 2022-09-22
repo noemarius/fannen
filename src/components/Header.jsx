@@ -1,8 +1,17 @@
-import { Dropdown } from '../Dropdown/Dropdown'
-import { DropdownItem } from '../DropdownItem/DropdownItem'
-import { HeaderWrap } from './HeaderStyles'
+import styled from 'styled-components'
+import { Dropdown } from './Dropdown/Dropdown'
+import { DropdownItem } from './DropdownItem/DropdownItem'
 
-export function Header(props) {
+const HeaderWrap = styled.div`
+    align-items: center;
+    background-color: #39b7ff;
+    display: flex;
+    min-height: 80px;
+    justify-content: center;
+    width: 100%;
+`
+
+export function Header() {
     return (
         <>
             <HeaderWrap>

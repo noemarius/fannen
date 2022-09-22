@@ -1,5 +1,5 @@
 import { EditUser } from '@/components/EditUser'
-import { Layout } from '@/components/Layouts/Layout'
+import { Layout } from '@/components/Layout'
 
 export default function EditEmail() {
     return (

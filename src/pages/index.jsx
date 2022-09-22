@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { Layout } from '@/components/Layouts/Layout'
+import { Layout } from '@/components/Layout'
 import { SearchBar } from '@/components/SearchBar'
 import { Logo } from '@/components/Logo'
 import { Container } from '@/components/Container'

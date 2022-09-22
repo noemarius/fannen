@@ -2,7 +2,7 @@ import { AlignLeft } from '@/components/AlignLeft'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { ContentButton } from '@/components/ContentButton'
-import { Layout } from '@/components/Layouts/Layout'
+import { Layout } from '@/components/Layout'
 import { Text } from '@/components/Text'
 import { Title } from '@/components/Title'
 

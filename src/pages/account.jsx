@@ -1,4 +1,4 @@
-import { Layout } from '@/components/Layouts/Layout'
+import { Layout } from '@/components/Layout'
 import { UserDetails } from '@/components/UserDetails'
 import { AlignLeft } from '@/components/AlignLeft'
 import { Card } from '@/components/Card'
