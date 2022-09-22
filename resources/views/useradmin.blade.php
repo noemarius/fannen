@@ -35,7 +35,7 @@
                                     {{ $u->statut }}
                                 </td>
                                 <td>
-                                    <a href="useradmin/update/{{$u->id}}">Update</a>
+                                    <a href="useradminupdate/{{$u->id}}">Update</a>
                                     <a href="useradmin/delete/{{$u->id}}">Delete</a>
                                 </td>
                             </tr>

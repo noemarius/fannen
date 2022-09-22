@@ -36,8 +36,8 @@
                                         {{ $e->description }}
                                     </td>
                                     <td>
-                                        <a href="catadmin/update/{{$e->id}}">Update</a>
-                                        <a href="catadmin/delete/{{$e->id}}">Delete</a>
+                                        <a href="eventadminupdate/{{$e->id}}">Update</a>
+                                        <a href="eventadmin/delete/{{$e->id}}">Delete</a>
                                     </td>
 
                                 </tr>
