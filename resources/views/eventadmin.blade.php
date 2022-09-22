@@ -7,22 +7,25 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="container">
-            <h2>Event list</h2>
+    <div class="userContainer">
 
-            <div class="categoryTable">
-
-                <table>
+        <div class="title">
+            <h2>Events</h2>
+        </div>
+        <div>
+            <div class="wrap">
+                <table id="users">
                     <thead>
                         <tr>
                             <th>Name</th>
                             <th>Date</th>
                             <th>description</th>
-                            <th>Manage</th>
+                            <th>Update</th>
+                            <th>Delete</th>
                         </tr>
                     </thead>
                     <tbody>
+
                         @if (!empty($event))
                             @foreach ($event as $e)
                                 <tr>
@@ -36,26 +39,30 @@
                                         {{ $e->description }}
                                     </td>
                                     <td>
-                                        <a href="catadmin/update/{{$e->id}}">Update</a>
-                                        <a href="catadmin/delete/{{$e->id}}">Delete</a>
+                                        <a href="catadmin/update/{{ $e->id }}">Update</a>
                                     </td>
-
+                                    <td>
+                                        <a href="catadmin/delete/{{ $e->id }}">Delete</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         @endif
+
                     </tbody>
                 </table>
             </div>
-            <div class="createForm">
-                <form method="post">
-                    @csrf
-                    <input type="text" name="name" placeholder="Please enter the event name" /><br />
-                    <input type="date" name="date" placeholder="Please enter the event date" /><br />
-                    <textarea name="description" cols="30" rows="10" placeholder="Please enter the event description"></textarea><br />
-                    <input type="submit" name="submitBtn" value="Create" />
 
-                </form>
+            <div class="title">
+                <h1>Create a new Event</h1>
             </div>
-        </div>
+            <form class="createForm" method="post">
+                @csrf
+                <div class="formContainer">
+                    <input type="text" name="name" placeholder="Event Name" />
+                    <input type="date" name="date" placeholder="Please enter the event date" />
+                    <textarea name="description" cols="30" rows="5" placeholder="Please enter the event description"></textarea>
+                    <input type="submit" name="submitBtn" value="Create Event" />
+                </div>
+            </form>
 
-    @endsection
+        @endsection

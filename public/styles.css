@@ -3,11 +3,6 @@
     outline: 1px solid green !important;
 } */
 
-body {
-    background-color: black;
-    font-family: 'Roboto', sans-serif;
-}
-
 a {
     text-decoration: none;
     color: black;
@@ -15,6 +10,11 @@ a {
 
 a:hover {
     transform: scale(1.05);
+}
+
+body {
+    background-color: black;
+    font-family: 'Roboto', sans-serif;
 }
 
 h1,
@@ -73,27 +73,32 @@ input::placeholder {
 .form {
     border: 1px solid white;
     height: 100%;
-    border-radius: 20px;
     text-align: center;
 }
 
 .formButton {
     border-radius: 20px;
-    height: 20%;
-    width: 80px;
+    height: auto;
+    width: auto;
+    padding: 4px;
 }
 
 .formP {
-    border: 1px solid white;
-
     color: white;
     font-size: 20px;
 }
 
 .formBreak {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 20px;
+    justify-content: space-between;
+}
+
+.formContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
 }
 
 .header {
@@ -104,6 +109,12 @@ input::placeholder {
     height: 80px;
     justify-content: space-between;
     padding: 0px 20px;
+}
+
+.headerWrap {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
 }
 
 .mainContainer {
@@ -125,9 +136,16 @@ input::placeholder {
     display: flex;
     flex-direction: column;
     gap: 20px;
+
     flex: 0 0 75%;
     padding: 0px 60px;
     margin-top: 40px;
+}
+
+.wrap {
+    overflow: hidden;
+    overflow-y: scroll;
+    height: 372px;
 }
 
 #users {

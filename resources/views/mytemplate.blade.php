@@ -17,11 +17,18 @@
 <body>
     <div class="header">
         <h1>Admin Panel</h1>
-        <a href="">
-            <div class="button">
-                Logout
-            </div>
-        </a>
+        <div class="headerWrap">
+            <a href="">
+                <div class="button">
+                    Login
+                </div>
+            </a>
+            <a href="">
+                <div class="button">
+                    Logout
+                </div>
+            </a>
+        </div>
 
     </div>
 

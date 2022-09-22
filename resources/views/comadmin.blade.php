@@ -7,55 +7,78 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <div class="container">
-            <h2>Event list</h2>
+    <div class="userContainer">
+        <div class="title">
+            <h2>Comments</h2>
+        </div>
+        <div class="wrap">
+            <table id="users">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>description</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (!empty($comment))
+                        @foreach ($comment as $c)
+                            <tr>
+                                <td>
+                                    {{ $c->user_id }}
+                                </td>
+                                <td>
+                                    {{ $c->location_id }}
+                                </td>
+                                <td>
+                                    {{ $c->comment }}
+                                </td>
+                                <td>
+                                    <a href="comadmin/validate/{{ $c->id }}">Validate</a>
+                                </td>
+                                <td>
+                                    <a href="comadmin/delete/{{ $c->id }}">Delete</a>
+                                </td>
+                            </tr>
+                        @endforeach
+                    @endif
+                </tbody>
+            </table>
+        </div>
 
-            <div class="categoryTable">
-
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Date</th>
-                            <th>description</th>
-                            <th>Manage</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @if (!empty($comment))
-                            @foreach ($comment as $c)
-                                <tr>
-                                    <td>
-                                        {{ $c->user_id }}
-                                    </td>
-                                    <td>
-                                        {{ $c->location_id }}
-                                    </td>
-                                    <td>
-                                        {{ $c->comment }}
-                                    </td>
-                                    <td>
-                                        <a href="comadmin/validate/{{$c->id}}">Validate</a>
-                                        <a href="comadmin/delete/{{$c->id}}">Delete</a>
-                                    </td>
-
-                                </tr>
-                            @endforeach
-                        @endif
-                    </tbody>
-                </table>
-            </div>
-            <div class="createForm">
-                <form method="post">
-                    @csrf
-                    <input type="text" name="name" placeholder="Please enter the User name" /><br />
-                    <input type="text" name="location" placeholder="Please enter the location name" /><br />
-                    <textarea name="comment" cols="30" rows="10" placeholder="Please enter the comment"></textarea><br />
-                    <input type="submit" name="submitBtn" value="Create" />
-
-                </form>
-            </div>
+        <div class="title">
+            <h1>Create a new Comment</h1>
+        </div>
+        <div class="createForm">
+            <form class="createForm" method="post">
+                @csrf
+                <div class="formContainer">
+                    <div class="formBreak">
+                        <p class="formP">Username: </p>
+                        <input class="form" type="text" name="name" placeholder="Username" />
+                    </div>
+                    <div class="formBreak">
+                        <p class="formP">Email:</p>
+                        <input class="form" type="email" name="email" placeholder="Email" />
+                    </div>
+                    <div class="formBreak">
+                        <p class="formP">Password:</p>
+                        <input class="form" type="password" name="password" placeholder="Password" />
+                    </div>
+                    <div class="formBreak">
+                        <p class="formP">Role:</p>
+                        <select class="form" name="statut">
+                            <option value="administrator">Administrator</option>
+                            <option value="organizer">Organizer</option>
+                            <option value="user">User</option>
+                        </select>
+                    </div>
+                    <input class="formButton" type="submit" name="submitBtn" value="Create User"></input>
+                </div>
+            </form>
+            {{-- What to do here --}}
         </div>
 
     @endsection
