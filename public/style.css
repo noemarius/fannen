@@ -1,4 +1,4 @@
-* {
+/* * {
     box-sizing: border-box;
     outline: 1px solid green !important;
 }
@@ -36,4 +36,4 @@ h2 {
     position: relative;
     flex-direction: column;
     gap: 15px;
-}
+} */

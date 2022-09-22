@@ -6,33 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>@yield('title')</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="reset.css">
     @yield('css')
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li>Home page</li>
-            <li>User Page</li>
-            <li>Contact</li>
-        </ul>
-    </nav>
-    <aside>
-        <p>Management</p>
-        <a href="useradmin">User </a><br />
-        <a href="catadmin">Category </a><br />
-        <a href="locadmin">Location </a><br />
-        <a href="eventadmin">Event </a><br />
-        <a href="comadmin">Comment </a><br />
-    </aside>
-    <div class="content">
-        @yield('content')
+    <div class="header">
+        <h1>Admin Panel</h1>
+        <a href="">
+            <div class="button">
+                Logout
+            </div>
+        </a>
+
     </div>
 
-    <footer>
-        <p>My footer</p>
-    </footer>
+    <div class="mainContainer">
+        <div class="catContainer">
+            <a class="catLink" href="useradmin">Users </a>
+            <a class="catLink" href="catadmin">Categories </a>
+            <a class="catLink" href="locadmin">Locations </a>
+            <a class="catLink" href="eventadmin">Events </a>
+            <a class="catLink" href="comadmin">Comments </a>
+        </div>
+
+        {{-- MgmtContainer Done --}}
+
+        @yield('content')
+
+    </div>
 
 </body>
 

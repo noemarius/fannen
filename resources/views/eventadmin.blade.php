@@ -3,7 +3,7 @@
 @section('title', 'Event admin Page')
 
 @section('css')
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 @endsection
 
 @section('content')
