@@ -31,7 +31,7 @@
                                     {{ $l->name }}
                                 </td>
                                 <td>
-                                    {{ $l->adress }}
+                                    {{ $l->address }}
                                 </td>
                                 <td>
                                     {{ $l->geo }}
@@ -43,7 +43,7 @@
                                     {{ $l->contact }}
                                 </td>
                                 <td>
-                                    <a href="locadmin/update/{{$l->id}}">Update</a>
+                                    <a href="locadminupdate/{{$l->id}}">Update</a>
                                     <a href="locadmin/delete/{{$l->id}}">Delete</a>
                                 </td>
 

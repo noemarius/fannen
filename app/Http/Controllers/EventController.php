@@ -37,8 +37,14 @@ class EventController extends Controller
     {
         $event = new Event;
         $event->name = $request->name;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->event_start = $request->event_start;
+        $event->event_end = $request->event_end;
         $event->description = $request->description;
-        $event->date = $request->date;
+        $event->contact = $request->contact;
+        $event->price = $request->price;
+        
 
 
 
@@ -83,9 +89,13 @@ class EventController extends Controller
 
         $event = Event::find($id);
         $event->name = $request->name;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->event_start = $request->event_start;
+        $event->event_end = $request->event_end;
         $event->description = $request->description;
-        $event->date = $request->date;
-
+        $event->contact = $request->contact;
+        $event->price = $request->price;
 
         // Save it in the DB and check if it worked
         if ($event->save())
