@@ -9,7 +9,7 @@ async function getLocationComment(props) {
         resp = await axios.get(`api/comments/${props.id}`)
     } else if (props.type == 'events') {
         console.log('else if')
-        resp = await axios.get(`api/eventcomments/${props.id}`)
+        resp = await axios.get(`api/eventslocsandcomments/${props.id}`)
     }
     console.log(resp)
     return typeof resp !== 'undefined' ? resp.data : false
