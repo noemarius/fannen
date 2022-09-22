@@ -1,7 +1,5 @@
 import styled from 'styled-components'
 import { useState, useEffect } from 'react'
-import { DropdownDash } from '@/components/DropdownDash/DropdownDash'
-import { DropdownItem } from '@/components/DropdownItem/DropdownItem'
 import Category from './Category'
 import Map from './Map'
 import Detail from './Detail'
