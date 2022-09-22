@@ -35,8 +35,8 @@ export default function Event(props) {
     }, [])
 
     const buildIdDetail = useCallback((props, locationId) => {
-        props.setSharedDetailState({ locationId })
-        props.setSharedCommentState({ locationId })
+        props.setSharedDetailState({ locationId, treeType })
+        props.setSharedCommentState({ locationId, treeType })
     }, [])
 
     return (
