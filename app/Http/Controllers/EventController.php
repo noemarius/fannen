@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -44,7 +45,7 @@ class EventController extends Controller
         $event->description = $request->description;
         $event->contact = $request->contact;
         $event->price = $request->price;
-        
+
 
 
 
@@ -119,5 +120,10 @@ class EventController extends Controller
             // return redirect('flowers');
         } else
             return back()->with('error', 'Delete didnt work.');
+    }
+
+    public function getEventComment($id)
+    {
+        return DB::table('comments')->join('events', 'comments.event_id', '=', 'events.id')->join('users', 'events.user_id', '=', 'users.id')->select('comments.id', 'events.location_id', 'users.name', 'comments.comment')->where('events.location_id', '=', $id)->orderByDesc('comments.id')->get();
     }
 }

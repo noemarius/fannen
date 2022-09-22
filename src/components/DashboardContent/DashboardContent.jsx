@@ -5,6 +5,11 @@ import Map from './Map'
 import Detail from './Detail'
 import Comment from './Comment'
 import Event from './Event'
+import PropTypes from 'prop-types'
+import Tabs from '@mui/material/Tabs'
+import Tab from '@mui/material/Tab'
+import Typography from '@mui/material/Typography'
+import Box from '@mui/material/Box'
 /* import Test from './test' */
 
 // Styled components
@@ -40,8 +45,45 @@ const Container = styled.div`
         justify-items: center;
     }
 `
+function TabPanel(props) {
+    const { children, value, index, ...other } = props
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}>
+            {value === index && (
+                <Box sx={{ p: 3 }}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    )
+}
+
+TabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+}
+
+function a11yProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    }
+}
 
 export function DashboardContent() {
+    const [value, setValue] = useState(0)
+
+    const handleChange = (event, newValue) => {
+        setValue(newValue)
+    }
+
     const [sharedState, setSharedState] = useState({})
     const [sharedCenterState, setSharedCenterState] = useState({})
     const [sharedDetailState, setSharedDetailState] = useState({})
@@ -55,36 +97,51 @@ export function DashboardContent() {
         <>
             <Container>
                 <div className={`treeContainer`}>
-                    <Category
-                        setSharedState={val => {
-                            setSharedState(val)
-                        }}
-                        setSharedCenterState={val => {
-                            setSharedCenterState(val)
-                        }}
-                        setSharedDetailState={val => {
-                            setSharedDetailState(val)
-                        }}
-                        setSharedCommentState={val => {
-                            setSharedCommentState(val)
-                        }}
-                        treeType={'categories'}
-                    />
-                    <Event
-                        setSharedState={val => {
-                            setSharedState(val)
-                        }}
-                        setSharedCenterState={val => {
-                            setSharedCenterState(val)
-                        }}
-                        setSharedDetailState={val => {
-                            setSharedDetailState(val)
-                        }}
-                        setSharedCommentState={val => {
-                            setSharedCommentState(val)
-                        }}
-                        treeType={'events'}
-                    />
+                    <Box sx={{ width: '100%' }}>
+                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                            <Tabs
+                                value={value}
+                                onChange={handleChange}
+                                aria-label="basic tabs example">
+                                <Tab label="Themes" {...a11yProps(0)} />
+                                <Tab label="Events" {...a11yProps(1)} />
+                            </Tabs>
+                        </Box>
+                        <TabPanel value={value} index={0}>
+                            <Category
+                                setSharedState={val => {
+                                    setSharedState(val)
+                                }}
+                                setSharedCenterState={val => {
+                                    setSharedCenterState(val)
+                                }}
+                                setSharedDetailState={val => {
+                                    setSharedDetailState(val)
+                                }}
+                                setSharedCommentState={val => {
+                                    setSharedCommentState(val)
+                                }}
+                                treeType={'categories'}
+                            />
+                        </TabPanel>
+                        <TabPanel value={value} index={1}>
+                            <Event
+                                setSharedState={val => {
+                                    setSharedState(val)
+                                }}
+                                setSharedCenterState={val => {
+                                    setSharedCenterState(val)
+                                }}
+                                setSharedDetailState={val => {
+                                    setSharedDetailState(val)
+                                }}
+                                setSharedCommentState={val => {
+                                    setSharedCommentState(val)
+                                }}
+                                treeType={'events'}
+                            />
+                        </TabPanel>
+                    </Box>
                 </div>
                 <Map
                     sharedState={sharedState}

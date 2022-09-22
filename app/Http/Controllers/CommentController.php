@@ -51,8 +51,7 @@ class CommentController extends Controller
     public function show($id)
     {
 
-        return DB::table("comments")->join('users', 'comments.user_id', '=', 'users.id')->select('users.name', 'comments.id', 'comments.user_id', 'comments.location_id', 'comments.comment', 'comments.validation', 'comments.created_at')
-            ->where("comments.location_id", "=", $id)->where("comments.validation", "=", "1")->orderByDesc('comments.id')->get();
+        return DB::table("comments")->join('users', 'comments.user_id', '=', 'users.id')->select('comments.id', 'users.name', 'comments.comment', 'comments.location_id', 'comments.event_id')->where('comments.location_id', '=', $id)->whereNull('comments.event_id')->orderByDesc('comments.id')->get();
     }
 
     /**
