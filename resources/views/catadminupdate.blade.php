@@ -13,7 +13,7 @@
                 <form method="post">
                     @csrf
                     <input type="text" name="name" placeholder="Please enter the category name" /><br />
-                    <input type="submit" name="submitBtn" value="Update" />
+                    <button type="submit" name="submitBtn">Update</button>
 
                 </form>
             </div>

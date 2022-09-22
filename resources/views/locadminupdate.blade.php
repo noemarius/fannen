@@ -16,7 +16,7 @@
                 <input type="text" name="geo" placeholder="Please enter the location geo" /><br />
                 <input type="text" name="link" placeholder="Please enter the location link" /><br />
                 <input type="text" name="contact" placeholder="Please enter the location contact" /><br />
-                <input type="submit" name="submitBtn" value="Update" />
+                <button type="submit" name="submitBtn">Update</button>
 
             </form>
         </div>
