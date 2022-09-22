@@ -26,9 +26,9 @@ class EventFactory extends Factory
             'description' => fake()->sentence(10),
             'contact' => fake()->email(),
             'price' => fake()->numberBetween(0, 50),
+            'user_id' => fake()->numberBetween(1, 10),
             'categorie_id' => fake()->numberBetween(1, 10),
-            'location_id' => fake()->numberBetween(1, 10),
-            'comment_id' => fake()->numberBetween(1, 10)
+            'location_id' => fake()->numberBetween(1, 10)
         ];
     }
 }
