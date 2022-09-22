@@ -37,11 +37,15 @@ class EventAdminController extends Controller
     public function store(Request $request)
     {
 
-
         $event = new Event;
         $event->name = $request->name;
-        $event->date = $request->date;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->event_start = $request->event_start;
+        $event->event_end = $request->event_end;
         $event->description = $request->description;
+        $event->contact = $request->contact;
+        $event->price = $request->price;
 
         if ($event->save())
             return redirect('eventadmin')->with('success', 'Insert successfully');
@@ -80,16 +84,20 @@ class EventAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $event = Event::find($id);
+        $event = new Event;
         $event->name = $request->name;
-        $event->date = $request->date;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->event_start = $request->event_start;
+        $event->event_end = $request->event_end;
         $event->description = $request->description;
+        $event->contact = $request->contact;
+        $event->price = $request->price;
 
 
         // Save it in the DB and check if it worked
         if ($event->save())
-            return 'Updated successfully';
+            return redirect('eventadmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }
@@ -102,14 +110,11 @@ class EventAdminController extends Controller
      */
     public function destroy($id)
     {
-       Event::destroy($id);
-       return view('eventadmin');
+        $res = Event::destroy($id);
 
-
-        // if ($res) {
-        //     return back()->with('success', 'Event was delete');
-            
-        // } else
-        //     return back()->with('error', 'Delete didnt work.');
-   }
+        if ($res) {
+            return back()->with('success', 'Event was delete');
+        } else
+            return back()->with('error', 'Delete didnt work.');
+    }
 }

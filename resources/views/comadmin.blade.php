@@ -7,6 +7,7 @@
 @endsection
 
 @section('content')
+
     <div class="userContainer">
         <div class="title">
             <h2>Comments</h2>

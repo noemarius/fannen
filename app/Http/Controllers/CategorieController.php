@@ -19,7 +19,7 @@ class CategorieController extends Controller
      */
     public function create()
     {
-        return view('insert_comment');
+        return view('eventadmin');
     }
 
     /**

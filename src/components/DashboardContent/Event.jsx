@@ -35,8 +35,8 @@ export default function Event(props) {
     }, [])
 
     const buildIdDetail = useCallback((props, locationId) => {
-        props.setSharedDetailState({ locationId, treeType })
-        props.setSharedCommentState({ locationId, treeType })
+        props.setSharedDetailState({ locationId, type: props.treeType })
+        props.setSharedCommentState({ locationId, type: props.treeType })
     }, [])
 
     return (
@@ -74,7 +74,6 @@ const Tree = ({
 }) => {
     let dataObj = Object.entries(data)
     let counter = 0
-
     return (
         <>
             {data &&

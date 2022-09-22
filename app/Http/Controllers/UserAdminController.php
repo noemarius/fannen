@@ -88,11 +88,12 @@ class UserAdminController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->statut = $request->statut;
 
 
         // Save it in the DB and check if it worked
         if ($user->save())
-            return 'Updated successfully';
+        return redirect('useradmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }

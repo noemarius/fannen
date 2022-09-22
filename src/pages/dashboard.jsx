@@ -1,3 +1,4 @@
+import { DashboardContent } from '@/components/DashboardContent/DashboardContent'
 import { Layout } from '@/components/Layout'
 import { useAuth } from '@/hooks/auth'
 
@@ -7,6 +8,7 @@ export default function Dashboard() {
     return (
         <>
             <Layout pageTitle="Dashboard">
+                <DashboardContent />
             </Layout>
         </>
     )

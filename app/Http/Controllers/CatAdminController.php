@@ -93,7 +93,7 @@ class CatAdminController extends Controller
 
         // Save it in the DB and check if it worked
         if ($categ->save())
-            return 'Updated successfully';
+            return redirect('catadmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }

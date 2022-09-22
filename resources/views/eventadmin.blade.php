@@ -51,9 +51,9 @@
                     </tbody>
                 </table>
             </div>
-
             <div class="title">
                 <h1>Create a new Event</h1>
+
             </div>
             <form class="createForm" method="post">
                 @csrf
