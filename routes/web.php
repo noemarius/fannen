@@ -54,9 +54,10 @@ Route::post('/eventadminupdate/{id}', [EventAdminController::class, 'update']);
 Route::get('/eventadmin/delete/{id}', [EventAdminController::class, 'destroy']);
 Route::get('/comadmin', [ComAdminController::class, 'index']);
 Route::post('/comadmin', [ComAdminController::class, 'store']);
-Route::get('/comadminupdate/{id}', [ComAdminController::class, 'create']);
-Route::post('/comadminupdate/{id}', [ComAdminController::class, 'update']);
+Route::get('/comadminevalidate/{id}', [ComAdminController::class, 'validateComment']);
+Route::post('/comadminevalidate/{id}', [ComAdminController::class, 'update']);
 Route::get('/comadmin/delete/{id}', [ComAdminController::class, 'destroy']);
+
 
 
 

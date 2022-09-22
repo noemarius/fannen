@@ -84,19 +84,7 @@ class ComAdminController extends Controller
         else
             return 'Problem updating';
     }
-    public function val(Request $request, $id)
-    {
-
-        $comment = Comment::find($id);
-        $comment->comment = $request->comment;
-
-
-        // Save it in the DB and check if it worked
-        if ($comment->save())
-            return 'Updated successfully';
-        else
-            return 'Problem updating';
-    }
+   
 
     /**
      * Remove the specified resource from storage.
@@ -113,5 +101,15 @@ class ComAdminController extends Controller
             // return redirect('flowers');
         } else
             return back()->with('error', 'Delete didnt work.');
+    }
+
+    public function validateComment($id){
+        $validate = Comment::find($id);
+        $validate->validation = true;
+        if ($validate->save())
+        return redirect('comadmin')->with('success', 'Validation successfully');
+        else
+            return 'Problem validation';
+        
     }
 }
