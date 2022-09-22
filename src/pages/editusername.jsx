@@ -1,11 +1,11 @@
-import { Layout } from '@/components/Layouts/Layout'
-import { EditUsernameContent } from '@/components/EditUsernameContent/EditUsernameContent'
+import { EditUser } from '@/components/EditUser'
+import { Layout } from '@/components/Layout'
 
-export default function EditUsername() {
+export default function EditEmail() {
     return (
         <>
-            <Layout pageTitle="Edit Username">
-                <EditUsernameContent />
+            <Layout>
+                <EditUser id="Username" type="text"/>
             </Layout>
         </>
     )

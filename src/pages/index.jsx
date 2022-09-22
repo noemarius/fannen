@@ -1,15 +1,20 @@
-import HomeContent from '@/components/HomeContent/HomeContent'
-import { Layout } from '@/components/Layouts/Layout'
-import { useAuth } from '@/hooks/auth'
+import Image from 'next/image'
+import { Layout } from '@/components/Layout'
+import { SearchBar } from '@/components/SearchBar'
+import { Logo } from '@/components/Logo'
+import { Container } from '@/components/Container'
 
 export default function Home() {
-    const { user } = useAuth({ middleware: 'guest' })
-
     return (
         <>
             <Layout pageTitle="Home">
-                <HomeContent />
+                <Container>
+                    <Logo height="250" width="250" />
+                    <SearchBar />
+                </Container>
             </Layout>
         </>
     )
 }
+
+// DONE

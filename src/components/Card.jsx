@@ -1,20 +1,27 @@
 import styled from 'styled-components'
 
-export function Card(props, {children}) {
-    const Card = styled.div`
-        align-items: center;
-        background-color: white;
-        border-radius: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        justify-content: center;
-        margin-top: 20px;
-        padding: 16px 16px;
-        width: 100%;
-    `
+const StyledCard = styled.div`
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    display: flex;
+    flex-direction: column;
+    gap: ${props => props.gap || '16px'};
+    justify-content: center;
+    margin: ${props => props.margin || '20px 0px'};
+    padding: 16px 20px;
+    width: 100%;
+`
 
-    return <>
-        <Card>{children}</Card>
-    </>
+export function Card(props) {
+    return (
+        <>
+            <StyledCard gap={props.gap} margin={props.margin}>
+                {props.children}
+            </StyledCard>
+        </>
+    )
 }
+
+// DONE

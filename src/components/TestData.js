@@ -4,6 +4,7 @@ export function TestData() {
     return (
         <>
             <div>{test}</div>
+            <input type={submit}></input>
         </>
     )
 }

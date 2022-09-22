@@ -1,11 +1,11 @@
-import { EditEmailContent } from '@/components/EditEmailContent/EditEmailContent'
-import { Layout } from '@/components/Layouts/Layout'
+import { EditUser } from '@/components/EditUser'
+import { Layout } from '@/components/Layout'
 
 export default function EditEmail() {
     return (
         <>
             <Layout>
-                <EditEmailContent />
+                <EditUser id="Email" type="email"/>
             </Layout>
         </>
     )
