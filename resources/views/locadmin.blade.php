@@ -31,7 +31,7 @@
                                     {{ $l->name }}
                                 </td>
                                 <td>
-                                    {{ $l->adress }}
+                                    {{ $l->address }}
                                 </td>
                                 <td>
                                     {{ $l->geo }}

@@ -80,7 +80,7 @@ class ComAdminController extends Controller
 
         // Save it in the DB and check if it worked
         if ($comment->save())
-            return 'Updated successfully';
+        return redirect('comadmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }

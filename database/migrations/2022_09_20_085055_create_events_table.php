@@ -16,7 +16,8 @@ return new class extends Migration
         Schema::create('events', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->date('date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->time('event_start');
             $table->time('event_end');
             $table->string('description');
@@ -24,9 +25,11 @@ return new class extends Migration
             $table->string('price');
             $table->unsignedBigInteger('categorie_id');
             $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('comment_id');
             $table->timestamps();
             $table->foreign('categorie_id')->references('id')->on('categories');
             $table->foreign('location_id')->references('id')->on('locations');
+            $table->foreign('comment_id')->references('id')->on('comments');
         });
     }
 

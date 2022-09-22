@@ -35,7 +35,7 @@ Route::get('/dashboard', function () {
 Route::get('/useradmin', [UserAdminController::class, 'index']);
 Route::post('/useradmin', [UserAdminController::class, 'store']);
 Route::get('/useradminupdate/{id}', [UserAdminController::class, 'create']);
-Route::put('/useradminupdate/{id}', [UserAdminController::class, 'update']);
+Route::post('/useradminupdate/{id}', [UserAdminController::class, 'update']);
 Route::get('/useradmin/delete/{id}', [UserAdminController::class, 'destroy']);
 Route::get('/catadmin', [CatAdminController::class, 'index']);
 Route::post('/catadmin', [CatAdminController::class, 'store']);

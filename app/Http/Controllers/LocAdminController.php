@@ -43,7 +43,7 @@ class LocAdminController extends Controller
 
         // Save it in the DB and check if it worked
         if ($location->save())
-            return redirect('home')->with('success', 'Insert successfully');
+            return redirect('locadmin')->with('success', 'Insert successfully');
         else
             return 'Problem inserting';
     }
@@ -90,7 +90,7 @@ class LocAdminController extends Controller
 
         // Save it in the DB and check if it worked
         if ($location->save())
-            return 'Updated successfully';
+        return redirect('locadmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }
