@@ -5,6 +5,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationCategorieController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\LocationEventController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestController;
@@ -38,4 +39,4 @@ Route::resource('locations', LocationController::class);
 Route::resource('users', UserController::class);
 Route::resource('event', EventController::class);
 Route::get('locsandcategs', [LocationCategorieController::class, 'index']);
-
+Route::get('locsandevents', [LocationEventController::class, 'index']);

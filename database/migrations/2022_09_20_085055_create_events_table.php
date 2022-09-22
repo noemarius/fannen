@@ -17,8 +17,16 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->date('date');
+            $table->time('event_start');
+            $table->time('event_end');
             $table->string('description');
+            $table->string('contact');
+            $table->string('price');
+            $table->unsignedBigInteger('categorie_id');
+            $table->unsignedBigInteger('location_id');
             $table->timestamps();
+            $table->foreign('categorie_id')->references('id')->on('categories');
+            $table->foreign('location_id')->references('id')->on('locations');
         });
     }
 
