@@ -4,6 +4,7 @@ import { useState } from 'react'
 
 async function getLocationComment(props) {
     let id = props.sharedCommentState
+    let resp
     if (props.treeType === 'categories') {
         let resp = await axios.get(`api/comments/${id.locationId}`)
     } else if (props.treeType === 'events') {
@@ -11,7 +12,7 @@ async function getLocationComment(props) {
     } else {
         let resp = await axios.get(`api/comments/${id.locationId}`)
     }
-    return resp.data
+    return typeof resp !== 'undefined' ? resp.data : ['No comments']
 }
 
 export default function Comment(props) {

@@ -56,14 +56,6 @@ export function DashboardContent() {
     return (
         <>
             <Container>
-                <Map
-                    sharedState={sharedState}
-                    sharedCenterState={sharedCenterState}
-                />
-                <div className={`infoContainer`}>
-                    <Detail sharedDetailState={sharedDetailState} />
-                    <Comment sharedCommentState={sharedCommentState} />
-                </div>
                 <div className={`treeContainer`}>
                     <Category
                         setSharedState={val => {
@@ -78,6 +70,7 @@ export function DashboardContent() {
                         setSharedCommentState={val => {
                             setSharedCommentState(val)
                         }}
+                        treeType={'categories'}
                     />
                     <Event
                         setSharedState={val => {
@@ -92,7 +85,16 @@ export function DashboardContent() {
                         setSharedCommentState={val => {
                             setSharedCommentState(val)
                         }}
+                        treeType={'events'}
                     />
+                </div>
+                <Map
+                    sharedState={sharedState}
+                    sharedCenterState={sharedCenterState}
+                />
+                <div className={`infoContainer`}>
+                    <Detail sharedDetailState={sharedDetailState} />
+                    <Comment sharedCommentState={sharedCommentState} />
                 </div>
             </Container>
         </>
