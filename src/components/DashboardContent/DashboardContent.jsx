@@ -10,6 +10,7 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
+import UserLocation from './UserLocation'
 /* import Test from './test' */
 
 // Styled components
@@ -84,18 +85,25 @@ export function DashboardContent() {
         setValue(newValue)
     }
 
-    const [sharedState, setSharedState] = useState({})
+    const [sharedMarkersState, setSharedMarkersState] = useState({})
     const [sharedCenterState, setSharedCenterState] = useState({})
     const [sharedDetailState, setSharedDetailState] = useState({})
     const [sharedCommentState, setSharedCommentState] = useState({})
+    const [sharedCityIdState, setSharedCityIdState] = useState({})
 
-    /* useEffect(() => console.log(sharedState), [sharedState]) */
+    /* useEffect(() => console.log(sharedMarkersState), [sharedMarkersState]) */
     /* useEffect(() => console.log(sharedCenterState), [sharedCenterState]) */
     /* useEffect(() => console.log(sharedDetailState), [sharedDetailState]) */
-    useEffect(() => console.log(sharedCommentState), [sharedCommentState])
+    /* useEffect(() => console.log(sharedCommentState), [sharedCommentState]) */
+    useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])
     return (
         <>
             <Container>
+                <UserLocation
+                    setSharedCityIdState={val => {
+                        setSharedCityIdState(val)
+                    }}
+                />
                 <div className={`treeContainer`}>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
@@ -109,8 +117,8 @@ export function DashboardContent() {
                         </Box>
                         <TabPanel value={value} index={0}>
                             <Category
-                                setSharedState={val => {
-                                    setSharedState(val)
+                                setSharedMarkersState={val => {
+                                    setSharedMarkersState(val)
                                 }}
                                 setSharedCenterState={val => {
                                     setSharedCenterState(val)
@@ -121,13 +129,14 @@ export function DashboardContent() {
                                 setSharedCommentState={val => {
                                     setSharedCommentState(val)
                                 }}
+                                sharedCityIdState={sharedCityIdState}
                                 treeType={'categories'}
                             />
                         </TabPanel>
                         <TabPanel value={value} index={1}>
                             <Event
-                                setSharedState={val => {
-                                    setSharedState(val)
+                                setSharedMarkersState={val => {
+                                    setSharedMarkersState(val)
                                 }}
                                 setSharedCenterState={val => {
                                     setSharedCenterState(val)
@@ -138,14 +147,16 @@ export function DashboardContent() {
                                 setSharedCommentState={val => {
                                     setSharedCommentState(val)
                                 }}
+                                sharedCityIdState={sharedCityIdState}
                                 treeType={'events'}
                             />
                         </TabPanel>
                     </Box>
                 </div>
                 <Map
-                    sharedState={sharedState}
+                    sharedMarkersState={sharedMarkersState}
                     sharedCenterState={sharedCenterState}
+                    sharedCityIdState={sharedCityIdState}
                 />
                 <div className={`infoContainer`}>
                     <Detail sharedDetailState={sharedDetailState} />
