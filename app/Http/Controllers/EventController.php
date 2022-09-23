@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EventController extends Controller
 {
@@ -37,8 +38,14 @@ class EventController extends Controller
     {
         $event = new Event;
         $event->name = $request->name;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->event_start = $request->event_start;
+        $event->event_end = $request->event_end;
         $event->description = $request->description;
-        $event->date = $request->date;
+        $event->contact = $request->contact;
+        $event->price = $request->price;
+
 
 
 
@@ -83,9 +90,13 @@ class EventController extends Controller
 
         $event = Event::find($id);
         $event->name = $request->name;
+        $event->start_date = $request->start_date;
+        $event->end_date = $request->end_date;
+        $event->event_start = $request->event_start;
+        $event->event_end = $request->event_end;
         $event->description = $request->description;
-        $event->date = $request->date;
-
+        $event->contact = $request->contact;
+        $event->price = $request->price;
 
         // Save it in the DB and check if it worked
         if ($event->save())
@@ -109,5 +120,10 @@ class EventController extends Controller
             // return redirect('flowers');
         } else
             return back()->with('error', 'Delete didnt work.');
+    }
+
+    public function getEventComment($id)
+    {
+        return DB::table('comments')->join('events', 'comments.event_id', '=', 'events.id')->join('users', 'events.user_id', '=', 'users.id')->select('comments.id', 'events.location_id', 'users.name', 'comments.comment')->where('events.location_id', '=', $id)->orderByDesc('comments.id')->get();
     }
 }

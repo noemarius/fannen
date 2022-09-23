@@ -93,7 +93,7 @@ class UserAdminController extends Controller
 
         // Save it in the DB and check if it worked
         if ($user->save())
-            return 'Updated successfully';
+        return redirect('useradmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }

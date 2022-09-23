@@ -13,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('events', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->date('date');
-            $table->time('event_start');
-            $table->time('event_end');
-            $table->string('description');
-            $table->string('contact');
-            $table->string('price');
-            $table->unsignedBigInteger('categorie_id');
+            $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('event_id')->nullable();
+            $table->string('comment');
+            $table->boolean('validation')->default(false);
             $table->timestamps();
-            $table->foreign('categorie_id')->references('id')->on('categories');
+            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('location_id')->references('id')->on('locations');
         });
     }
@@ -37,6 +34,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('events');
+        Schema::dropIfExists('comments');
     }
 };

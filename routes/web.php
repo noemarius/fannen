@@ -35,7 +35,7 @@ Route::get('/dashboard', function () {
 Route::get('/useradmin', [UserAdminController::class, 'index']);
 Route::post('/useradmin', [UserAdminController::class, 'store']);
 Route::get('/useradminupdate/{id}', [UserAdminController::class, 'create']);
-Route::put('/useradminupdate/{id}', [UserAdminController::class, 'update']);
+Route::post('/useradminupdate/{id}', [UserAdminController::class, 'update']);
 Route::get('/useradmin/delete/{id}', [UserAdminController::class, 'destroy']);
 Route::get('/catadmin', [CatAdminController::class, 'index']);
 Route::post('/catadmin', [CatAdminController::class, 'store']);
@@ -54,9 +54,10 @@ Route::post('/eventadminupdate/{id}', [EventAdminController::class, 'update']);
 Route::get('/eventadmin/delete/{id}', [EventAdminController::class, 'destroy']);
 Route::get('/comadmin', [ComAdminController::class, 'index']);
 Route::post('/comadmin', [ComAdminController::class, 'store']);
-Route::get('/comadminupdate/{id}', [ComAdminController::class, 'create']);
-Route::post('/comadminupdate/{id}', [ComAdminController::class, 'update']);
+Route::get('/comadminevalidate/{id}', [ComAdminController::class, 'validateComment']);
+Route::post('/comadminevalidate/{id}', [ComAdminController::class, 'update']);
 Route::get('/comadmin/delete/{id}', [ComAdminController::class, 'destroy']);
+
 
 
 
