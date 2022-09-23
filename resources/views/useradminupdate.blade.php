@@ -3,7 +3,7 @@
 @section('title', 'User update Admin Page')
 
 @section('css')
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="{{ asset('styles.css')}}">
 @endsection
 
 @section('content')
@@ -14,7 +14,7 @@
                 <input type="text" name="name" placeholder="Please enter the user name" /><br />
                 <input type="email" name="email" placeholder="Please enter the user email" /><br />
                 <input type="password" name="password" placeholder="Please enter the user password" /><br />
-                <select name="statut">
+                <select name="role">
                     <option value="administrator">Administrator</option>
                     <option value="organizer">Organizer</option>
                     <option value="user">User</option>

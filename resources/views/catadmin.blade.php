@@ -28,7 +28,7 @@
                                     {{ $c->name }}
                                 </td>
                                 <td>
-                                    <a href="catadmin/update/{{ $c->id }}">Update</a>
+                                    <a href="catadminupdate/{{ $c->id }}">Update</a>
 
                                 </td>
                                 <td>

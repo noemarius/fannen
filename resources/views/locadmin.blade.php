@@ -46,7 +46,7 @@
                                 </td>
                                 <td>
 
-                                    <a href="locadmin/update/{{ $l->id }}">Update</a>
+                                    <a href="locadminupdate/{{ $l->id }}">Update</a>
                                 </td>
                                 <td>
                                     <a href="locadmin/delete/{{ $l->id }}">Delete</a>
@@ -75,19 +75,19 @@
                         <input class="form" type="text" name="address" placeholder="Address" />
                     </div>
                     <div class="formBreak">
-                        <p class="formP">Cooridnates:</p>
+                        <p class="formP">Coordinates:</p>
                         <input class="form" type="text" name="geo" placeholder="Coordinates" />
                     </div>
                     <div class="formBreak">
                         <p class="formP">Link:</p>
-                        <input class="form" type="text" name="geo" placeholder="Link" />
+                        <input class="form" type="text" name="link" placeholder="Link" />
                     </div>
                     <div class="formBreak">
                         <p class="formP">Contact:</p>
-                        <input class="form" type="text" name="geo" placeholder="Contact" />
+                        <input class="form" type="text" name="contact" placeholder="Contact" />
                     </div>
 
-                    <input class="formButton" type="submit" name="submitBtn" value="Create Location"></input>
+                    <input class="formButton" type="submit" name="submitBtn" value="Create Location"/>
                 </div>
             </form>
         </div>

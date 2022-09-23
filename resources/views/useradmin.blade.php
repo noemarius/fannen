@@ -34,10 +34,10 @@
                                     {{ $u->email }}
                                 </td>
                                 <td>
-                                    {{ $u->statut }}
+                                    {{ $u->role }}
                                 </td>
                                 <td>
-                                    <a href="useradmin/update/{{ $u->id }}">Update</a>
+                                    <a href="useradminupdate/{{ $u->id }}">Update</a>
                                 </td>
                                 <td>
                                     <a href="useradmin/delete/{{ $u->id }}">Delete</a>
@@ -69,13 +69,13 @@
                 </div>
                 <div class="formBreak">
                     <p class="formP">Role:</p>
-                    <select class="form" name="statut">
+                    <select class="form" name="role">
                         <option value="administrator">Administrator</option>
                         <option value="organizer">Organizer</option>
                         <option value="user">User</option>
                     </select>
                 </div>
-                <input class="formButton" type="submit" name="submitBtn" value="Create User"></input>
+                <input class="formButton" type="submit" name="submitBtn" value="Create User"/>
             </div>
         </form>
     </div>

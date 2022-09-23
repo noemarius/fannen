@@ -1,6 +1,6 @@
 @extends('mytemplate')
 
-@section('title', 'Event admin Page')
+@section('title', 'Comment admin Page')
 
 @section('css')
     <link rel="stylesheet" href="styles.css">
@@ -37,7 +37,7 @@
                                     {{ $c->comment }}
                                 </td>
                                 <td>
-                                    <a href="comadmin/validate/{{ $c->id }}">Validate</a>
+                                    <a href="comadminvalidate/{{ $c->id }}">Validate</a>
                                 </td>
                                 <td>
                                     <a href="comadmin/delete/{{ $c->id }}">Delete</a>
@@ -76,7 +76,7 @@
                             <option value="user">User</option>
                         </select>
                     </div>
-                    <input class="formButton" type="submit" name="submitBtn" value="Create User"></input>
+                    <input class="formButton" type="submit" name="submitBtn" value="Create User" />
                 </div>
             </form>
             {{-- What to do here --}}

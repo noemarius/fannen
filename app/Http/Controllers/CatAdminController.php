@@ -109,10 +109,10 @@ class CatAdminController extends Controller
         $res = Categorie::destroy($id);
 
           if ($res) {
-            return back()->with('success', 'Category was deleted');
+            return back()->with('success', 'Category has been deleted');
         } else
             return back()->with('error', 'Delete didnt work.');
     
-        //return view('adminCat');
+        
     }
 }

@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\DB;
 
 class LocationCategorieController extends Controller
 {
-    //
+    
     public function index()
     {
         return DB::table('locations')->select('*')->join('location__categories', 'locations.id', '=', 'location__categories.location_id')->join('categories', 'location__categories.categorie_id', '=', 'categories.id')->select('categories.id', 'categories.name as categ_name', 'locations.*')->get()->groupBy('categ_name');

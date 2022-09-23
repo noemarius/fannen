@@ -44,7 +44,7 @@ class UserAdminController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = Hash::make($request->password);
-        $user->statut = $request->statut;
+        $user->role = $request->role;
 
         if ($user->save())
             return redirect('useradmin')->with('success', 'Insert successfully');
@@ -87,8 +87,8 @@ class UserAdminController extends Controller
         $user = User::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->password = $request->password;
-        $user->statut = $request->statut;
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
 
 
         // Save it in the DB and check if it worked
@@ -110,7 +110,6 @@ class UserAdminController extends Controller
 
         if ($res) {
             return back()->with('success', 'User has been deleted');
-            // return redirect('flowers');
         } else
             return back()->with('error', 'Delete didnt work.');
     }
