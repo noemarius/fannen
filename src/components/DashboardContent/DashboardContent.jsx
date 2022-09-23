@@ -44,6 +44,9 @@ const Container = styled.div`
         width: 100%;
         justify-items: center;
     }
+    .MuiTreeView-root {
+        min-height: 0px;
+    }
 `
 function TabPanel(props) {
     const { children, value, index, ...other } = props
@@ -56,7 +59,7 @@ function TabPanel(props) {
             aria-labelledby={`simple-tab-${index}`}
             {...other}>
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{ p: 0, mt: 2}}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -102,6 +105,7 @@ export function DashboardContent() {
                             <Tabs
                                 value={value}
                                 onChange={handleChange}
+                                variant="fullWidth"
                                 aria-label="basic tabs example">
                                 <Tab label="Themes" {...a11yProps(0)} />
                                 <Tab label="Events" {...a11yProps(1)} />
