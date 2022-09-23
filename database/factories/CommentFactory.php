@@ -17,8 +17,8 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 1,
-            'location_id' => 1,
+            'user_id' => fake()->numberBetween(1, 10),
+            'location_id' => fake()->numberBetween(1, 10),
             'comment' => fake()->sentence(10),
         ];
     }

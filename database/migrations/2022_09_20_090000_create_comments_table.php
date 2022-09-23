@@ -17,11 +17,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('location_id');
+            $table->unsignedBigInteger('event_id')->nullable();
             $table->string('comment');
             $table->boolean('validation')->default(false);
             $table->timestamps();
-            // $table->foreign('user_id')->references('id')->on('users');
-            // $table->foreign('location_id')->references('id')->on('locations');
+            $table->foreign('event_id')->references('id')->on('events');
+            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('location_id')->references('id')->on('locations');
         });
     }
 

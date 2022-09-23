@@ -3,22 +3,24 @@
 @section('title', 'User Admin Page')
 
 @section('css')
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 @endsection
 
 @section('content')
-    <div class="container">
-        <h2>User list</h2>
+    <div class="userContainer">
+        <div class="title">
+            <h2>Users</h2>
+        </div>
 
-        <div class="userTable">
-
-            <table>
+        <div class="wrap">
+            <table id="users">
                 <thead>
                     <tr>
                         <th>Name</th>
                         <th>Email</th>
                         <th>Statut</th>
-
+                        <th>Update</th>
+                        <th>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,8 +37,10 @@
                                     {{ $u->statut }}
                                 </td>
                                 <td>
-                                    <a href="useradminupdate/{{$u->id}}">Update</a>
-                                    <a href="useradmin/delete/{{$u->id}}">Delete</a>
+                                    <a href="useradmin/update/{{ $u->id }}">Update</a>
+                                </td>
+                                <td>
+                                    <a href="useradmin/delete/{{ $u->id }}">Delete</a>
                                 </td>
                             </tr>
                         @endforeach
@@ -44,21 +48,36 @@
                 </tbody>
             </table>
         </div>
-        <div class="createForm">
-            <form method="post">
-                @csrf
-                <input type="text" name="name" placeholder="Please enter the user name" /><br />
-                <input type="email" name="email" placeholder="Please enter the user email" /><br />
-                <input type="password" name="password" placeholder="Please enter the user password" /><br />
-                <select name="statut">
-                    <option value="administrator">Administrator</option>
-                    <option value="organizer">Organizer</option>
-                    <option value="user">User</option>
-                </select>
-                <input type="submit" name="submitBtn" value="Create" />
 
-            </form>
+        <div class="title">
+            <h1>Create a new User</h1>
         </div>
+        <form class="createForm" method="post">
+            @csrf
+            <div class="formContainer">
+                <div class="formBreak">
+                    <p class="formP">Username: </p>
+                    <input class="form" type="text" name="name" placeholder="Username" />
+                </div>
+                <div class="formBreak">
+                    <p class="formP">Email:</p>
+                    <input class="form" type="email" name="email" placeholder="Email" />
+                </div>
+                <div class="formBreak">
+                    <p class="formP">Password:</p>
+                    <input class="form" type="password" name="password" placeholder="Password" />
+                </div>
+                <div class="formBreak">
+                    <p class="formP">Role:</p>
+                    <select class="form" name="statut">
+                        <option value="administrator">Administrator</option>
+                        <option value="organizer">Organizer</option>
+                        <option value="user">User</option>
+                    </select>
+                </div>
+                <input class="formButton" type="submit" name="submitBtn" value="Create User"></input>
+            </div>
+        </form>
     </div>
 
 

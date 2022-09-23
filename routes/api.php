@@ -37,6 +37,7 @@ Route::resource('comments', CommentController::class);
 Route::resource('categories', CategorieController::class);
 Route::resource('locations', LocationController::class);
 Route::resource('users', UserController::class);
-Route::resource('event', EventController::class);
+Route::resource('events', EventController::class);
 Route::get('locsandcategs', [LocationCategorieController::class, 'index']);
 Route::get('locsandevents', [LocationEventController::class, 'index']);
+Route::get('eventslocsandcomments/{id}', [EventController::class, 'getEventComment']);

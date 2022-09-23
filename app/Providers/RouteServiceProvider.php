@@ -17,7 +17,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    public const HOME = '/dashboard';
+    
+    public const HOME = '/';
+    // Stops the error 500 bug
 
     /**
      * Define your route model bindings, pattern filters, and other route configuration.
