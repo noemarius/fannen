@@ -8,7 +8,6 @@ async function getCities() {
 
 export default function UserLocation(props) {
     const [cityList, setCityList] = useState([])
-    const [selected, setSelected] = useState
     const [categId, setCategId] = useState([])
 
     useEffect(() => {
@@ -22,10 +21,10 @@ export default function UserLocation(props) {
     return (
         <>
             <select
-                onChange={() => {
-                    console.log(true)
+                onChange={e => {
+                    setCategId(e.target.value)
                 }}>
-                <option value={false}>Select a City</option>
+                <option value={0}>Select a City</option>
                 {cityList.map(city => {
                     return <option value={city[1].id}>{city[1].name}</option>
                 })}

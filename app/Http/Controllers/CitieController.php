@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Citie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CitieController extends Controller
 {
@@ -17,7 +18,6 @@ class CitieController extends Controller
         //
         return Citie::all();
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -45,9 +45,10 @@ class CitieController extends Controller
      * @param  \App\Models\Citie  $citie
      * @return \Illuminate\Http\Response
      */
-    public function show(Citie $citie)
+    public function show($citie)
     {
         //
+        return Citie::find($citie);
     }
 
     /**

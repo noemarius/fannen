@@ -46,9 +46,10 @@ class LocationEventController extends Controller
      * @param  \App\Models\LocationEvent  $locationEvent
      * @return \Illuminate\Http\Response
      */
-    public function show(LocationEvent $locationEvent)
+    public function show($cityId)
     {
         //
+        return DB::table('events')->select('*', 'categories.name as categ_name')->join('categories', 'events.categorie_id', '=', 'categories.id')->join('locations', 'events.location_id', '=', 'locations.id')->where('locations.city_id', '=', $cityId)->get()->groupBy('categ_name');
     }
 
     /**
