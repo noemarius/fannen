@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategorieController;
+use App\Http\Controllers\CitieController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LocationCategorieController;
@@ -38,6 +39,7 @@ Route::resource('categories', CategorieController::class);
 Route::resource('locations', LocationController::class);
 Route::resource('users', UserController::class);
 Route::resource('events', EventController::class);
+Route::resource('cities', CitieController::class);
 Route::get('locsandcategs', [LocationCategorieController::class, 'index']);
 Route::get('locsandevents', [LocationEventController::class, 'index']);
 Route::get('eventslocsandcomments/{id}', [EventController::class, 'getEventComment']);

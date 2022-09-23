@@ -5,18 +5,14 @@ import { useState } from 'react'
 async function getLocationComment(props) {
     let resp
     if (props.type == 'categories') {
-        console.log('if')
         resp = await axios.get(`api/comments/${props.id}`)
     } else if (props.type == 'events') {
-        console.log('else if')
         resp = await axios.get(`api/eventslocsandcomments/${props.id}`)
     }
-    console.log(resp)
     return typeof resp !== 'undefined' ? resp.data : false
 }
 
 export default function Comment(props) {
-    console.log(props)
     const [type, setType] = useState('')
     const [id, setId] = useState({})
     const [comment, setComment] = useState({})

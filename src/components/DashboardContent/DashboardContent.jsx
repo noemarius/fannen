@@ -10,6 +10,7 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
+import UserLocation from './UserLocation'
 /* import Test from './test' */
 
 // Styled components
@@ -88,14 +89,20 @@ export function DashboardContent() {
     const [sharedCenterState, setSharedCenterState] = useState({})
     const [sharedDetailState, setSharedDetailState] = useState({})
     const [sharedCommentState, setSharedCommentState] = useState({})
+    const [sharedCityIdState, setSharedCityIdState] = useState({})
 
     /* useEffect(() => console.log(sharedState), [sharedState]) */
     /* useEffect(() => console.log(sharedCenterState), [sharedCenterState]) */
     /* useEffect(() => console.log(sharedDetailState), [sharedDetailState]) */
-    useEffect(() => console.log(sharedCommentState), [sharedCommentState])
+    /* useEffect(() => console.log(sharedCommentState), [sharedCommentState]) */
     return (
         <>
             <Container>
+                <UserLocation
+                    setSharedCityIdState={val => {
+                        setSharedCityIdState(val)
+                    }}
+                />
                 <div className={`treeContainer`}>
                     <Box sx={{ width: '100%' }}>
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
