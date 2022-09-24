@@ -96,23 +96,32 @@ export function DashboardContent() {
     /* useEffect(() => console.log(sharedDetailState), [sharedDetailState]) */
     /* useEffect(() => console.log(sharedCommentState), [sharedCommentState]) */
     useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])
+    //TODO: display a in a better way the tabs, if possible city selection to the right
     return (
         <>
             <Container>
-                <UserLocation
-                    setSharedCityIdState={val => {
-                        setSharedCityIdState(val)
-                    }}
-                />
                 <div className={`treeContainer`}>
-                    <Box sx={{ width: '100%' }}>
-                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                    <Box
+                        sx={{
+                            width: '100%',
+                        }}>
+                        <Box
+                            sx={{
+                                borderBottom: 1,
+                                borderColor: 'divider',
+                            }}>
                             <Tabs
                                 value={value}
                                 onChange={handleChange}
-                                aria-label="basic tabs example">
+                                aria-label="basic tabs example"
+                                sx={{}}>
                                 <Tab label="Themes" {...a11yProps(0)} />
                                 <Tab label="Events" {...a11yProps(1)} />
+                                <UserLocation
+                                    setSharedCityIdState={val => {
+                                        setSharedCityIdState(val)
+                                    }}
+                                />
                             </Tabs>
                         </Box>
                         <TabPanel value={value} index={0}>
