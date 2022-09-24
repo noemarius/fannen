@@ -116,8 +116,8 @@ class EventController extends Controller
         $res = Event::destroy($id);
 
         if ($res) {
-            return back()->with('success', 'Event was delete');
-            // return redirect('flowers');
+            return back()->with('success', 'Event has been delete');
+            
         } else
             return back()->with('error', 'Delete didnt work.');
     }

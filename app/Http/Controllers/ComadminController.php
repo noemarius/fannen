@@ -20,7 +20,7 @@ class ComAdminController extends Controller
      */
     public function create()
     {
-        return view('commadmin');
+        return view('comadmin');
     }
 
     /**
@@ -97,7 +97,7 @@ class ComAdminController extends Controller
         $res = Comment::destroy($id);
 
         if ($res) {
-            return back()->with('success', 'Comment was delete');
+            return back()->with('success', 'Comment has been delete');
             // return redirect('flowers');
         } else
             return back()->with('error', 'Delete didnt work.');
