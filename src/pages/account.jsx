@@ -27,6 +27,11 @@ export default function Account() {
                         text="Favorites"
                     />
                     <ContentButton
+                        link="/create-event"
+                        image="/heart.png"
+                        text="Add an Event"
+                    />
+                    <ContentButton
                         link="/test"
                         image="/heart.png"
                         text="Something"

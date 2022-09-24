@@ -4,8 +4,8 @@ export const GlobalStyle = createGlobalStyle`
 body {
     background-color: rgb(211, 211, 211);
     display: flex; 
-    flex-direction: column; 
     font-family: 'Roboto', sans-serif;
+    flex-direction: column; 
 
 }
 

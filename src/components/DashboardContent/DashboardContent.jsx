@@ -19,7 +19,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 12px;
+    margin: 12px 0px;
     width: 100%;
     .categoryContainer {
         box-shadow: #fff 0px 3px 8px;
@@ -45,6 +45,14 @@ const Container = styled.div`
         width: 100%;
         justify-items: center;
     }
+    .MuiTreeView-root {
+        min-height: 0px;
+    }
+
+    .inactive {
+        display: none;
+        position: absolute;
+    }
 `
 function TabPanel(props) {
     const { children, value, index, ...other } = props
@@ -57,7 +65,7 @@ function TabPanel(props) {
             aria-labelledby={`simple-tab-${index}`}
             {...other}>
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{ p: 0, mt: 2 }}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -89,13 +97,17 @@ export function DashboardContent() {
     const [sharedCenterState, setSharedCenterState] = useState({})
     const [sharedDetailState, setSharedDetailState] = useState({})
     const [sharedCommentState, setSharedCommentState] = useState({})
+    const [sharedActiveState, setSharedActiveState] = useState(false)
     const [sharedCityIdState, setSharedCityIdState] = useState({})
 
     /* useEffect(() => console.log(sharedMarkersState), [sharedMarkersState]) */
     /* useEffect(() => console.log(sharedCenterState), [sharedCenterState]) */
     /* useEffect(() => console.log(sharedDetailState), [sharedDetailState]) */
+    /*useEffect(() => console.log(sharedCommentState), [sharedCommentState])*/
+    /*useEffect(() => console.log(sharedActiveState), [sharedActiveState])*/
     /* useEffect(() => console.log(sharedCommentState), [sharedCommentState]) */
-    useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])
+    /*useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])*/
+    
     return (
         <>
             <Container>
@@ -110,6 +122,7 @@ export function DashboardContent() {
                             <Tabs
                                 value={value}
                                 onChange={handleChange}
+                                variant="fullWidth"
                                 aria-label="basic tabs example">
                                 <Tab label="Themes" {...a11yProps(0)} />
                                 <Tab label="Events" {...a11yProps(1)} />
@@ -129,6 +142,9 @@ export function DashboardContent() {
                                 setSharedCommentState={val => {
                                     setSharedCommentState(val)
                                 }}
+                                setSharedActiveState={val => {
+                                    setSharedActiveState(val)
+                                }}
                                 sharedCityIdState={sharedCityIdState}
                                 treeType={'categories'}
                             />
@@ -147,6 +163,9 @@ export function DashboardContent() {
                                 setSharedCommentState={val => {
                                     setSharedCommentState(val)
                                 }}
+                                setSharedActiveState={val => {
+                                    setSharedActiveState(val)
+                                }}
                                 sharedCityIdState={sharedCityIdState}
                                 treeType={'events'}
                             />
@@ -158,7 +177,10 @@ export function DashboardContent() {
                     sharedCenterState={sharedCenterState}
                     sharedCityIdState={sharedCityIdState}
                 />
-                <div className={`infoContainer`}>
+                <div
+                    className={`infoContainer ${
+                        sharedActiveState ? 'active' : 'inactive'
+                    }`}>
                     <Detail sharedDetailState={sharedDetailState} />
                     <Comment sharedCommentState={sharedCommentState} />
                 </div>

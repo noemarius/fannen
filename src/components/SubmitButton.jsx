@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import { Text } from './Text'
 
-const Submit = styled.input.attrs({
+const Submit = styled.input.attrs(props => ({
     type: 'submit',
-    value: 'Update',
-})`
+    value: props.value || "Update",
+}))`
     align-items: center;
     background-color: #39b7ff;
     border-radius: 20px;
@@ -20,10 +20,10 @@ const Submit = styled.input.attrs({
     }
 `
 
-export function SubmitButton() {
+export function SubmitButton(props) {
     return (
         <>
-            <Submit />
+            <Submit value={props.value}/>
         </>
     )
 }
