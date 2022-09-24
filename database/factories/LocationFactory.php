@@ -17,6 +17,7 @@ class LocationFactory extends Factory
     public function definition()
     {
         return [
+            'city_id' => fake()->numberBetween(1, 5),
             'name' => fake()->sentence(1),
             'address' => fake()->sentence(1),
             'geo' => $this->generateGeoLoc(),

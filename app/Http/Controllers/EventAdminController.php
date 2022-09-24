@@ -46,6 +46,9 @@ class EventAdminController extends Controller
         $event->description = $request->description;
         $event->contact = $request->contact;
         $event->price = $request->price;
+        $event->categorie_id = $request->categorie_id;
+        $event->location_id = $request->location_id;
+        $event->user_id = $request->user_id;
 
         if ($event->save())
             return redirect('eventadmin')->with('success', 'Insert successfully');
@@ -84,7 +87,7 @@ class EventAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $event = new Event;
+        $event = Event::find($id);
         $event->name = $request->name;
         $event->start_date = $request->start_date;
         $event->end_date = $request->end_date;
@@ -93,6 +96,9 @@ class EventAdminController extends Controller
         $event->description = $request->description;
         $event->contact = $request->contact;
         $event->price = $request->price;
+        $event->categorie_id = $request->categorie_id;
+        $event->location_id = $request->location_id;
+        $event->user_id = $request->user_id;
 
 
         // Save it in the DB and check if it worked
@@ -113,7 +119,7 @@ class EventAdminController extends Controller
         $res = Event::destroy($id);
 
         if ($res) {
-            return back()->with('success', 'Event was delete');
+            return back()->with('success', 'Event has been delete');
         } else
             return back()->with('error', 'Delete didnt work.');
     }

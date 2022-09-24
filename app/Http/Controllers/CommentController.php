@@ -97,8 +97,8 @@ class CommentController extends Controller
         $res = Comment::destroy($id);
 
         if ($res) {
-            return back()->with('success', 'Comment was delete');
-            // return redirect('flowers');
+            return back()->with('success', 'Comment has been delete');
+            
         } else
             return back()->with('error', 'Delete didnt work.');
     }

@@ -86,6 +86,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
+        $user->role = $request->role;
 
 
         // Save it in the DB and check if it worked
@@ -106,8 +107,7 @@ class UserController extends Controller
         $res = User::destroy($id);
 
         if ($res) {
-            return back()->with('success', 'User was delete');
-            // return redirect('flowers');
+            return back()->with('success', 'User has been delete');
         } else
             return back()->with('error', 'Delete didnt work.');
     }

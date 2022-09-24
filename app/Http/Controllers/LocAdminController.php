@@ -106,8 +106,7 @@ class LocAdminController extends Controller
         $res = Location::destroy($id);
 
         if ($res) {
-            return back()->with('success', 'Location was delete');
-            // return redirect('flowers');
+            return back()->with('success', 'Location has been delete');
         } else
             return back()->with('error', 'Delete didnt work.');
     }

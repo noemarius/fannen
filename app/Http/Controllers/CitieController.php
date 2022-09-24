@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\LocationEvent;
+use App\Models\Citie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
-class LocationEventController extends Controller
+class CitieController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +16,8 @@ class LocationEventController extends Controller
     public function index()
     {
         //
-        return DB::table('events')->select('*', 'categories.name as categ_name')->join('categories', 'events.categorie_id', '=', 'categories.id')->join('locations', 'events.location_id', '=', 'locations.id')->get()->groupBy('categ_name');
+        return Citie::all();
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -43,22 +42,22 @@ class LocationEventController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\LocationEvent  $locationEvent
+     * @param  \App\Models\Citie  $citie
      * @return \Illuminate\Http\Response
      */
-    public function show($cityId)
+    public function show($citie)
     {
         //
-        return DB::table('events')->select('*', 'categories.name as categ_name')->join('categories', 'events.categorie_id', '=', 'categories.id')->join('locations', 'events.location_id', '=', 'locations.id')->where('locations.city_id', '=', $cityId)->get()->groupBy('categ_name');
+        return Citie::find($citie);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\LocationEvent  $locationEvent
+     * @param  \App\Models\Citie  $citie
      * @return \Illuminate\Http\Response
      */
-    public function edit(LocationEvent $locationEvent)
+    public function edit(Citie $citie)
     {
         //
     }
@@ -67,10 +66,10 @@ class LocationEventController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\LocationEvent  $locationEvent
+     * @param  \App\Models\Citie  $citie
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, LocationEvent $locationEvent)
+    public function update(Request $request, Citie $citie)
     {
         //
     }
@@ -78,10 +77,10 @@ class LocationEventController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\LocationEvent  $locationEvent
+     * @param  \App\Models\Citie  $citie
      * @return \Illuminate\Http\Response
      */
-    public function destroy(LocationEvent $locationEvent)
+    public function destroy(Citie $citie)
     {
         //
     }

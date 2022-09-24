@@ -20,13 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-/*Route::get('/', function () {
-    return view('home');
-});*/
-
 Route::get('/', function () {
-    return ['laravel', app()->version()];
+    return view('home');
 });
+
+/* Route::get('/', function () {
+    return ['laravel', app()->version()];
+}); */
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -54,8 +54,7 @@ Route::post('/eventadminupdate/{id}', [EventAdminController::class, 'update']);
 Route::get('/eventadmin/delete/{id}', [EventAdminController::class, 'destroy']);
 Route::get('/comadmin', [ComAdminController::class, 'index']);
 Route::post('/comadmin', [ComAdminController::class, 'store']);
-Route::get('/comadminevalidate/{id}', [ComAdminController::class, 'validateComment']);
-Route::post('/comadminevalidate/{id}', [ComAdminController::class, 'update']);
+Route::get('/comadminvalidate/{id}', [ComAdminController::class, 'validateComment']);
 Route::get('/comadmin/delete/{id}', [ComAdminController::class, 'destroy']);
 
 
