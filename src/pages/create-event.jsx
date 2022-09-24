@@ -49,7 +49,7 @@ async function getLocations() {
     return resp.data
 }
 
-async function postEvent(){
+async function postEvent() {
     const resp = await axios.post('api/events')
 }
 
@@ -62,13 +62,48 @@ export default function CreateEvent() {
     const [startTime, setStartTime] = useState('')
     const [endTime, setEndTime] = useState('')
     const [description, setDescription] = useState('')
-    const [price, setPrice] = useState('')
     const [contact, setContact] = useState('')
+    const [price, setPrice] = useState('')
+    const [category, setCategory] = useState('')
+    const [category_id, setCategory_id] = useState('')
+    const [location, setLocation] = useState('')
+    const [location_id, setLocation_id] = useState('')
 
     const [categoryList, setCategoryList] = useState({})
     const [locationList, setLocationList] = useState({})
 
-    console.log(categoryList)
+    const handleSubmit = async () => {
+        event.preventDefault()
+
+        // store the states in the form data
+        const loginFormData = {
+            name: name,
+            start_date: startDate,
+            end_date: endDate,
+            event_start: startTime,
+            event_end: endTime,
+            description: description,
+            contact: contact,
+            price: price,
+            categorie_id: category,
+            location_id: location,
+            user_id: user.id,
+        }
+
+        console.log(loginFormData)
+
+        // try {
+        //     // make axios post request
+        //     const response = await axios({
+        //         method: 'post',
+        //         url: '/api/',
+        //         data: loginFormData,
+        //         headers: { 'Content-Type': 'multipart/form-data' },
+        //     })
+        // } catch (error) {
+        //     console.log(error)
+        // }
+    }
 
     useEffect(() => {
         getCategories().then(rslt => setCategoryList(rslt))
@@ -77,14 +112,19 @@ export default function CreateEvent() {
         getLocations().then(rslt => setLocationList(rslt))
     }, [])
 
-    console.log(name)
-    console.log(startDate)
-    console.log(endDate)
-    console.log(startTime)
-    console.log(endTime)
-    console.log(description)
-    console.log(price)
-    console.log(contact)
+    // console.log(name)
+    // console.log(startDate)
+    // console.log(endDate)
+    // console.log(startTime)
+    // console.log(endTime)
+    // console.log(description)
+    // console.log(price)
+    // console.log(contact)
+    // console.log(contact)
+    // console.log(category)
+    // console.log(category_id)
+    // console.log(location)
+    // console.log(location_id)
 
     return (
         <>
@@ -92,7 +132,7 @@ export default function CreateEvent() {
                 <Container margin="10px 0px">
                     <Title title="Create a new Event" />
                     <Card>
-                        <StyledForm>
+                        <StyledForm onSubmit={handleSubmit}>
                             <AlignLeft>
                                 <Label htmlFor="name">Name</Label>
                             </AlignLeft>
@@ -207,8 +247,11 @@ export default function CreateEvent() {
                             <select className="block w-full" name="category">
                                 {Object.entries(categoryList).map(e => {
                                     return (
-                                        <option value={e[1].id}>
-                                            {' '}
+                                        <option
+                                            value={category}
+                                            onChange={event =>
+                                                setCategory(event.target.value)
+                                            }>
                                             {e[1].name}
                                         </option>
                                     )
@@ -220,8 +263,11 @@ export default function CreateEvent() {
                             <select className="block w-full" name="category">
                                 {Object.entries(locationList).map(e => {
                                     return (
-                                        <option value={e[1].id}>
-                                            {' '}
+                                        <option
+                                            value={location}
+                                            onChange={event =>
+                                                setLocation(event.target.value)
+                                            }>
                                             {e[1].name}
                                         </option>
                                     )
