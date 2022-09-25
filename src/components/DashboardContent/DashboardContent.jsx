@@ -73,8 +73,8 @@ const Container = styled.div`
     .display {
         position: absolute;
         top: 30%;
-        left: 30%;
-        right: 30%;
+        left: 20%;
+        right: 20%;
     }
 
     .dontDisplay {

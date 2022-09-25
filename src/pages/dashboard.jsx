@@ -6,7 +6,7 @@ export default function Dashboard() {
     const user = useAuth()
     return (
         <>
-            <Layout pageTitle="Dashboard">
+            <Layout pageTitle="Dashboard" width="95%">
                 <DashboardContent />
             </Layout>
         </>

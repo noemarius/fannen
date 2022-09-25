@@ -90,6 +90,8 @@ export default function CreateEvent() {
             user_id: user.id,
         }
 
+        console.log(location)
+
         console.log(loginFormData)
 
         // try {
@@ -128,7 +130,7 @@ export default function CreateEvent() {
 
     return (
         <>
-            <Layout>
+            <Layout pageTitle="Add an Event" width="25%">
                 <Container margin="10px 0px">
                     <Title title="Create a new Event" />
                     <Card>
@@ -260,14 +262,16 @@ export default function CreateEvent() {
                             <AlignLeft>
                                 <Label htmlFor="Location">Location</Label>
                             </AlignLeft>
-                            <select className="block w-full" name="category">
+                            <select
+                                className="block w-full"
+                                name="category"
+                                onChange={event =>
+                                    setLocation(event.target.value)
+                                }>
                                 {Object.entries(locationList).map(e => {
+                                    // console.log(e)
                                     return (
-                                        <option
-                                            value={location}
-                                            onChange={event =>
-                                                setLocation(event.target.value)
-                                            }>
+                                        <option value={e[1].id}>
                                             {e[1].name}
                                         </option>
                                     )

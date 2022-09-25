@@ -3,16 +3,22 @@ import styled from 'styled-components'
 import { AppWrap } from '@/styles/appStyles'
 import { Header } from './Header'
 import { Footer } from './Footer'
+import { device } from './Device'
 
 const Content = styled.div`
     width: 90%;
     height: auto;
     flex: 1;
+
+    @media ${device.tablet} {
+        width: 80%;
+    }
+
+    @media ${device.laptop} {
+        width: ${props => props.width || '60%'};
+    }
 `
-export function Layout({
-    children,
-    pageTitle = 'Fannen - Find everything you need!',
-}) {
+export function Layout(props){
     return (
         <>
             <Head>
@@ -26,11 +32,11 @@ export function Layout({
                     href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap"
                     rel="stylesheet"
                 />
-                <title>{pageTitle}</title>
+                <title>{props.pageTitle}</title>
             </Head>
             <AppWrap>
                 <Header />
-                <Content>{children}</Content>
+                <Content width={props.width}>{props.children}</Content>
                 <Footer />
             </AppWrap>
         </>
