@@ -17,6 +17,7 @@ import { Title } from '../Title'
 import { SubmitButton } from '../SubmitButton'
 import { useAuth } from '@/hooks/auth'
 import axios from '@/lib/axios'
+import { AlignLeft } from '../AlignLeft'
 /* import Test from './test' */
 
 // Styled components
@@ -149,6 +150,7 @@ export function DashboardContent() {
 
     const handleSubmit = async () => {
         event.preventDefault()
+        setActive(false)
 
         // store the states in the form data
         const commentData = {
@@ -275,6 +277,14 @@ export function DashboardContent() {
                     </div>
                     <div className={`${active ? 'display' : 'dontDisplay'}`}>
                         <Card>
+                            <AlignLeft>
+                                <p
+                                    onClick={e => {
+                                        setActive(false)
+                                    }}>
+                                    Close
+                                </p>
+                            </AlignLeft>
                             <Title title="Add a comment" />
                             <form
                                 onSubmit={handleSubmit}
