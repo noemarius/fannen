@@ -4,8 +4,6 @@ import { Dropdown } from './Dropdown'
 import { DropdownItem } from './DropdownItem'
 import { useAuth } from '@/hooks/auth'
 import Link from 'next/link'
-import { Text } from './Text'
-import { SubmitButton } from './SubmitButton'
 import { device } from './Device'
 
 const HeaderWrap = styled.div`
