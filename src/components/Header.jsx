@@ -55,19 +55,29 @@ export function Header() {
                             <Button>Home</Button>
                         </Link>
                     </div>
-                    <Link className="hideTablet" href="/dashboard">
-                        <Button>Dashboard</Button>
-                    </Link>
-                    <Link className="hideTablet" href="/about">
-                        <Button>About</Button>
-                    </Link>
-                    <Link className="hideTablet" href="/team">
-                        <Button>Meet The Team</Button>
-                    </Link>
-                    <Link className="hideTablet" href="/account">
-                        <Button>Account</Button>
-                    </Link>
-                    <Button onClick={logout}>Logout</Button>
+                    <div className="hideTablet">
+                        <Link className="hideTablet" href="/dashboard">
+                            <Button>Dashboard</Button>
+                        </Link>
+                    </div>
+                    <div className="hideTablet">
+                        <Link className="hideTablet" href="/about">
+                            <Button>About</Button>
+                        </Link>
+                    </div>
+                    <div className="hideTablet">
+                        <Link className="hideTablet" href="/team">
+                            <Button>Meet The Team</Button>
+                        </Link>
+                    </div>
+                    <div className="hideTablet">
+                        <Link className="hideTablet" href="/account">
+                            <Button>Account</Button>
+                        </Link>
+                    </div>
+                    <div className="hideTablet">
+                        <Button onClick={logout}>Logout</Button>
+                    </div>
                     <div className="hidePhone">
                         <Dropdown>
                             <DropdownItem link="/" text="Home"></DropdownItem>
@@ -99,27 +109,27 @@ export function Header() {
                         </Link>
                     </div>
                     <div className="hideTablet">
-                        <Link className="hideTablet" href="/dashboard">
+                        <Link href="/dashboard">
                             <Button>Dashboard</Button>
                         </Link>
                     </div>
                     <div className="hideTablet">
-                        <Link className="hideTablet" href="/about">
+                        <Link href="/about">
                             <Button>About</Button>
                         </Link>
                     </div>
                     <div className="hideTablet">
-                        <Link className="hideTablet" href="/team">
+                        <Link href="/team">
                             <Button>Meet The Team</Button>
                         </Link>
                     </div>
                     <div className="hideTablet">
-                        <Link className="hideTablet" href="/login">
+                        <Link href="/login">
                             <Button>Login</Button>
                         </Link>
                     </div>
                     <div className="hideTablet">
-                        <Link className="hideTablet" href="/register">
+                        <Link href="/register">
                             <Button>Register</Button>
                         </Link>
                     </div>
