@@ -15,6 +15,8 @@ import Image from 'next/image'
 import { Card } from '../Card'
 import { Title } from '../Title'
 import { SubmitButton } from '../SubmitButton'
+import { useAuth } from '@/hooks/auth'
+import axios from '@/lib/axios'
 /* import Test from './test' */
 
 // Styled components
@@ -133,6 +135,9 @@ function a11yProps(index) {
 }
 
 export function DashboardContent() {
+    const { user } = useAuth()
+    const userId = user?.id
+
     const [value, setValue] = useState(0)
     const [comment, setComment] = useState('')
 
@@ -146,23 +151,25 @@ export function DashboardContent() {
         event.preventDefault()
 
         // store the states in the form data
-        const loginFormData = {
-            
+        const commentData = {
+            comment: comment,
+            user_id: userId,
+            // need to add location/event id
         }
 
-        console.log(loginFormData)
+        console.log(commentData)
 
-        // try {
-        //     // make axios post request
-        //     const response = await axios({
-        //         method: 'post',
-        //         url: '/api/',
-        //         data: loginFormData,
-        //         headers: { 'Content-Type': 'multipart/form-data' },
-        //     })
-        // } catch (error) {
-        //     console.log(error)
-        // }
+        try {
+            // make axios post request
+            const response = await axios({
+                method: 'post',
+                url: '/comadmin',
+                data: commentData,
+                headers: { 'Content-Type': 'multipart/form-data' },
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     const [sharedMarkersState, setSharedMarkersState] = useState({})
@@ -269,7 +276,9 @@ export function DashboardContent() {
                     <div className={`${active ? 'display' : 'dontDisplay'}`}>
                         <Card>
                             <Title title="Add a comment" />
-                            <form className="commentForm">
+                            <form
+                                onSubmit={handleSubmit}
+                                className="commentForm">
                                 <textarea
                                     className="comment"
                                     type="text"
