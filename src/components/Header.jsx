@@ -3,14 +3,47 @@ import Button from './Button'
 import { Dropdown } from './Dropdown'
 import { DropdownItem } from './DropdownItem'
 import { useAuth } from '@/hooks/auth'
+import Link from 'next/link'
+import { Text } from './Text'
+import { SubmitButton } from './SubmitButton'
+import { device } from './Device'
 
 const HeaderWrap = styled.div`
     align-items: center;
     background-color: #39b7ff;
     display: flex;
-    min-height: 80px;
+    gap: 40px;
     justify-content: center;
+    min-height: 80px;
     width: 100%;
+
+    .hideTablet {
+        display: none;
+    }
+
+    @media ${device.mobile} {
+        .hidePhone {
+            display: all;
+        }
+
+        .hideTablet {
+            display: none;
+        }
+    }
+
+    @media ${device.laptop} {
+        .hidePhone {
+            display: none;
+        }
+
+        .hideTablet {
+            display: initial;
+        }
+    }
+`
+
+const LinkText = styled.p`
+    cursor: pointer;
 `
 
 export function Header() {
@@ -19,20 +52,42 @@ export function Header() {
         return (
             <>
                 <HeaderWrap>
-                    <Dropdown>
-                        <DropdownItem link="/" text="Home"></DropdownItem>
-                        <DropdownItem
-                            link="/dashboard"
-                            text="Dashboard"></DropdownItem>
-                        <DropdownItem link="/about" text="About"></DropdownItem>
-                        <DropdownItem
-                            link="/team"
-                            text="Meet the Team"></DropdownItem>
-                        <DropdownItem
-                            link="/account"
-                            text="Account"></DropdownItem>
-                        <Button onClick={logout}>logout</Button>
-                    </Dropdown>
+                    <div className="hideTablet">
+                        <Link href="/">
+                            <Button>Home</Button>
+                        </Link>
+                    </div>
+                    <Link className="hideTablet" href="/dashboard">
+                        <Button>Dashboard</Button>
+                    </Link>
+                    <Link className="hideTablet" href="/about">
+                        <Button>About</Button>
+                    </Link>
+                    <Link className="hideTablet" href="/team">
+                        <Button>Meet The Team</Button>
+                    </Link>
+                    <Link className="hideTablet" href="/account">
+                        <Button>Account</Button>
+                    </Link>
+                    <Button onClick={logout}>Logout</Button>
+                    <div className="hidePhone">
+                        <Dropdown>
+                            <DropdownItem link="/" text="Home"></DropdownItem>
+                            <DropdownItem
+                                link="/dashboard"
+                                text="Dashboard"></DropdownItem>
+                            <DropdownItem
+                                link="/about"
+                                text="About"></DropdownItem>
+                            <DropdownItem
+                                link="/team"
+                                text="Meet the Team"></DropdownItem>
+                            <DropdownItem
+                                link="/account"
+                                text="Account"></DropdownItem>
+                            <Button onClick={logout}>logout</Button>
+                        </Dropdown>
+                    </div>
                 </HeaderWrap>
             </>
         )
@@ -40,20 +95,56 @@ export function Header() {
         return (
             <>
                 <HeaderWrap>
-                    <Dropdown>
-                        <DropdownItem link="/" text="Home"></DropdownItem>
-                        <DropdownItem
-                            link="/dashboard"
-                            text="Dashboard"></DropdownItem>
-                        <DropdownItem link="/about" text="About"></DropdownItem>
-                        <DropdownItem
-                            link="/team"
-                            text="Meet the Team"></DropdownItem>
-                        <DropdownItem link="/login" text="Login"></DropdownItem>
-                        <DropdownItem
-                            link="/register"
-                            text="Register"></DropdownItem>
-                    </Dropdown>
+                    <div className="hideTablet">
+                        <Link href="/">
+                            <Button>Home</Button>
+                        </Link>
+                    </div>
+                    <div className="hideTablet">
+                        <Link className="hideTablet" href="/dashboard">
+                            <Button>Dashboard</Button>
+                        </Link>
+                    </div>
+                    <div className="hideTablet">
+                        <Link className="hideTablet" href="/about">
+                            <Button>About</Button>
+                        </Link>
+                    </div>
+                    <div className="hideTablet">
+                        <Link className="hideTablet" href="/team">
+                            <Button>Meet The Team</Button>
+                        </Link>
+                    </div>
+                    <div className="hideTablet">
+                        <Link className="hideTablet" href="/login">
+                            <Button>Login</Button>
+                        </Link>
+                    </div>
+                    <div className="hideTablet">
+                        <Link className="hideTablet" href="/register">
+                            <Button>Register</Button>
+                        </Link>
+                    </div>
+                    <div className="hidePhone">
+                        <Dropdown>
+                            <DropdownItem link="/" text="Home"></DropdownItem>
+                            <DropdownItem
+                                link="/dashboard"
+                                text="Dashboard"></DropdownItem>
+                            <DropdownItem
+                                link="/about"
+                                text="About"></DropdownItem>
+                            <DropdownItem
+                                link="/team"
+                                text="Meet the Team"></DropdownItem>
+                            <DropdownItem
+                                link="/login"
+                                text="Login"></DropdownItem>
+                            <DropdownItem
+                                link="/register"
+                                text="Register"></DropdownItem>
+                        </Dropdown>
+                    </div>
                 </HeaderWrap>
             </>
         )
