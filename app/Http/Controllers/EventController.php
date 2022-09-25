@@ -117,7 +117,6 @@ class EventController extends Controller
 
         if ($res) {
             return back()->with('success', 'Event has been delete');
-            
         } else
             return back()->with('error', 'Delete didnt work.');
     }

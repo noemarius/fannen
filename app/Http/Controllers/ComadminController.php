@@ -80,11 +80,11 @@ class ComAdminController extends Controller
 
         // Save it in the DB and check if it worked
         if ($comment->save())
-        return redirect('comadmin')->with('success', 'Updated successfully');
+            return redirect('comadmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }
-   
+
 
     /**
      * Remove the specified resource from storage.
@@ -103,13 +103,13 @@ class ComAdminController extends Controller
             return back()->with('error', 'Delete didnt work.');
     }
 
-    public function validateComment($id){
+    public function validateComment($id)
+    {
         $validate = Comment::find($id);
         $validate->validation = true;
         if ($validate->save())
-        return redirect('comadmin')->with('success', 'Validation successfully');
+            return redirect('comadmin')->with('success', 'Validation successfully');
         else
             return 'Problem validation';
-        
     }
 }

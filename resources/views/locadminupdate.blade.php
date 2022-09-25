@@ -2,23 +2,35 @@
 
 @section('title', 'Update Loc admin Page')
 
-@section('css')
-    <link rel="stylesheet" href="style.css">
-@endsection
-
 @section('content')
-    <div class="container">
-        <div class="createForm">
-            <form method="post">
-                @csrf
-                <input type="text" name="name" placeholder="Please enter the location name" /><br />
-                <input type="text" name="address" placeholder="Please enter the location address" /><br />
-                <input type="text" name="geo" placeholder="Please enter the location geo" /><br />
-                <input type="text" name="link" placeholder="Please enter the location link" /><br />
-                <input type="text" name="contact" placeholder="Please enter the location contact" /><br />
-                <button type="submit" name="submitBtn">Update</button>
-
-            </form>
+    <div class="container" style="padding-top:100px;">
+        <div class="row">
+            <div class="col-sm-6">
+                <form method="post">
+                    @csrf
+                    <div class="form-group"><label for="name">Location name</label>
+                        <input class="form-control" type="text" name="name" placeholder="Please enter the location name"
+                            value="{{ $location->name }}" />
+                    </div>
+                    <div class="form-group"><label for="address">address</label>
+                        <input class="form-control" type="text" name="address"
+                            placeholder="Please enter the location address" value="{{ $location->address }}" />
+                    </div>
+                    <div class="form-group"><label for="geo">Geolocation</label>
+                        <input class="form-control" type="text" name="geo"
+                            placeholder="Please enter the location geo" value="{{ $location->geo }}" />
+                    </div>
+                    <div class="form-group"><label for="link">link</label>
+                        <input class="form-control" type="text" name="link"
+                            placeholder="Please enter the location link" value="{{ $location->link }}" />
+                    </div>
+                    <div class="form-group"><label for="contact">contact</label>
+                        <input class="form-control" type="text" name="contact"
+                            placeholder="Please enter the location contact" value="{{ $location->contact }}" />
+                    </div>
+                    <button class="form-control" type="submit" name="submitBtn">Update</button>
+                </form>
+            </div>
         </div>
     </div>
 
