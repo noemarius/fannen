@@ -4,15 +4,18 @@ import { AlignLeft } from '@/components/AlignLeft'
 import { Card } from '@/components/Card'
 import { ContentButton } from '@/components/ContentButton'
 import { Text } from '@/components/Text'
+import { useAuth } from '@/hooks/auth'
 
 export default function Account() {
+    const { login } = useAuth({
+        middleware: 'auth',
+        redirectIfAuthenticated: '/login',
+    })
     return (
         <>
             <Layout pageTitle="Account">
                 <UserDetails
                     image="/user.png"
-                    username="Username"
-                    email="email@here.com"
                     link="/settings"
                     text="Edit Profile"
                     margin="20px 0px 12px 0px"

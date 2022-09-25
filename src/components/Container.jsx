@@ -6,6 +6,7 @@ const StyledContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: ${props => props.gap || ''};
+    justify-content:center;
     margin: ${props => props.margin || '0px 0px'};
     width: 100%;
 `

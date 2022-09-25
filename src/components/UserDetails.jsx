@@ -13,8 +13,8 @@ export function UserDetails(props) {
         <>
             <Card margin={props.margin}>
                 <Image src={props.image} height={80} width={80} />
-                <Title title={user.name} size={props.userSize}></Title>
-                <Text text={user.email} size={props.emailSize}></Text>
+                <Title title={user?.name} size={props.userSize}></Title>
+                <Text text={user?.email} size={props.emailSize}></Text>
                 <LinkButton
                     link={props.link}
                     text={props.text}
