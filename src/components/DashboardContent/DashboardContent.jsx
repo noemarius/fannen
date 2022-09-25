@@ -189,6 +189,9 @@ export function DashboardContent() {
     /* useEffect(() => console.log(sharedCommentState), [sharedCommentState]) */
     /*useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])*/
 
+    //TODO: display a in a better way the tabs, if possible city selection to the right
+    useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])
+
     return (
         <>
             <Card>
@@ -256,6 +259,7 @@ export function DashboardContent() {
                                     treeType={'events'}
                                 />
                             </TabPanel>
+
                         </Box>
                     </div>
                     <Map
