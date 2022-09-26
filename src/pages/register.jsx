@@ -22,7 +22,7 @@ export default function Register() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
-    const [role, setRole] = useState('')
+    const [role, setRole] = useState('User')
     const [errors, setErrors] = useState([])
 
     const handleChange = event => {
