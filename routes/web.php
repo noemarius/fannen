@@ -71,6 +71,4 @@ Route::get('/comadminvalidate/{id}', [ComAdminController::class, 'validateCommen
 Route::get('/comadmin/delete/{id}', [ComAdminController::class, 'destroy']);
 
 
-
-
 require __DIR__ . '/auth.php';

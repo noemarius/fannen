@@ -22,6 +22,7 @@ class LocationFactory extends Factory
             'address' => fake()->sentence(1),
             'geo' => $this->generateGeoLoc(),
             'link' => fake()->sentence(1),
+            'description' => fake()->sentence(1),
             'contact' => fake()->sentence(1),
         ];
     }

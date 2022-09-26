@@ -49,7 +49,7 @@
                 <div class="form-group">
                     <label for="categorie_id">Category ID</label>
                     <input class="form-control" type="text" name="categorie_id"
-                        placeholder="Please enter the event categorie" value={{ $event->categorie_id }} /><br />
+                        placeholder="Please enter the event categorie" value={{ $categorie->name }} /><br />
                 </div>
                 <div class="form-group">
                     <label for="location_id">Location ID</label>

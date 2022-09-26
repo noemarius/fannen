@@ -3,14 +3,29 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Location;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class ComAdminController extends Controller
 {
     public function index()
     {
         $comment = Comment::all();
-        return view('comadmin', ['comment' => $comment]);
+        $locations = Location::all();
+        $users = User::all();
+
+        $comments = DB::table('comments')
+        ->select('comments.*','users.name as user_name', 'locations.name as location_name')
+        ->join('locations', 'location_id', '=', 'locations.id')
+        ->join('users', 'user_id', '=', 'users.id')
+        ->get();
+
+        return view('comadmin')
+        ->with(['comments' => $comments])
+        ->with(['users' => $users])
+        ->with(['locations' => $locations]);
     }
 
     /**
