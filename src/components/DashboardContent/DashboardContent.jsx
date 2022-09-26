@@ -113,7 +113,6 @@ const Container = styled.div`
 `
 function TabPanel(props) {
     const { children, value, index, ...other } = props
-
     return (
         <div
             role="tabpanel"
@@ -150,14 +149,12 @@ export function DashboardContent() {
     const [sharedCommentState, setSharedCommentState] = useState({})
     const [sharedActiveState, setSharedActiveState] = useState(false)
     const [sharedCityIdState, setSharedCityIdState] = useState({})
+    const [value, setValue] = useState(0)
+    const [comment, setComment] = useState('')
+    const [active, setActive] = useState(false)
 
     const { user } = useAuth()
     const userId = user?.id
-
-    const [value, setValue] = useState(0)
-    const [comment, setComment] = useState('')
-
-    const [active, setActive] = useState(false)
 
     const handleChange = (event, newValue) => {
         setValue(newValue)
@@ -166,34 +163,54 @@ export function DashboardContent() {
     const handleSubmit = async e => {
         console.log(e)
         console.log(sharedCommentState)
+        console.log(sharedCommentState.locationId)
         e.preventDefault()
         setActive(false)
 
-        // store the states in the form data
-        const commentData = {
-            comment: comment,
-            user_id: userId,
-            // need to add location/event id
-        }
+        if (sharedCommentState.type == 'categories') {
+            // store the states in the form data
+            const commentData = {
+                comment: comment,
+                user_id: userId,
+                location_id: sharedCommentState.locationId,
+            }
 
-        console.log(commentData)
+            console.log(commentData)
 
-        try {
-            const response = await axios.post('/api/comments', commentData, {
-                'Content-Type': 'multipart/form-data',
-            })
-        } catch (error) {
-            console.log(error)
+            try {
+                const response = await axios.post(
+                    '/api/comments',
+                    commentData,
+                    {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                )
+            } catch (error) {
+                console.log(error)
+            }
+        } else {
+            // store the states in the form data
+            const commentData = {
+                comment: comment,
+                user_id: userId,
+                event_id: sharedCommentState.event_id,
+            }
+
+            console.log(commentData)
+
+            try {
+                const response = await axios.post(
+                    '/api/comments',
+                    commentData,
+                    {
+                        'Content-Type': 'multipart/form-data',
+                    },
+                )
+            } catch (error) {
+                console.log(error)
+            }
         }
     }
-
-    /* useEffect(() => console.log(sharedMarkersState), [sharedMarkersState]) */
-    /* useEffect(() => console.log(sharedCenterState), [sharedCenterState]) */
-    /* useEffect(() => console.log(sharedDetailState), [sharedDetailState]) */
-    /*useEffect(() => console.log(sharedCommentState), [sharedCommentState])*/
-    /*useEffect(() => console.log(sharedActiveState), [sharedActiveState])*/
-    /* useEffect(() => console.log(sharedCommentState), [sharedCommentState]) */
-    /*useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])*/
 
     //TODO: display a in a better way the tabs, if possible city selection to the right
     useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])

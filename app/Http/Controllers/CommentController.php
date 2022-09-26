@@ -33,7 +33,14 @@ class CommentController extends Controller
     public function store(Request $request)
     {
         $comment = new Comment;
+        $comment->user_id = $request->user_id;
         $comment->comment = $request->comment;
+        $comment->location_id = $request->location_id;
+        $comment->event_id = $request->event_id;
+
+
+
+
 
 
         // Save it in the DB and check if it worked
