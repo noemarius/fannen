@@ -169,7 +169,7 @@ export function DashboardContent() {
             // make axios post request
             const response = await axios({
                 method: 'post',
-                url: '/comadmin',
+                url: '/comments',
                 data: commentData,
                 headers: { 'Content-Type': 'multipart/form-data' },
             })

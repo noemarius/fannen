@@ -1,6 +1,8 @@
 import axios from '@/lib/axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { Container } from '../Container'
+import { Text } from '../Text'
 
 async function getLocationDetail(id) {
     let resp = await axios.get(`api/locations/${id.locationId}`)
@@ -14,12 +16,15 @@ export default function Detail(props) {
     }, [props.sharedDetailState])
     return (
         <>
-            <div className={`detailContainer`}>
-                {/* TODO: Add card component */}
-                {Object.entries(detail).map((e, i) => {
-                    return <li key={i}>{JSON.stringify(e)}</li>
-                })}
-            </div>
+            {/* TODO: Add card component */}
+            <Container gap="20px" align="left">
+                <Text text={`Name: ${detail.name}`} />
+                <Text text={`Address: ${detail.address}`} />
+                <Text text={`Contact: ${detail.contact}`} />
+                <a href={detail.link} target="_blank">
+                    <Text text={`Link: ${detail.link}`} />
+                </a>
+            </Container>
         </>
     )
 }
