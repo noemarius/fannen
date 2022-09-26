@@ -11,14 +11,14 @@ const Content = styled.div`
     flex: 1;
 
     @media ${device.tablet} {
-        width: 80%;
+        width: ${props => props.widthTablet || '80%'};
     }
 
     @media ${device.laptop} {
         width: ${props => props.width || '60%'};
     }
 `
-export function Layout(props){
+export function Layout(props) {
     return (
         <>
             <Head>
@@ -36,7 +36,7 @@ export function Layout(props){
             </Head>
             <AppWrap>
                 <Header />
-                <Content width={props.width}>{props.children}</Content>
+                <Content width={props.width} widthTablet={props.widthTablet}>{props.children}</Content>
                 <Footer />
             </AppWrap>
         </>

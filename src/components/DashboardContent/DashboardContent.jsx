@@ -307,6 +307,8 @@ export function DashboardContent() {
                                 <div>Add a comment</div>
                             </button>
                         </div>
+
+                        {/* done till here */}
                         <div
                             className={`${active ? 'display' : 'dontDisplay'}`}>
                             <Card>
