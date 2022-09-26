@@ -5,7 +5,7 @@ import axios from '@/lib/axios'
 
 const mapContainerStyle = {
     width: '100%',
-    height: '400px',
+    height: '500px',
 }
 
 async function getCityCenter(cityId) {
