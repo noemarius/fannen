@@ -15,15 +15,17 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">User ID</th>
+                                <th scope="col">User name</th>
                                 <th scope="col">Location ID</th>
+                                <th scope="col">Location name</th>
                                 <th scope="col">Comment</th>
                                 <th scope="col">Valitated</th>
                                 <th scope="col">Manage</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @if (!empty($comment))
-                                @foreach ($comment as $c)
+                            @if (!empty($comments))
+                                @foreach ($comments as $c)
                                     <tr scope="row">
                                         <td>
                                             {{ $c->id }}
@@ -32,7 +34,13 @@
                                             {{ $c->user_id }}
                                         </td>
                                         <td>
+                                            {{ $c->user_name }}
+                                        </td>
+                                        <td>
                                             {{ $c->location_id }}
+                                        </td>
+                                        <td>
+                                            {{ $c->location_name }}
                                         </td>
                                         <td>
                                             {{ $c->comment }}

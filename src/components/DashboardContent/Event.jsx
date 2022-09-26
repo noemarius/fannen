@@ -40,9 +40,14 @@ export default function Event(props) {
         props.setSharedCenterState(JSON.parse(data))
     }, [])
 
-    const buildIdDetail = useCallback((props, locationId) => {
+    const buildIdDetail = useCallback((props, locationId, categ) => {
         props.setSharedDetailState({ locationId, type: props.treeType })
-        props.setSharedCommentState({ locationId, type: props.treeType })
+        props.setSharedCommentState({
+            locationId,
+            type: props.treeType,
+            categ_id: categ[1][0].categorie_id,
+            event_id: categ[1][0].event_id,
+        })
         props.setSharedActiveState({ click: true })
     }, [])
 
@@ -98,7 +103,7 @@ const Tree = ({
                                     return (
                                         <TreeItem
                                             nodeId={`${(counter += 1)}`}
-                                            label={children.name}
+                                            label={children.event_name}
                                             key={counter}
                                             onClick={() => {
                                                 //display info about location, and comments
@@ -113,7 +118,8 @@ const Tree = ({
                                                 )
                                                 callbackDetail(
                                                     parentProps,
-                                                    children.id,
+                                                    children.location_id,
+                                                    categ,
                                                 )
                                             }}
                                         />

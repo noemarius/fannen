@@ -82,7 +82,7 @@ const Container = styled.div`
     }
 
     .comment {
-        align-text: top;
+        text-align: top;
         resize: none;
         width: 100%;
         height: 200px;
@@ -144,6 +144,13 @@ function a11yProps(index) {
 }
 
 export function DashboardContent() {
+    const [sharedMarkersState, setSharedMarkersState] = useState({})
+    const [sharedCenterState, setSharedCenterState] = useState({})
+    const [sharedDetailState, setSharedDetailState] = useState({})
+    const [sharedCommentState, setSharedCommentState] = useState({})
+    const [sharedActiveState, setSharedActiveState] = useState(false)
+    const [sharedCityIdState, setSharedCityIdState] = useState({})
+
     const { user } = useAuth()
     const userId = user?.id
 
@@ -156,8 +163,10 @@ export function DashboardContent() {
         setValue(newValue)
     }
 
-    const handleSubmit = async () => {
-        event.preventDefault()
+    const handleSubmit = async e => {
+        console.log(e)
+        console.log(sharedCommentState)
+        e.preventDefault()
         setActive(false)
 
         // store the states in the form data
@@ -177,13 +186,6 @@ export function DashboardContent() {
             console.log(error)
         }
     }
-
-    const [sharedMarkersState, setSharedMarkersState] = useState({})
-    const [sharedCenterState, setSharedCenterState] = useState({})
-    const [sharedDetailState, setSharedDetailState] = useState({})
-    const [sharedCommentState, setSharedCommentState] = useState({})
-    const [sharedActiveState, setSharedActiveState] = useState(false)
-    const [sharedCityIdState, setSharedCityIdState] = useState({})
 
     /* useEffect(() => console.log(sharedMarkersState), [sharedMarkersState]) */
     /* useEffect(() => console.log(sharedCenterState), [sharedCenterState]) */
