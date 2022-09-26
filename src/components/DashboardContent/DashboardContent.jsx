@@ -104,7 +104,7 @@ const Container = styled.div`
     }
 
     .treeContainer {
-        width: 40%;
+        width: 100%;
     }
 `
 function TabPanel(props) {
@@ -263,7 +263,6 @@ export function DashboardContent() {
                                     treeType={'events'}
                                 />
                             </TabPanel>
-
                         </Box>
                     </div>
                     <Map
@@ -280,8 +279,8 @@ export function DashboardContent() {
                         <button
                             className="addComment"
                             onClick={() => setActive(!active)}>
-                                <div>Add a comment</div>
                             <Image src={'/plus.svg'} height={32} width={32} />
+                            <div>Add a comment</div>
                         </button>
                     </div>
                     <div className={`${active ? 'display' : 'dontDisplay'}`}>

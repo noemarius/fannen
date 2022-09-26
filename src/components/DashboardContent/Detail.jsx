@@ -16,7 +16,6 @@ export default function Detail(props) {
     }, [props.sharedDetailState])
     return (
         <>
-            {/* TODO: Add card component */}
             <Container gap="20px" align="left">
                 <Text text={`Name: ${detail.name}`} />
                 <Text text={`Address: ${detail.address}`} />

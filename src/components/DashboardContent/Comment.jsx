@@ -1,6 +1,9 @@
 import axios from '@/lib/axios'
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { Container } from '../Container'
+import { Text } from '../Text'
+import Detail from './Detail'
 
 async function getLocationComment(props) {
     let resp
@@ -28,12 +31,25 @@ export default function Comment(props) {
 
     return (
         <>
-            <div className={`commentContainer`}>
+            <div className='overflow'>
+            <Container gap="20px" align="left">
                 {/* TODO: Add card component */}
                 {Object.entries(comment).map(e => {
-                    return <li>{JSON.stringify(e)}</li>
+                    return (
+                        <div>
+                            <Text text={`${e[1].name} added a comment:`} />
+                            <Text text={e[1].comment} />
+                        </div>
+                    )
                 })}
+            </Container>
             </div>
+            <style jsx>{`
+                .overflow {
+                    height: 250px;
+                    overflow: scroll;
+                }
+                `}</style>
         </>
     )
 }
