@@ -311,12 +311,14 @@ export function DashboardContent() {
                             className={`${active ? 'display' : 'dontDisplay'}`}>
                             <Card>
                                 <AlignLeft>
-                                    <p
-                                        onClick={e => {
-                                            setActive(false)
-                                        }}>
-                                        Close
-                                    </p>
+                                    <div className="cont">
+                                        <p
+                                            onClick={e => {
+                                                setActive(false)
+                                            }}>
+                                            Close
+                                        </p>
+                                    </div>
                                 </AlignLeft>
                                 <Title title="Add a comment" />
                                 <form
@@ -337,6 +339,19 @@ export function DashboardContent() {
                         </div>
                     </Container>
                 </Card>
+                <style jsx>{`
+                    .cont {
+                        align-items: center;
+                        background-color: #39b7ff;
+                        border-radius: 20px;
+                        display: flex;
+                        height: 40px;
+                        justify-content: center;
+
+                        width: 100px;
+                        cursor: pointer;
+                    }
+                `}</style>
             </>
         )
     } else {
