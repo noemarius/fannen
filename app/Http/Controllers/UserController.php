@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
+use App\Models\Event;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,7 +17,6 @@ class UserController extends Controller
     public function index()
     {
         return User::all();
-        
     }
 
     /**
@@ -110,5 +111,13 @@ class UserController extends Controller
             return back()->with('success', 'User has been delete');
         } else
             return back()->with('error', 'Delete didnt work.');
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+    public function events()
+    {
+        return $this->hasMany(Event::class);
     }
 }

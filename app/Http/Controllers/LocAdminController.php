@@ -11,7 +11,6 @@ class LocAdminController extends Controller
     {
         $location = Location::all();
         return view('locadmin', ['location' => $location]);
-        
     }
 
     /**
@@ -19,9 +18,10 @@ class LocAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('locadminupdate');
+        $data = Location::find($id);
+        return view('locadminupdate')->with('location', $data);
     }
 
     /**
@@ -90,7 +90,7 @@ class LocAdminController extends Controller
 
         // Save it in the DB and check if it worked
         if ($location->save())
-        return redirect('locadmin')->with('success', 'Updated successfully');
+            return redirect('locadmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }

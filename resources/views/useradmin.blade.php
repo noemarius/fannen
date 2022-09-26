@@ -7,77 +7,86 @@
 @endsection
 
 @section('content')
-    <div class="userContainer">
-        <div class="title">
-            <h2>Users</h2>
-        </div>
+    <div class="container" style="padding-top:100px;">
+        <div class="row">
+            <div class="col-sm">
+                <div class="title">
+                    <h2>Users</h2>
+                </div>
 
-        <div class="wrap">
-            <table id="users">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Email</th>
-                        <th>Statut</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (!empty($user))
-                        @foreach ($user as $u)
+                <div>
+                    <table class="table table-striped">
+                        <thead>
                             <tr>
-                                <td>
-                                    {{ $u->name }}
-                                </td>
-                                <td>
-                                    {{ $u->email }}
-                                </td>
-                                <td>
-                                    {{ $u->role }}
-                                </td>
-                                <td>
-                                    <a href="useradminupdate/{{ $u->id }}">Update</a>
-                                </td>
-                                <td>
-                                    <a href="useradmin/delete/{{ $u->id }}">Delete</a>
-                                </td>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Email</th>
+                                <th scope="col">Statut</th>
+                                <th scope="col">Manage</th>
                             </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            </table>
-        </div>
+                        </thead>
+                        <tbody>
+                            @if (!empty($user))
+                                @foreach ($user as $u)
+                                    <tr scope="row">
+                                        <td>
+                                            {{ $u->id }}
+                                        </td>
+                                        <td>
+                                            {{ $u->name }}
+                                        </td>
+                                        <td>
+                                            {{ $u->email }}
+                                        </td>
+                                        <td>
+                                            {{ $u->role }}
+                                        </td>
+                                        <td>
+                                            <div class="d-flex" style="gap:8px;">
+                                                <a href="useradminupdate/{{ $u->id }}">Update</a>
+                                                <a href="useradmin/delete/{{ $u->id }}">Delete</a>
+                                            </div>
 
-        <div class="title">
-            <h1>Create a new User</h1>
-        </div>
-        <form class="createForm" method="post">
-            @csrf
-            <div class="formContainer">
-                <div class="formBreak">
-                    <p class="formP">Username: </p>
-                    <input class="form" type="text" name="name" placeholder="Username" />
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </tbody>
+                    </table>
                 </div>
-                <div class="formBreak">
-                    <p class="formP">Email:</p>
-                    <input class="form" type="email" name="email" placeholder="Email" />
-                </div>
-                <div class="formBreak">
-                    <p class="formP">Password:</p>
-                    <input class="form" type="password" name="password" placeholder="Password" />
-                </div>
-                <div class="formBreak">
-                    <p class="formP">Role:</p>
-                    <select class="form" name="role">
-                        <option value="administrator">Administrator</option>
-                        <option value="organizer">Organizer</option>
-                        <option value="user">User</option>
-                    </select>
-                </div>
-                <input class="formButton" type="submit" name="submitBtn" value="Create User"/>
             </div>
-        </form>
+            <div class="col-sm">
+                <div class="title">
+                    <h2>Create a new User</h2>
+                </div>
+                <form method="post">
+                    @csrf
+                    <div>
+                        <div class="form-group">
+                            <label for="">Username: </label>
+                            <input class="form-control" type="text" name="name" placeholder="Username" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Email:</label>
+                            <input class="form-control" type="email" name="email" placeholder="Email" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Password:</label>
+                            <input class="form-control" type="password" name="password" placeholder="Password" />
+                        </div>
+                        <div class="form-group">
+                            <label for="">Role:</label>
+                            <select class="form-control" name="role">
+                                <option value="administrator">Administrator</option>
+                                <option value="organizer">Organizer</option>
+                                <option value="user">User</option>
+                            </select>
+                        </div>
+                        <input class="form-control" type="submit" name="submitBtn" value="Create User" />
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 
 
