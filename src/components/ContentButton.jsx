@@ -6,6 +6,7 @@ import { Text } from './Text'
 const ContentContainer = styled.div`
     display: flex;
     width: 100%;
+    cursor: pointer;
 
     &:hover {
         // ask team if they want animations

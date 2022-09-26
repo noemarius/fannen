@@ -21,6 +21,7 @@ export default function UserLocation(props) {
     return (
         <>
             <select
+            className='userLoc'
                 onChange={e => {
                     setCategId(e.target.value)
                 }}>
@@ -29,6 +30,11 @@ export default function UserLocation(props) {
                     return <option value={city[1].id}>{city[1].name}</option>
                 })}
             </select>
+            <style jsx>{`
+                .userLoc {
+                    cursor: pointer;
+                }
+                `}</style>
         </>
     )
 }

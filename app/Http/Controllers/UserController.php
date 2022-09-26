@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Comment;
 use App\Models\Event;
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -37,12 +38,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         $user = new User;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->password = $request->password;
-        $user->role = $request->role;
+        $user->role = $request->organizer;
 
 
 
@@ -98,6 +98,68 @@ class UserController extends Controller
         else
             return 'Problem updating';
     }
+
+    /**
+     * Update the name in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatename(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name = $request->name;
+
+
+        // Save it in the DB and check if it worked
+        if ($user->save())
+            return 'Updated successfully';
+        else
+            return 'Problem updating';
+    }
+
+    /**
+     * Update the email in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updateemail(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->email = $request->email;
+
+
+        // Save it in the DB and check if it worked
+        if ($user->save())
+            return 'Updated successfully';
+        else
+            return 'Problem updating';
+    }
+
+    /**
+     * Update the email in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function updatepassword(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->password = Hash::make($request->password);
+
+
+        // Save it in the DB and check if it worked
+        if ($user->save())
+            return 'Updated successfully';
+        else
+            return 'Problem updating';
+    }
+
+
 
     /**
      * Remove the specified resource from storage.

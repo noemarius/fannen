@@ -15,6 +15,7 @@ export default function Detail(props) {
     useEffect(() => {
         getLocationDetail(props.sharedDetailState).then(rslt => setDetail(rslt))
     }, [props.sharedDetailState])
+    console.log(detail)
     return (
         <>
             <div className="details">
