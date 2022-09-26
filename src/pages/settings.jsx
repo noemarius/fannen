@@ -49,7 +49,7 @@ export default function Settings() {
                             />
                         </AlignLeft>
                         <ContentButton
-                            link="/test"
+                            link=""
                             image="/location.png"
                             text="Location"
                         />

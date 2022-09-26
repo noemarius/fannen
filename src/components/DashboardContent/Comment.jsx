@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import { Container } from '../Container'
 import { Text } from '../Text'
+import { Title } from '../Title'
 import Detail from './Detail'
 
 async function getLocationComment(props) {
@@ -31,25 +32,33 @@ export default function Comment(props) {
 
     return (
         <>
-            <div className='overflow'>
-            <Container gap="20px" align="left">
-                {/* TODO: Add card component */}
-                {Object.entries(comment).map(e => {
-                    return (
-                        <div>
-                            <Text text={`${e[1].name} added a comment:`} />
-                            <Text text={e[1].comment} />
-                        </div>
-                    )
-                })}
-            </Container>
+            <div className="overflow">
+                <Title title="Comments:" />
+                <Container gap="20px" align="left" margin="20px 0px 0px 0px">
+                    {/* TODO: Add card component */}
+                    {Object.entries(comment).map(e => {
+                        return (
+                            <div className="flex">
+                                <Text text={`${e[1].name} added a comment:`} />
+                                <Text text={`- ${e[1].comment}`} />
+                            </div>
+                        )
+                    })}
+                </Container>
             </div>
             <style jsx>{`
                 .overflow {
                     height: 250px;
                     overflow: scroll;
+                    width: 100%;
+                    padding: 20px 0px 0px 0px;
                 }
-                `}</style>
+                .flex {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 4px;
+                }
+            `}</style>
         </>
     )
 }
