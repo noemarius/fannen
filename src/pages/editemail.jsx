@@ -37,16 +37,18 @@ export default function EditEmail() {
 
         // store the states in the form data
         const formData = {
-            id: user.id,
             email: value,
         }
         console.log(formData)
-
         try {
             // make axios post request
-            const response = await axios.post('/api/users', formData, {
-                'Content-Type': 'multipart/form-data',
-            })
+            const response = await axios.put(
+                `api/updateemail/${user.id}`,
+                formData,
+                {
+                    'Content-Type': 'multipart/form-data',
+                },
+            )
         } catch (error) {
             console.log(error)
         }
