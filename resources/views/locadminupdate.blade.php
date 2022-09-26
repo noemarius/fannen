@@ -12,6 +12,12 @@
                         <input class="form-control" type="text" name="name" placeholder="Please enter the location name"
                             value="{{ $location->name }}" />
                     </div>
+
+                    <div class="form-group"><label for="city">City</label>
+                        <input class="form-control" type="text" name="city"
+                            placeholder="Please enter the location city" value="{{ $location->city_name }}" />
+                    </div>
+                   
                     <div class="form-group"><label for="address">address</label>
                         <input class="form-control" type="text" name="address"
                             placeholder="Please enter the location address" value="{{ $location->address }}" />

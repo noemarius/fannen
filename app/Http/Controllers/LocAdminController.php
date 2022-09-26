@@ -2,15 +2,27 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Citie;
 use App\Models\Location;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class LocAdminController extends Controller
 {
     public function index()
     {
         $location = Location::all();
-        return view('locadmin', ['location' => $location]);
+        $cities = Citie::all();
+
+        $location = DB::table('locations')
+        ->select('locations.*','cities.name as city_name')
+        ->join('cities', 'city_id', '=', 'cities.id')
+        ->get();
+
+        return view('locadmin')
+            ->with (['location'=> $location])
+            ->with (['cities' => $cities]);
+          
     }
 
     /**
@@ -80,9 +92,13 @@ class LocAdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $cities = DB::table('locations')
+        ->select('locations.*','cities.name as city_name')
+        ->join('cities', 'city_id', '=', 'cities.id')
+        ->get();
         $location = Location::find($id);
         $location->name = $request->name;
+        $cities->name = $request->name;
         $location->address = $request->address;
         $location->geo = $request->geo;
         $location->link = $request->link;

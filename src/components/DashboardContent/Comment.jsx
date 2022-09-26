@@ -39,7 +39,7 @@ export default function Comment(props) {
                     {Object.entries(comment).map(e => {
                         return (
                             <div className="flex">
-                                <Text text={`${e[1].name} added a comment:`} />
+                                <Text text={`${e[1].name} says:`} />
                                 <Text text={`- ${e[1].comment}`} />
                             </div>
                         )

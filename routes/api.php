@@ -47,3 +47,7 @@ Route::get('locsandevents', [LocationEventController::class, 'index']);
 Route::get('locsandevents/city/{id}', [LocationEventController::class, 'show']);
 Route::get('eventslocsandcomments/{id}', [EventController::class, 'getEventComment']);
 Route::get('events/details/{id}', [EventController::class, 'getEventLocationCategories']);
+Route::put('updatename/{id}', [UserController::class, 'updatename']);
+Route::put('updateemail/{id}', [UserController::class, 'updateemail']);
+Route::put('updatepassword/{id}', [UserController::class, 'updatepassword']);
+
