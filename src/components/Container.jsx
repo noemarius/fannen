@@ -9,6 +9,7 @@ const StyledContainer = styled.div`
     gap: ${props => props.gap || ''};
     justify-content:center;
     margin: ${props => props.margin || '0px 0px'};
+    padding: ${props => props.padding || ''};
     width: 100%;
 
 
@@ -16,7 +17,7 @@ const StyledContainer = styled.div`
 
 export function Container(props) {
     return (
-        <StyledContainer align={props.align} color={props.color} gap={props.gap} margin={props.margin}>
+        <StyledContainer align={props.align} color={props.color} gap={props.gap} margin={props.margin} padding={props.padding}>
             {props.children}
         </StyledContainer>
     )
