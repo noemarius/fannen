@@ -89,17 +89,17 @@ export default function CreateEvent() {
         }
         console.log(loginFormData)
 
-        // try {
-        //     // make axios post request
-        //     const response = await axios({
-        //         method: 'post',
-        //         url: '/api/',
-        //         data: loginFormData,
-        //         headers: { 'Content-Type': 'multipart/form-data' },
-        //     })
-        // } catch (error) {
-        //     console.log(error)
-        // }
+         try {
+             // make axios post request
+             const response = await axios({
+                 method: 'post',
+                 url: '/api/events',
+                 data: loginFormData,
+                 headers: { 'Content-Type': 'multipart/form-data' },
+             })
+         } catch (error) {
+             console.log(error)
+         }
     }
 
     useEffect(() => {
