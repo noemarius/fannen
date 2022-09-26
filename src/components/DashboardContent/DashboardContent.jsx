@@ -73,8 +73,8 @@ const Container = styled.div`
     .display {
         position: absolute;
         top: 30%;
-        left: 30%;
-        right: 30%;
+        left: 20%;
+        right: 20%;
     }
 
     .dontDisplay {
@@ -101,6 +101,10 @@ const Container = styled.div`
         border-radius: 20px;
         height: 60px;
         width: 200px;
+    }
+
+    .treeContainer {
+        width: 40%;
     }
 `
 function TabPanel(props) {
@@ -276,7 +280,8 @@ export function DashboardContent() {
                         <button
                             className="addComment"
                             onClick={() => setActive(!active)}>
-                            <Image src={'/plus.svg'} height={67} width={67} />
+                                <div>Add a comment</div>
+                            <Image src={'/plus.svg'} height={32} width={32} />
                         </button>
                     </div>
                     <div className={`${active ? 'display' : 'dontDisplay'}`}>

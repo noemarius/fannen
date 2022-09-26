@@ -13,7 +13,7 @@ export default function Account() {
     })
     return (
         <>
-            <Layout pageTitle="Account">
+            <Layout pageTitle="Account" width="50%">
                 <UserDetails
                     image="/user.png"
                     link="/settings"
