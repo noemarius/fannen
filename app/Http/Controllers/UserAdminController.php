@@ -25,9 +25,10 @@ class UserAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('useradmin');
+        $data = User::find($id);
+        return view('useradminupdate')->with('user', $data);
     }
 
     /**
@@ -93,7 +94,7 @@ class UserAdminController extends Controller
 
         // Save it in the DB and check if it worked
         if ($user->save())
-        return redirect('useradmin')->with('success', 'Updated successfully');
+            return redirect('useradmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }

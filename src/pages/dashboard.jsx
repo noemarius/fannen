@@ -4,10 +4,9 @@ import { useAuth } from '@/hooks/auth'
 
 export default function Dashboard() {
     const user = useAuth()
-    console.log(user)
     return (
         <>
-            <Layout pageTitle="Dashboard">
+            <Layout pageTitle="Dashboard" width="95%">
                 <DashboardContent />
             </Layout>
         </>

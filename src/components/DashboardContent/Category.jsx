@@ -8,26 +8,31 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore'
 import ChevronRightIcon from '@mui/icons-material/ChevronRight'
 import { useCallback } from 'react'
 
-async function getCategoriesAndLocations() {
-    const resp = await axios.get('api/locsandcategs')
-    return resp
+async function getCategoriesAndLocations(cityId) {
+    let resp
+    if (cityId == 0) {
+        resp = await axios.get('api/locsandcategs')
+    } else {
+        resp = await axios.get(`api/locsandcategs/city/${cityId}`)
+    }
+
+    return resp.data
 }
 
 export default function Category(props) {
     const [categAndLoc, setCategAndLoc] = useState([])
 
     useEffect(() => {
-        getCategoriesAndLocations().then(result => {
-            result = result.data
+        getCategoriesAndLocations(props.sharedCityIdState).then(result => {
             setCategAndLoc(result)
         })
-    }, [])
+    }, [props.sharedCityIdState])
 
     const buildGeoLocCateg = useCallback((props, data, id) => {
         let newJson = data[id][1].map(e => {
             return { position: JSON.parse(e.geo), label: e.name }
         })
-        props.setSharedState(newJson)
+        props.setSharedMarkersState(newJson)
     }, [])
 
     const buildGeoLocCenter = useCallback((props, data) => {
@@ -37,6 +42,7 @@ export default function Category(props) {
     const buildIdDetail = useCallback((props, locationId) => {
         props.setSharedDetailState({ locationId, type: props.treeType })
         props.setSharedCommentState({ locationId, type: props.treeType })
+        props.setSharedActiveState({ click: true })
     }, [])
 
     return (

@@ -2,16 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
-use App\Models\User;
+use App\Models\Citie;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
-class CommentController extends Controller
+class CitiesAdminController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
     {
-        return Comment::all();
+        //
+        $cities = Citie::all();
+        return view('citiesadmin', ['cities' => $cities]);
     }
 
     /**
@@ -19,9 +24,11 @@ class CommentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('insert_comment');
+        //
+        $data = Citie::find($id);
+        return view('citiesadminupdate')->with('cities', $data);
     }
 
     /**
@@ -32,13 +39,15 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        $comment = new Comment;
-        $comment->comment = $request->comment;
+        //
+        $city = new Citie;
+        $city->name = $request->name;
+        $city->geo = $request->geo;
 
 
         // Save it in the DB and check if it worked
-        if ($comment->save())
-            return redirect('home')->with('success', 'Insert successfully');
+        if ($city->save())
+            return redirect('citiesadmin')->with('success', 'Insert successfully');
         else
             return 'Problem inserting';
     }
@@ -51,8 +60,8 @@ class CommentController extends Controller
      */
     public function show($id)
     {
-
-        return DB::table("comments")->join('users', 'comments.user_id', '=', 'users.id')->select('comments.id', 'users.name', 'comments.comment', 'comments.location_id', 'comments.event_id')->where('comments.location_id', '=', $id)->whereNull('comments.event_id')->orderByDesc('comments.id')->get();
+        //
+        return Citie::find($id);
     }
 
     /**
@@ -63,7 +72,8 @@ class CommentController extends Controller
      */
     public function edit($id)
     {
-        return Comment::find($id);
+        //
+        return Citie::find($id);
     }
 
     /**
@@ -75,14 +85,15 @@ class CommentController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        $comment = Comment::find($id);
-        $comment->comment = $request->comment;
+        //
+        $city = Citie::find($id);
+        $city->name = $request->name;
+        $city->geo = $request->geo;
 
 
         // Save it in the DB and check if it worked
-        if ($comment->save())
-            return 'Updated successfully';
+        if ($city->save())
+            return redirect('citiesadmin')->with('success', 'Updated successfully');
         else
             return 'Problem updating';
     }
@@ -95,15 +106,12 @@ class CommentController extends Controller
      */
     public function destroy($id)
     {
-        $res = Comment::destroy($id);
+        //
+        $res = Citie::destroy($id);
 
         if ($res) {
-            return back()->with('success', 'Comment has been delete');
+            return back()->with('success', 'Category has been deleted');
         } else
             return back()->with('error', 'Delete didnt work.');
-    }
-    public function user()
-    {
-        return $this->hasOne(User::class);
     }
 }

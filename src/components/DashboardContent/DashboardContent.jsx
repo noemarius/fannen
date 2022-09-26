@@ -10,6 +10,14 @@ import Tabs from '@mui/material/Tabs'
 import Tab from '@mui/material/Tab'
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
+import UserLocation from './UserLocation'
+import Image from 'next/image'
+import { Card } from '../Card'
+import { Title } from '../Title'
+import { SubmitButton } from '../SubmitButton'
+import { useAuth } from '@/hooks/auth'
+import axios from '@/lib/axios'
+import { AlignLeft } from '../AlignLeft'
 /* import Test from './test' */
 
 // Styled components
@@ -18,7 +26,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 20px;
-    margin-top: 12px;
+    margin: 12px 0px;
     width: 100%;
     .categoryContainer {
         box-shadow: #fff 0px 3px 8px;
@@ -44,6 +52,60 @@ const Container = styled.div`
         width: 100%;
         justify-items: center;
     }
+    .MuiTreeView-root {
+        min-height: 0px;
+    }
+
+    .inactive {
+        display: none;
+        position: absolute;
+    }
+
+    .infoContainer {
+        position: relative;
+    }
+    .addComment {
+        position: absolute;
+        right: 5px;
+        bottom: 5px;
+    }
+
+    .display {
+        position: absolute;
+        top: 30%;
+        left: 20%;
+        right: 20%;
+    }
+
+    .dontDisplay {
+        display: none;
+    }
+
+    .comment {
+        align-text: top;
+        resize: none;
+        width: 100%;
+        height: 200px;
+    }
+
+    .commentForm {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .commentButton {
+        background-color: blue;
+        border-radius: 20px;
+        height: 60px;
+        width: 200px;
+    }
+
+    .treeContainer {
+        width: 40%;
+    }
 `
 function TabPanel(props) {
     const { children, value, index, ...other } = props
@@ -56,7 +118,7 @@ function TabPanel(props) {
             aria-labelledby={`simple-tab-${index}`}
             {...other}>
             {value === index && (
-                <Box sx={{ p: 3 }}>
+                <Box sx={{ p: 0, mt: 2 }}>
                     <Typography>{children}</Typography>
                 </Box>
             )}
@@ -78,80 +140,183 @@ function a11yProps(index) {
 }
 
 export function DashboardContent() {
+    const { user } = useAuth()
+    const userId = user?.id
+
     const [value, setValue] = useState(0)
+    const [comment, setComment] = useState('')
+
+    const [active, setActive] = useState(false)
 
     const handleChange = (event, newValue) => {
         setValue(newValue)
     }
 
-    const [sharedState, setSharedState] = useState({})
+    const handleSubmit = async () => {
+        event.preventDefault()
+        setActive(false)
+
+        // store the states in the form data
+        const commentData = {
+            comment: comment,
+            user_id: userId,
+            // need to add location/event id
+        }
+
+        console.log(commentData)
+
+        try {
+            // make axios post request
+            const response = await axios({
+                method: 'post',
+                url: '/comadmin',
+                data: commentData,
+                headers: { 'Content-Type': 'multipart/form-data' },
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    const [sharedMarkersState, setSharedMarkersState] = useState({})
     const [sharedCenterState, setSharedCenterState] = useState({})
     const [sharedDetailState, setSharedDetailState] = useState({})
     const [sharedCommentState, setSharedCommentState] = useState({})
+    const [sharedActiveState, setSharedActiveState] = useState(false)
+    const [sharedCityIdState, setSharedCityIdState] = useState({})
 
-    /* useEffect(() => console.log(sharedState), [sharedState]) */
+    /* useEffect(() => console.log(sharedMarkersState), [sharedMarkersState]) */
     /* useEffect(() => console.log(sharedCenterState), [sharedCenterState]) */
     /* useEffect(() => console.log(sharedDetailState), [sharedDetailState]) */
-    useEffect(() => console.log(sharedCommentState), [sharedCommentState])
+    /*useEffect(() => console.log(sharedCommentState), [sharedCommentState])*/
+    /*useEffect(() => console.log(sharedActiveState), [sharedActiveState])*/
+    /* useEffect(() => console.log(sharedCommentState), [sharedCommentState]) */
+    /*useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])*/
+
+    //TODO: display a in a better way the tabs, if possible city selection to the right
+    useEffect(() => console.log(sharedCityIdState), [sharedCityIdState])
+
     return (
         <>
-            <Container>
-                <div className={`treeContainer`}>
-                    <Box sx={{ width: '100%' }}>
-                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                            <Tabs
-                                value={value}
-                                onChange={handleChange}
-                                aria-label="basic tabs example">
-                                <Tab label="Themes" {...a11yProps(0)} />
-                                <Tab label="Events" {...a11yProps(1)} />
-                            </Tabs>
+            <Card>
+                <Container>
+                    <UserLocation
+                        setSharedCityIdState={val => {
+                            setSharedCityIdState(val)
+                        }}
+                    />
+                    <div className={`treeContainer`}>
+                        <Box sx={{ width: '100%' }}>
+                            <Box
+                                sx={{
+                                    borderBottom: 1,
+                                    borderColor: 'divider',
+                                }}>
+                                <Tabs
+                                    value={value}
+                                    onChange={handleChange}
+                                    variant="fullWidth"
+                                    aria-label="basic tabs example">
+                                    <Tab label="Themes" {...a11yProps(0)} />
+                                    <Tab label="Events" {...a11yProps(1)} />
+                                </Tabs>
+                            </Box>
+                            <TabPanel value={value} index={0}>
+                                <Category
+                                    setSharedMarkersState={val => {
+                                        setSharedMarkersState(val)
+                                    }}
+                                    setSharedCenterState={val => {
+                                        setSharedCenterState(val)
+                                    }}
+                                    setSharedDetailState={val => {
+                                        setSharedDetailState(val)
+                                    }}
+                                    setSharedCommentState={val => {
+                                        setSharedCommentState(val)
+                                    }}
+                                    setSharedActiveState={val => {
+                                        setSharedActiveState(val)
+                                    }}
+                                    sharedCityIdState={sharedCityIdState}
+                                    treeType={'categories'}
+                                />
+                            </TabPanel>
+                            <TabPanel value={value} index={1}>
+                                <Event
+                                    setSharedMarkersState={val => {
+                                        setSharedMarkersState(val)
+                                    }}
+                                    setSharedCenterState={val => {
+                                        setSharedCenterState(val)
+                                    }}
+                                    setSharedDetailState={val => {
+                                        setSharedDetailState(val)
+                                    }}
+                                    setSharedCommentState={val => {
+                                        setSharedCommentState(val)
+                                    }}
+                                    setSharedActiveState={val => {
+                                        setSharedActiveState(val)
+                                    }}
+                                    sharedCityIdState={sharedCityIdState}
+                                    treeType={'events'}
+                                />
+                            </TabPanel>
+
                         </Box>
-                        <TabPanel value={value} index={0}>
-                            <Category
-                                setSharedState={val => {
-                                    setSharedState(val)
-                                }}
-                                setSharedCenterState={val => {
-                                    setSharedCenterState(val)
-                                }}
-                                setSharedDetailState={val => {
-                                    setSharedDetailState(val)
-                                }}
-                                setSharedCommentState={val => {
-                                    setSharedCommentState(val)
-                                }}
-                                treeType={'categories'}
-                            />
-                        </TabPanel>
-                        <TabPanel value={value} index={1}>
-                            <Event
-                                setSharedState={val => {
-                                    setSharedState(val)
-                                }}
-                                setSharedCenterState={val => {
-                                    setSharedCenterState(val)
-                                }}
-                                setSharedDetailState={val => {
-                                    setSharedDetailState(val)
-                                }}
-                                setSharedCommentState={val => {
-                                    setSharedCommentState(val)
-                                }}
-                                treeType={'events'}
-                            />
-                        </TabPanel>
-                    </Box>
-                </div>
-                <Map
-                    sharedState={sharedState}
-                    sharedCenterState={sharedCenterState}
-                />
-                <div className={`infoContainer`}>
-                    <Detail sharedDetailState={sharedDetailState} />
-                    <Comment sharedCommentState={sharedCommentState} />
-                </div>
-            </Container>
+                    </div>
+                    <Map
+                        sharedMarkersState={sharedMarkersState}
+                        sharedCenterState={sharedCenterState}
+                        sharedCityIdState={sharedCityIdState}
+                    />
+                    <div
+                        className={`infoContainer ${
+                            sharedActiveState ? 'active' : 'inactive'
+                        }`}>
+                        <Detail sharedDetailState={sharedDetailState} />
+                        <Comment sharedCommentState={sharedCommentState} />
+                        <button
+                            className="addComment"
+                            onClick={() => setActive(!active)}>
+                                <div>Add a comment</div>
+                            <Image src={'/plus.svg'} height={32} width={32} />
+                        </button>
+                    </div>
+                    <div className={`${active ? 'display' : 'dontDisplay'}`}>
+                        <Card>
+                            <AlignLeft>
+                                <p
+                                    onClick={e => {
+                                        setActive(false)
+                                    }}>
+                                    Close
+                                </p>
+                            </AlignLeft>
+                            <Title title="Add a comment" />
+                            <form
+                                onSubmit={handleSubmit}
+                                className="commentForm">
+                                <textarea
+                                    className="comment"
+                                    type="text"
+                                    name="comment"
+                                    value={comment}
+                                    onChange={e => {
+                                        setComment(event.target.value)
+                                    }}
+                                />
+                                <SubmitButton value="Add Comment" />
+                            </form>
+                        </Card>
+                    </div>
+                </Container>
+            </Card>
         </>
     )
 }
+
+// className={`addComment ${
+//     active ? 'show' : 'dont'
+// }`}>

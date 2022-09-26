@@ -2,22 +2,18 @@
 
 @section('title', 'Category Admin Update Cat Page')
 
-@section('css')
-    <link rel="stylesheet" href="style.css">
-@endsection
-
 @section('content')
-    <div class="container">
-      
-            <div class="createForm">
-                <form method="post">
-                    @csrf
-                    <input type="text" name="name" placeholder="Please enter the category name" /><br />
-                    <button type="submit" name="submitBtn">Update</button>
-
-                </form>
-            </div>
+    <div class="container" style="padding-top:100px;">
+        <div class="createForm">
+            <form method="post">
+                @csrf
+                <div class="form-group">
+                    <label for="categoryName">Category name</label>
+                    <input type="text" name="name" class="form-control" placeholder="Please enter the category name"
+                        value="{{ $category->name }}" id="categoryName" />
+                    <button class="form-control" type="submit" name="submitBtn">Update</button>
+                </div>
+            </form>
         </div>
-
-
-    @endsection
+    </div>
+@endsection
