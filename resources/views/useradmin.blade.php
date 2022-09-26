@@ -21,7 +21,7 @@
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
                                 <th scope="col">Email</th>
-                                <th scope="col">Statut</th>
+                                <th scope="col">Role</th>
                                 <th scope="col">Manage</th>
                             </tr>
                         </thead>
