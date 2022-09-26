@@ -26,7 +26,7 @@ export function Layout(props){
                 <link
                     rel="preconnect"
                     href="https://fonts.gstatic.com"
-                    crossorigin
+                    crossOrigin="true"
                 />
                 <link
                     href="https://fonts.googleapis.com/css2?family=Roboto:ital@0;1&display=swap"

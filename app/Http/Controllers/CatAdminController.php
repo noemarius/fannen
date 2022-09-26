@@ -30,9 +30,10 @@ class CatAdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        return view('catadmin');
+        $data = Categorie::find($id);
+        return view('catadminupdate')->with('category', $data);
     }
 
     /**
@@ -108,11 +109,9 @@ class CatAdminController extends Controller
     {
         $res = Categorie::destroy($id);
 
-          if ($res) {
+        if ($res) {
             return back()->with('success', 'Category has been deleted');
         } else
             return back()->with('error', 'Delete didnt work.');
-    
-        
     }
 }

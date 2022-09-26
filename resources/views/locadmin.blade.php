@@ -2,94 +2,95 @@
 
 @section('title', 'Administrator Loc Page')
 
-@section('css')
-    <link rel="stylesheet" href="styles.css">
-@endsection
-
 @section('content')
-    <div class="userContainer">
-        <div class="title">
-            <h2>Locations</h2>
-        </div>
-        <div class="wrap">
-            <table id="users">
-                <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Coordinates</th>
-                        <th>Link</th>
-                        <th>Contact</th>
-                        <th>Update</th>
-                        <th>Delete</th>
-
-                    </tr>
-                </thead>
-                <tbody>
-                    @if (!empty($location))
-                        @foreach ($location as $l)
-                            <tr>
-                                <td>
-                                    {{ $l->name }}
-                                </td>
-                                <td>
-                                    {{ $l->address }}
-                                </td>
-                                <td>
-                                    {{ $l->geo }}
-                                </td>
-                                <td>
-                                    {{ $l->link }}
-                                </td>
-                                <td>
-                                    {{ $l->contact }}
-                                </td>
-                                <td>
-
-                                    <a href="locadminupdate/{{ $l->id }}">Update</a>
-                                </td>
-                                <td>
-                                    <a href="locadmin/delete/{{ $l->id }}">Delete</a>
-                                </td>
-
-                            </tr>
-                        @endforeach
-                    @endif
-                </tbody>
-            </table>
-        </div>
-
-        <div class="title">
-            <h1>Create a new Location</h1>
-        </div>
-        <div class="createForm">
-            <form class="createForm" method="post">
-                @csrf
-                <div class="formContainer">
-                    <div class="formBreak">
-                        <p class="formP">Name: </p>
-                        <input class="form" type="text" name="name" placeholder="Name" />
-                    </div>
-                    <div class="formBreak">
-                        <p class="formP">Address:</p>
-                        <input class="form" type="text" name="address" placeholder="Address" />
-                    </div>
-                    <div class="formBreak">
-                        <p class="formP">Coordinates:</p>
-                        <input class="form" type="text" name="geo" placeholder="Coordinates" />
-                    </div>
-                    <div class="formBreak">
-                        <p class="formP">Link:</p>
-                        <input class="form" type="text" name="link" placeholder="Link" />
-                    </div>
-                    <div class="formBreak">
-                        <p class="formP">Contact:</p>
-                        <input class="form" type="text" name="contact" placeholder="Contact" />
-                    </div>
-
-                    <input class="formButton" type="submit" name="submitBtn" value="Create Location"/>
+    <div class="container" style="padding-top:100px;">
+        <div class="row">
+            <div class="col-sm">
+                <div class="title">
+                    <h2>Locations</h2>
                 </div>
-            </form>
+                <div>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Address</th>
+                                <th scope="col">Coordinates</th>
+                                <th scope="col">Link</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Manage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (!empty($location))
+                                @foreach ($location as $l)
+                                    <tr scope="row">
+                                        <td>
+                                            {{ $l->id }}
+                                        </td>
+                                        <td>
+                                            {{ $l->name }}
+                                        </td>
+                                        <td>
+                                            {{ $l->address }}
+                                        </td>
+                                        <td>
+                                            {{ $l->geo }}
+                                        </td>
+                                        <td>
+                                            {{ $l->link }}
+                                        </td>
+                                        <td>
+                                            {{ $l->contact }}
+                                        </td>
+                                        <td>
+                                            <div class="d-flex" style="gap:8px;">
+                                                <a href="locadminupdate/{{ $l->id }}">Update</a>
+                                                <a href="locadmin/delete/{{ $l->id }}">Delete</a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @endif
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="title">
+                    <h2>Create a new Location</h2>
+                </div>
+                <div>
+                    <form method="post">
+                        @csrf
+                        <div class="form-group">
+                            <div class="formBreak">
+                                <label for="">Name: </label>
+                                <input class="form-control" type="text" name="name" placeholder="Name" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Address:</label>
+                                <input class="form-control" type="text" name="address" placeholder="Address" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Coordinates:</label>
+                                <input class="form-control" type="text" name="geo" placeholder="Coordinates" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Link:</label>
+                                <input class="form-control" type="text" name="link" placeholder="Link" />
+                            </div>
+                            <div class="form-group">
+                                <label for="">Contact:</label>
+                                <input class="form-control" type="text" name="contact" placeholder="Contact" />
+                            </div>
+
+                            <input class="form-control" type="submit" name="submitBtn" value="Create Location" />
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 
