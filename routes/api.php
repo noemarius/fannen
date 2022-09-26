@@ -48,3 +48,4 @@ Route::get('eventslocsandcomments/{id}', [EventController::class, 'getEventComme
 
 Route::put('updatename/{id}', [UserController::class, 'updatename']);
 Route::put('updateemail/{id}', [UserController::class, 'updateemail']);
+Route::put('updatepassword/{id}', [UserController::class, 'updatepassword']);
