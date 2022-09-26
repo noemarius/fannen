@@ -10,6 +10,7 @@ import Input from '@/components/Input'
 import InputError from '@/../vendor/laravel/breeze/stubs/inertia-react/resources/js/Components/InputError'
 import Label from '@/components/Label'
 import Link from 'next/link'
+import { CheckBox } from '@mui/icons-material'
 
 export default function Register() {
     const { user, register } = useAuth({
@@ -21,7 +22,15 @@ export default function Register() {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [passwordConfirmation, setPasswordConfirmation] = useState('')
+    const [role, setRole] = useState('')
     const [errors, setErrors] = useState([])
+
+    const handleChange = event => {
+        console.log(event.target.value)
+        setRole(event.target.value)
+    }
+
+    console.log(role)
 
     const submitForm = event => {
         event.preventDefault()
@@ -31,6 +40,7 @@ export default function Register() {
             email,
             password,
             password_confirmation: passwordConfirmation,
+            role,
             setErrors,
         })
     }
@@ -135,6 +145,18 @@ export default function Register() {
                                 />
                             </div>
 
+                            {/* Organizer */}
+                            <div className="organizer" name="role">
+                                <div>Are you a</div>
+                                <select
+                                    onChange={handleChange}
+                                    value={role}
+                                    name="role">
+                                    <option value="User">User</option>
+                                    <option value="Organizer">Organizer</option>
+                                </select>
+                            </div>
+
                             <div className="flex items-center justify-end mt-4">
                                 <Link href="/login">
                                     <a className="underline text-sm text-gray-600 hover:text-gray-900">
@@ -148,6 +170,16 @@ export default function Register() {
                     </Card>
                 </Container>
             </Layout>
+            <style jsx>{`
+                .organizer {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 20px;
+                    margin-top: 20px;
+                    justify-content: center;
+                    align-items: center;
+                }
+            `}</style>
         </>
     )
 }

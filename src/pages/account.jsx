@@ -31,13 +31,8 @@ export default function Account() {
                     />
                     <ContentButton
                         link="/create-event"
-                        image="/heart.png"
+                        image="/event.png"
                         text="Add an Event"
-                    />
-                    <ContentButton
-                        link="/test"
-                        image="/heart.png"
-                        text="Something"
                     />
                 </Card>
                 <AlignLeft>
