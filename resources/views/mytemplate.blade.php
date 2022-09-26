@@ -27,9 +27,9 @@
                     src="{{ asset('fannen.png') }}" style="width:70px;" /> Admin Panel</a>
             <ul class="navbar-nav" style="font-size:24px;">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">
+                    {{-- <a class="nav-link" href="#">
                         Login
-                    </a>
+                    </a> --}}
                 <li class="nav-item">
                     <a class="nav-link" href="/">
                         Logout

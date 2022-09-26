@@ -40,8 +40,10 @@ Route::resource('locations', LocationController::class);
 Route::resource('users', UserController::class);
 Route::resource('events', EventController::class);
 Route::resource('cities', CitieController::class);
+
 Route::get('locsandcategs', [LocationCategorieController::class, 'index']);
 Route::get('locsandcategs/city/{id}', [LocationCategorieController::class, 'show']);
 Route::get('locsandevents', [LocationEventController::class, 'index']);
 Route::get('locsandevents/city/{id}', [LocationEventController::class, 'show']);
 Route::get('eventslocsandcomments/{id}', [EventController::class, 'getEventComment']);
+Route::get('events/details/{id}', [EventController::class, 'getEventLocationCategories']);

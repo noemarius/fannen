@@ -67,7 +67,8 @@
                                 </div>
                                 <div class="d-flex justify-content-center mb-4">
                                     <!-- Submit button -->
-                                    <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+                                    <a href="/useradmin" type="submit" class="btn btn-primary btn-block mb-4">Sign
+                                        in</a>
                                 </div>
                                 <!-- Register buttons -->
                                 <div class="text-center">
@@ -139,7 +140,8 @@
 
                                 <!-- Submit button -->
                                 <div class="d-flex justify-content-center mb-4">
-                                    <button type="submit" class="btn btn-primary btn-block mb-3">Sign in</button>
+                                    <a href="/useradmin" type="submit" class="btn btn-primary btn-block mb-3">Sign
+                                        in</a>
                                 </div>
                             </form>
                         </div>

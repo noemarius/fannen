@@ -40,8 +40,8 @@ export default function Event(props) {
         props.setSharedCenterState(JSON.parse(data))
     }, [])
 
-    const buildIdDetail = useCallback((props, locationId, categ) => {
-        props.setSharedDetailState({ locationId, type: props.treeType })
+    const buildIdDetail = useCallback((props, locationId, event_id, categ) => {
+        props.setSharedDetailState({ event_id, type: props.treeType })
         props.setSharedCommentState({
             locationId,
             type: props.treeType,
@@ -119,6 +119,7 @@ const Tree = ({
                                                 callbackDetail(
                                                     parentProps,
                                                     children.location_id,
+                                                    children.event_id,
                                                     categ,
                                                 )
                                             }}

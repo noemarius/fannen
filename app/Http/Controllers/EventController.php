@@ -136,4 +136,9 @@ class EventController extends Controller
     {
         return DB::table('comments')->join('events', 'comments.event_id', '=', 'events.id')->join('users', 'events.user_id', '=', 'users.id')->select('comments.id', 'events.location_id', 'users.name', 'comments.comment')->where('events.location_id', '=', $id)->orderByDesc('comments.id')->get();
     }
+
+    public function getEventLocationCategories($id)
+    {
+        return DB::table('events')->join('locations', 'events.location_id', '=', 'locations.id')->join('users', 'events.user_id', '=', 'users.id')->join('categories', 'events.categorie_id', '=', 'categories.id')->select('events.name as event_name', 'users.name as user_name', 'categories.name as categ_name', 'locations.address', 'events.*')->where('events.id', '=', $id)->get();
+    }
 }
