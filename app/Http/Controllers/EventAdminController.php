@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use App\Models\Categorie;
+use App\Models\Location;
+use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Locale;
 
 class EventAdminController extends Controller
 {
@@ -14,8 +19,27 @@ class EventAdminController extends Controller
      */
     public function index()
     {
-        $event = Event::all();
-        return view('eventadmin', ['event' => $event]);
+
+        $events = Event::all();
+        $categories = Categorie::all();
+        $locations = Location::all();
+        $users = User::all();
+
+
+        $events = DB::table('events')
+        ->select('events.*','categories.name as categorie_name', 'locations.name as location_name', 'users.name as user_name')
+        ->join('categories', 'categorie_id', '=', 'categories.id')
+        ->join('locations', 'location_id', '=', 'locations.id')
+        ->join('users', 'user_id', '=', 'users.id')
+        ->get();
+
+
+        
+        return view('eventadmin')
+            ->with (['events'=> $events])
+            ->with(['locations' => $locations])
+            ->with(['categories' => $categories])
+            ->with(['users' => $users]);
     }
 
     /**

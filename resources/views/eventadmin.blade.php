@@ -15,15 +15,20 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
-                                <th scope="col">Date</th>
+                                <th scope="col">Start date</th>
+                                <th scope="col">End date</th>
+                                <th scope="col">Event start</th>
+                                <th scope="col">Event end</th>
                                 <th scope="col">Description</th>
+                                <th scope="col">Contact</th>
+                                <th scope="col">Price</th>
                                 <th scope="col">Manage</th>
                             </tr>
                         </thead>
                         <tbody>
 
-                            @if (!empty($event))
-                                @foreach ($event as $e)
+                            @if (!empty($events))
+                                @foreach ($events as $e)
                                     <tr scope="row">
                                         <td>
                                             {{ $e->id }}
@@ -32,10 +37,28 @@
                                             {{ $e->name }}
                                         </td>
                                         <td>
-                                            {{ $e->date }}
+                                            {{ $e->start_date }}
+                                        </td>
+                                        <td>
+                                            {{ $e->end_date }}
                                         </td>
                                         <td>
                                             {{ $e->description }}
+                                        </td>
+                                        <td>
+                                            {{ $e->contact }}
+                                        </td>
+                                        <td>
+                                            {{ $e->price }}
+                                        </td>
+                                        <td>
+                                            {{ $e->categorie_name }}
+                                        </td>
+                                        <td>
+                                            {{ $e->location_name }}
+                                        </td>
+                                        <td>
+                                            {{ $e->user_name }}
                                         </td>
                                         <td>
                                             <div class="d-flex" style="gap:8px;">
@@ -99,19 +122,28 @@
                             placeholder="Please enter the event price" />
                     </div>
                     <div class="form-group">
-                        <label for="categorie_id">Categorie ID</label>
-                        <input class="form-control" type="text" name="categorie_id"
-                            placeholder="Please enter the event categorie" />
+                        <select class="form-control" name="categorie" id="">
+                            @foreach ($categories as $c)
+                                <option value="categorie_name">{{ $c->name }}</option>
+                            @endforeach
+                        </select>
+                        <a href="catadmin">Create a new category</a>
                     </div>
                     <div class="form-group">
-                        <label for="location_id">Location ID</label>
-                        <input class="form-control" type="text" name="location_id"
-                            placeholder="Please enter the event location" />
+                        <select class="form-control" name="location" id="">
+                            @foreach ($locations as $l)
+                                <option value="location_name">{{ $l->name }}</option>
+                            @endforeach
+                        </select>
+                        <a href="locadmin">Create a new location</a>
                     </div>
                     <div class="form-group">
-                        <label for="user_id">User ID</label>
-                        <input class="form-control" type="text" name="user_id"
-                            placeholder="Please enter the event user" />
+                        <select class="form-control" name="user" id="">
+                            @foreach ($users as $u)
+                                <option value="user_name">{{ $u->name }}</option>
+                            @endforeach
+                        </select>
+
                     </div>
                     <input class="form-control" type="submit" name="submitBtn" value="Create" />
             </div>
