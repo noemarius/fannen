@@ -16,7 +16,7 @@ class LocationEventController extends Controller
     public function index()
     {
         //
-        return DB::table('events')->select('*', 'categories.name as categ_name')->join('categories', 'events.categorie_id', '=', 'categories.id')->join('locations', 'events.location_id', '=', 'locations.id')->get()->groupBy('categ_name');
+        return DB::table('events')->select('*', 'categories.name as categ_name', 'events.id as event_id', 'events.name as event_name', 'locations.id as location_id')->join('categories', 'events.categorie_id', '=', 'categories.id')->join('locations', 'events.location_id', '=', 'locations.id')->get()->groupBy('categ_name');
     }
 
     /**
@@ -49,7 +49,7 @@ class LocationEventController extends Controller
     public function show($cityId)
     {
         //
-        return DB::table('events')->select('*', 'categories.name as categ_name')->join('categories', 'events.categorie_id', '=', 'categories.id')->join('locations', 'events.location_id', '=', 'locations.id')->where('locations.city_id', '=', $cityId)->get()->groupBy('categ_name');
+        return DB::table('events')->select('*', 'categories.name as categ_name', 'events.id as event_id')->join('categories', 'events.categorie_id', '=', 'categories.id')->join('locations', 'events.location_id', '=', 'locations.id')->where('locations.city_id', '=', $cityId)->get()->groupBy('categ_name');
     }
 
     /**
