@@ -27,7 +27,8 @@ export default function Team() {
                             width="150"
                             direction="row-reverse"
                         />
-                        <Text text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus quam voluptatibus aliquid dolorum nemo quas a sed assumenda perferendis debitis.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus quam voluptatibus aliquid dolorum nemo quas a sed assumenda perferendis debitis." />
+                        <Text text="Zakariya developed the backend part of the fannen.lu site with php and the Laravel framework. Passionate about code and the logic linked to it, Zakariya brought his meticulousness and his sense of logic to develop the database as well as the backend structure of this site." />
+
                         <Member
                             text="Sophia"
                             image="/sample.jpeg"

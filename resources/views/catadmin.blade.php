@@ -3,9 +3,9 @@
 @section('title', 'Administrator Cat Page')
 
 @section('content')
-    <div class="container" style="padding-top:100px;">
-        <div class="row">
-            <div class="col-sm">
+    <div class="container w-100 h-100">
+        <div class="row w-100 h-100">
+            <div class="col-8">
                 <div class="title">
                     <h2>Categories</h2>
                 </div>
@@ -41,7 +41,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-sm">
+            <div class="col-4">
                 <div class="title">
                     <h2>Create a new Category</h2>
                 </div>

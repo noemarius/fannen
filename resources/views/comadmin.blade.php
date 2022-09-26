@@ -3,9 +3,9 @@
 @section('title', 'Comment admin Page')
 
 @section('content')
-    <div class="container" style="padding-top:100px;">
-        <div class="row">
-            <div class="col-sm-6">
+    <div class="container w-100 h-100">
+        <div class="row w-100">
+            <div class="col-10">
                 <div class="title">
                     <h2>Comments</h2>
                 </div>
@@ -61,7 +61,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-sm-6">
+            <div class="col-2">
                 <div>
                     <h1>Create a new Comment</h1>
                 </div>

@@ -20,7 +20,7 @@
     <title>@yield('title')</title>
 </head>
 
-<body>
+<body class="w-100 h-100">
     <div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-primary" style="justify-content:space-between;">
             <a class="navbar-brand" href="#" style="font-size:32px;padding-left:12px;"><img
@@ -41,9 +41,9 @@
     </div>
 
 
-    <div class="container-fluid" style="min-height:93.5vh;">
-        <div class="row w-55">
-            <div class="col-sm-2">
+    <div class="container-fluid w-100 h-100">
+        <div class="row w-100 h-100">
+            <div class="col-1 w-10 nmaPaddingRight">
                 <nav class="nav flex-column" style="font-size:26px;">
                     <a class="nav-link" href="/useradmin">Users </a>
                     <a class="nav-link" href="/catadmin">Categories </a>
@@ -53,12 +53,11 @@
                     <a class="nav-link" href="/comadmin">Comments </a>
                 </nav>
             </div>
-            <div class="col-sm-10 h-100">
+            <div class="col-11 h-100 nmaPaddingTop">
                 @yield('content')
             </div>
         </div>
     </div>
-
 </body>
 
 </html>

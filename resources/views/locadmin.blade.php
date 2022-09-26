@@ -3,9 +3,9 @@
 @section('title', 'Administrator Loc Page')
 
 @section('content')
-    <div class="container" style="padding-top:100px;">
+    <div class="container">
         <div class="row">
-            <div class="col-sm">
+            <div class="col-8">
                 <div class="title">
                     <h2>Locations</h2>
                 </div>
@@ -57,7 +57,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-sm">
+            <div class="col-4">
                 <div class="title">
                     <h2>Create a new Location</h2>
                 </div>

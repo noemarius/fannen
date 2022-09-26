@@ -3,9 +3,9 @@
 @section('title', 'Update Loc admin Page')
 
 @section('content')
-    <div class="container" style="padding-top:100px;">
+    <div class="container">
         <div class="row">
-            <div class="col-sm-6">
+            <div class="col-6">
                 <form method="post">
                     @csrf
                     <div class="form-group"><label for="name">Location name</label>

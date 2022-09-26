@@ -3,9 +3,9 @@
 @section('title', 'Event admin Page')
 
 @section('content')
-    <div class="container" style="padding-top:100px;">
-        <div class="row">
-            <div class="col-md-6">
+    <div class="container-fluid h-100 w-100">
+        <div class="row w-100">
+            <div class="col-10">
                 <div>
                     <h2>Events</h2>
                 </div>
@@ -15,13 +15,16 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">Description</th>
                                 <th scope="col">Start date</th>
                                 <th scope="col">End date</th>
                                 <th scope="col">Event start</th>
                                 <th scope="col">Event end</th>
-                                <th scope="col">Description</th>
                                 <th scope="col">Contact</th>
                                 <th scope="col">Price</th>
+                                <th scope="col">Category Name</th>
+                                <th scope="col">Location Name</th>
+                                <th scope="col">User Name</th>
                                 <th scope="col">Manage</th>
                             </tr>
                         </thead>
@@ -37,14 +40,21 @@
                                             {{ $e->name }}
                                         </td>
                                         <td>
+                                            {{ $e->description }}
+                                        </td>
+                                        <td>
                                             {{ $e->start_date }}
                                         </td>
                                         <td>
                                             {{ $e->end_date }}
                                         </td>
                                         <td>
-                                            {{ $e->description }}
+                                            {{ $e->event_start }}
                                         </td>
+                                        <td>
+                                            {{ $e->event_end }}
+                                        </td>
+
                                         <td>
                                             {{ $e->contact }}
                                         </td>
@@ -74,7 +84,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-2">
                 <div>
                     <h2>Create a new Event</h2>
 

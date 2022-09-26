@@ -15,10 +15,10 @@
 </head>
 
 <body>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="loginContainer pt-md-4">
+    <div class="container h-100">
+        <div class="row h-100">
+            <div class="col-6 mx-auto align-self-center">
+                <div class="loginContainer">
                     <!-- Pills navs -->
                     <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
                         <li class="nav-item" role="presentation">
@@ -154,10 +154,14 @@
             outline: 1px solid green !important;
         } */
 
-        /*  body {
-            height: 100vh;
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
             font-family: 'Roboto', sans-serif;
-        }*/
+        }
 
         .homeContainer {
             height: 100vh;

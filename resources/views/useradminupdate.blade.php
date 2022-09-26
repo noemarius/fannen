@@ -3,7 +3,7 @@
 @section('title', 'User update Admin Page')
 
 @section('content')
-    <div class="container" style="padding-top:100px;">
+    <div class="container">
         <div class="createForm">
             <form method="post">
                 @csrf
