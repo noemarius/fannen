@@ -32,8 +32,6 @@ class EventAdminController extends Controller
         ->join('locations', 'location_id', '=', 'locations.id')
         ->join('users', 'user_id', '=', 'users.id')
         ->get();
-
-
         
         return view('eventadmin')
             ->with (['events'=> $events])

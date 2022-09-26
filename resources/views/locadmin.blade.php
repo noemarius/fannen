@@ -15,6 +15,7 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Name</th>
+                                <th scope="col">City</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Coordinates</th>
                                 <th scope="col">Link</th>
@@ -31,6 +32,9 @@
                                         </td>
                                         <td>
                                             {{ $l->name }}
+                                        </td>
+                                        <td>
+                                            {{ $l->city_name }}
                                         </td>
                                         <td>
                                             {{ $l->address }}
@@ -68,6 +72,14 @@
                             <div class="formBreak">
                                 <label for="">Name: </label>
                                 <input class="form-control" type="text" name="name" placeholder="Name" />
+                            </div>
+                            <div class="form-group">
+                                <select class="form-control" name="citie" id="">
+                                    @foreach ($cities as $c)
+                                        <option value="location_name">{{ $c->name }}</option>
+                                    @endforeach
+                                </select>
+                                <a href="citiesadmin">Create a new City</a>
                             </div>
                             <div class="form-group">
                                 <label for="">Address:</label>
