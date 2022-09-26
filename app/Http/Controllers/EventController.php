@@ -36,7 +36,7 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+        /* dd($request); */
         $event = new Event;
         $event->name = $request->name;
         $event->start_date = $request->start_date;
@@ -54,10 +54,17 @@ class EventController extends Controller
 
 
         // Save it in the DB and check if it worked
-        if ($event->save())
+        /* if ($event->save())
             return redirect('home')->with('success', 'Insert successfully');
         else
-            return 'Problem inserting';
+            return 'Problem inserting'; */
+        try {
+            $event->save();
+            return $event;
+        } catch (\Exception $e) {
+            // do task when error
+            return $e->getMessage();   // insert query
+        };
     }
 
     /**

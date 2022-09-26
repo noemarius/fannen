@@ -37,10 +37,17 @@ class CommentController extends Controller
 
 
         // Save it in the DB and check if it worked
-        if ($comment->save())
+        /* if ($comment->save())
             return redirect('home')->with('success', 'Insert successfully');
         else
-            return 'Problem inserting';
+            return 'Problem inserting'; */
+        try {
+            $comment->save();
+            return $comment;
+        } catch (\Exception $e) {
+            // do task when error
+            return $e->getMessage();   // insert query
+        };
     }
 
     /**
@@ -52,7 +59,7 @@ class CommentController extends Controller
     public function show($id)
     {
 
-        return DB::table("comments")->join('users', 'comments.user_id', '=', 'users.id')->select('comments.id', 'users.name', 'comments.comment', 'comments.location_id', 'comments.event_id')->where('comments.location_id', '=', $id)->whereNull('comments.event_id')->orderByDesc('comments.id')->get();
+        return DB::table("comments")->join('users', 'comments.user_id', '=', 'users.id')->select('comments.id', 'users.name', 'comments.comment', 'comments.location_id', 'comments.event_id', 'comments.created_at')->where('comments.location_id', '=', $id)->whereNull('comments.event_id')->orderByDesc('comments.id')->get();
     }
 
     /**

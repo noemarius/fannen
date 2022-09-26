@@ -166,12 +166,8 @@ export function DashboardContent() {
         console.log(commentData)
 
         try {
-            // make axios post request
-            const response = await axios({
-                method: 'post',
-                url: '/comments',
-                data: commentData,
-                headers: { 'Content-Type': 'multipart/form-data' },
+            const response = await axios.post('/api/comments', commentData, {
+                'Content-Type': 'multipart/form-data',
             })
         } catch (error) {
             console.log(error)
