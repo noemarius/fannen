@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 
 const StyledContainer = styled.div`
-    align-items: center;
+    align-items: ${props => props.align || 'center'};
     background-color: ${props => props.color || ''};
     display: flex;
     flex-direction: ${props => props.direction || "column"};
@@ -16,7 +16,7 @@ const StyledContainer = styled.div`
 
 export function Container(props) {
     return (
-        <StyledContainer color={props.color} gap={props.gap} margin={props.margin}>
+        <StyledContainer align={props.align} color={props.color} gap={props.gap} margin={props.margin}>
             {props.children}
         </StyledContainer>
     )

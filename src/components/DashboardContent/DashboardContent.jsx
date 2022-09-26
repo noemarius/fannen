@@ -104,7 +104,7 @@ const Container = styled.div`
     }
 
     .treeContainer {
-        width: 40%;
+        width: 100%;
     }
 `
 function TabPanel(props) {
@@ -166,7 +166,6 @@ export function DashboardContent() {
         console.log(commentData)
 
         try {
-            // make axios post request
             const response = await axios.post('/api/comments', commentData, {
                 'Content-Type': 'multipart/form-data',
             })
@@ -276,8 +275,8 @@ export function DashboardContent() {
                         <button
                             className="addComment"
                             onClick={() => setActive(!active)}>
-                            <div>Add a comment</div>
                             <Image src={'/plus.svg'} height={32} width={32} />
+                            <div>Add a comment</div>
                         </button>
                     </div>
                     <div className={`${active ? 'display' : 'dontDisplay'}`}>
