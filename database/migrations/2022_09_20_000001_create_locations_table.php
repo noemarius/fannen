@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('geo');
             $table->string('link');
             $table->string('contact');
+            $table->text('description');
             $table->timestamps();
             $table->foreign('city_id')->references('id')->on('cities')->onUpdate('cascade')->onDelete('cascade');
         });

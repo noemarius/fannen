@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->date('start_date');
-            $table->date('end_date');
+            $table->date('end_date')->nullable();
             $table->time('event_start');
-            $table->time('event_end');
-            $table->string('description');
+            $table->time('event_end')->nullable();
+            $table->text('description');
             $table->string('contact');
-            $table->string('price');
+            $table->string('price')->nullable();
             $table->unsignedBigInteger('categorie_id');
             $table->unsignedBigInteger('location_id');
             $table->unsignedBigInteger('user_id');

@@ -38,6 +38,7 @@ class LocAdminController extends Controller
         $location->geo = $request->geo;
         $location->link = $request->link;
         $location->contact = $request->contact;
+        $location->description = $request->description;
 
 
 
@@ -86,6 +87,7 @@ class LocAdminController extends Controller
         $location->geo = $request->geo;
         $location->link = $request->link;
         $location->contact = $request->contact;
+        $location->description = $request->description;
 
 
         // Save it in the DB and check if it worked
