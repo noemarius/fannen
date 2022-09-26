@@ -89,17 +89,14 @@ export default function CreateEvent() {
         }
         console.log(loginFormData)
 
-         try {
-             // make axios post request
-             const response = await axios({
-                 method: 'post',
-                 url: '/api/events',
-                 data: loginFormData,
-                 headers: { 'Content-Type': 'multipart/form-data' },
-             })
-         } catch (error) {
-             console.log(error)
-         }
+        try {
+            // make axios post request
+            const response = await axios.post('/api/events', loginFormData, {
+                'Content-Type': 'multipart/form-data',
+            })
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     useEffect(() => {
@@ -246,8 +243,7 @@ export default function CreateEvent() {
                                 name="category"
                                 onChange={event =>
                                     setCategory(event.target.value)
-                                }
-                                >
+                                }>
                                 {Object.entries(categoryList).map(e => {
                                     return (
                                         <option value={e[1].id}>

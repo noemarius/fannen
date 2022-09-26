@@ -167,11 +167,8 @@ export function DashboardContent() {
 
         try {
             // make axios post request
-            const response = await axios({
-                method: 'post',
-                url: '/comadmin',
-                data: commentData,
-                headers: { 'Content-Type': 'multipart/form-data' },
+            const response = await axios.post('/api/comments', commentData, {
+                'Content-Type': 'multipart/form-data',
             })
         } catch (error) {
             console.log(error)
@@ -263,7 +260,6 @@ export function DashboardContent() {
                                     treeType={'events'}
                                 />
                             </TabPanel>
-
                         </Box>
                     </div>
                     <Map
@@ -280,7 +276,7 @@ export function DashboardContent() {
                         <button
                             className="addComment"
                             onClick={() => setActive(!active)}>
-                                <div>Add a comment</div>
+                            <div>Add a comment</div>
                             <Image src={'/plus.svg'} height={32} width={32} />
                         </button>
                     </div>
