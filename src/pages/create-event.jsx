@@ -64,10 +64,8 @@ export default function CreateEvent() {
     const [description, setDescription] = useState('')
     const [contact, setContact] = useState('')
     const [price, setPrice] = useState('')
-    const [category, setCategory] = useState('')
-    const [category_id, setCategory_id] = useState('')
-    const [location, setLocation] = useState('')
-    const [location_id, setLocation_id] = useState('')
+    const [category, setCategory] = useState(1)
+    const [location, setLocation] = useState(1)
 
     const [categoryList, setCategoryList] = useState({})
     const [locationList, setLocationList] = useState({})
@@ -89,9 +87,6 @@ export default function CreateEvent() {
             location_id: location,
             user_id: user.id,
         }
-
-        console.log(location)
-
         console.log(loginFormData)
 
         // try {
@@ -246,14 +241,16 @@ export default function CreateEvent() {
                             <AlignLeft>
                                 <Label htmlFor="Category">Category</Label>
                             </AlignLeft>
-                            <select className="block w-full" name="category">
+                            <select
+                                className="block w-full"
+                                name="category"
+                                onChange={event =>
+                                    setCategory(event.target.value)
+                                }
+                                >
                                 {Object.entries(categoryList).map(e => {
                                     return (
-                                        <option
-                                            value={category}
-                                            onChange={event =>
-                                                setCategory(event.target.value)
-                                            }>
+                                        <option value={e[1].id}>
                                             {e[1].name}
                                         </option>
                                     )
@@ -269,7 +266,6 @@ export default function CreateEvent() {
                                     setLocation(event.target.value)
                                 }>
                                 {Object.entries(locationList).map(e => {
-                                    // console.log(e)
                                     return (
                                         <option value={e[1].id}>
                                             {e[1].name}
