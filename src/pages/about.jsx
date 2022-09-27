@@ -11,7 +11,7 @@ export default function About() {
         <>
             <Layout pageTitle="About">
                 <Container>
-                    <Image src="/fannen.png" height={300} width={300} />
+                    <img className="team" src="/team.png" />
                 </Container>
                 <Card>
                     <Container margin="28px 0px 0px 0px">
@@ -30,6 +30,13 @@ export default function About() {
                     </Container>
                 </Card>
             </Layout>
+            <style jsx>{`
+                .team {
+                    margin-top: 8px;
+                    height: auto;
+                    width: 600px;
+                }
+            `}</style>
         </>
     )
 }
