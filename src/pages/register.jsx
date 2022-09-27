@@ -162,12 +162,14 @@ export default function Register() {
                             <div className="organizer" name="role">
                                 <div>Are you a</div>
                                 <select
+                                    className='option'
                                     onChange={handleChange}
                                     value={role}
                                     name="role">
-                                    <option value="User">User</option>
-                                    <option value="Organizer">Organizer</option>
+                                    <option className='option' value="User">User</option>
+                                    <option className='option' value="Organizer">Organizer</option>
                                 </select>
+                                <div>?</div>
                             </div>
 
                             <div className="flex items-center justify-end mt-4">
@@ -187,10 +189,13 @@ export default function Register() {
                 .organizer {
                     display: flex;
                     flex-direction: row;
-                    gap: 20px;
+                    gap: 8px;
                     margin-top: 20px;
                     justify-content: center;
                     align-items: center;
+                }
+                .option {
+                    height: 40px;
                 }
             `}</style>
         </>
