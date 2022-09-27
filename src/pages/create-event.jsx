@@ -12,6 +12,10 @@ import { useAuth } from '@/hooks/auth'
 import { useState } from 'react'
 import { useEffect } from 'react'
 
+import { useRouter } from 'next/router'
+
+import { toast } from 'react-toastify'
+
 // Styled Components
 const StyledForm = styled.form.attrs({
     method: 'post',
@@ -55,6 +59,7 @@ async function postEvent() {
 
 export default function CreateEvent() {
     const { user } = useAuth({ middleware: 'auth' })
+    const router = useRouter()
 
     const [name, setName] = useState('')
     const [startDate, setStartDate] = useState('')
@@ -91,12 +96,34 @@ export default function CreateEvent() {
 
         try {
             // make axios post request
-            const response = await axios.post('/api/events', loginFormData, {
-                'Content-Type': 'multipart/form-data',
-            })
+            const response = await axios.post(
+                '/api/events',
+                loginFormData,
+                {
+                    'Content-Type': 'multipart/form-data',
+                },
+                toast.success('Successfully added Event!', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                }),
+            )
         } catch (error) {
-            console.log(error)
+            toast.error('Error inserting!', {
+                position: 'top-right',
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+            })
         }
+        router.push('/account')
     }
 
     useEffect(() => {
