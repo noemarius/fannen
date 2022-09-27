@@ -9,6 +9,7 @@ import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import { Layout } from '@/components/Layout'
 import { Logo } from '@/components/Logo'
+import { toast } from 'react-toastify'
 import { useAuth } from '@/hooks/auth'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
@@ -44,6 +45,15 @@ export default function Login() {
             remember: shouldRemember,
             setErrors,
             setStatus,
+        })
+        toast.success('Successfully logged in!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
         })
     }
     return (

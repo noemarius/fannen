@@ -7,8 +7,10 @@ import { Layout } from '@/components/Layout'
 import { useAuth } from '@/hooks/auth'
 import { Title } from '@/components/Title'
 import { SubmitButton } from '@/components/SubmitButton'
-
+import { useRouter } from 'next/router'
 import { useState } from 'react'
+
+import { toast } from 'react-toastify'
 
 import styled from 'styled-components'
 
@@ -28,6 +30,7 @@ const StyledInput = styled.input`
 
 export default function EditPassword() {
     const { user } = useAuth()
+    const router = useRouter()
     const [value, setValue] = useState('')
 
     console.log(value)
@@ -48,10 +51,20 @@ export default function EditPassword() {
                 {
                     'Content-Type': 'multipart/form-data',
                 },
+                toast.success('Successfully updated!', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                }),
             )
         } catch (error) {
             console.log(error)
         }
+        router.push('/account')
     }
 
     return (

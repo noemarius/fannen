@@ -7,6 +7,7 @@ export const StyledText = styled.p`
     text-align: justify;
     margin: ${props => props.margin || '0px 0px'};
     width: ${props => props.width || ''};
+
 `
 
 export function Text(props) {

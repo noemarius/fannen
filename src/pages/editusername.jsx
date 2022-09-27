@@ -7,8 +7,10 @@ import { Layout } from '@/components/Layout'
 import { useAuth } from '@/hooks/auth'
 import { Title } from '@/components/Title'
 import { SubmitButton } from '@/components/SubmitButton'
-
+import { useRouter } from 'next/router'
 import { useState } from 'react'
+
+import { toast } from 'react-toastify'
 
 import styled from 'styled-components'
 
@@ -28,13 +30,13 @@ const StyledInput = styled.input`
 
 export default function EditUsername() {
     const { user } = useAuth()
+    const router = useRouter()
     const [value, setValue] = useState('')
 
     console.log(value)
 
     const handleSubmit = async () => {
         event.preventDefault()
-
         // store the states in the form data
         const formData = {
             name: value,
@@ -48,10 +50,20 @@ export default function EditUsername() {
                 {
                     'Content-Type': 'multipart/form-data',
                 },
+                toast.success('Successfully updated!', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                }),
             )
         } catch (error) {
             console.log(error)
         }
+        router.push('/account')
     }
 
     return (

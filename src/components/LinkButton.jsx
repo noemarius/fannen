@@ -6,13 +6,15 @@ const StyledButton = styled.div`
     align-items: center;
     background-color: #39b7ff;
     border-radius: 20px;
+    border: 1px solid black;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    height: 32px;
+    height: auto;
     justify-content: center;
+    padding: 8px;
     margin-top: 8px;
-    width: 120px;
+    width: auto;
 
     :hover {
         transform: scale(1.05);

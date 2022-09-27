@@ -7,6 +7,9 @@ import { Layout } from '@/components/Layout'
 import { useAuth } from '@/hooks/auth'
 import { Title } from '@/components/Title'
 import { SubmitButton } from '@/components/SubmitButton'
+import { useRouter } from 'next/router'
+
+import { toast } from 'react-toastify'
 
 import { useState } from 'react'
 
@@ -28,6 +31,7 @@ const StyledInput = styled.input`
 
 export default function EditEmail() {
     const { user } = useAuth()
+    const router = useRouter()
     const [value, setValue] = useState('')
 
     console.log(value)
@@ -48,10 +52,20 @@ export default function EditEmail() {
                 {
                     'Content-Type': 'multipart/form-data',
                 },
+                toast.success('Successfully updated!', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                }),
             )
         } catch (error) {
             console.log(error)
         }
+        router.push('/account')
     }
 
     return (
