@@ -7,6 +7,7 @@ import { Layout } from '@/components/Layout'
 import { useAuth } from '@/hooks/auth'
 import { Title } from '@/components/Title'
 import { SubmitButton } from '@/components/SubmitButton'
+import { useRouter } from 'next/router'
 
 import { useState } from 'react'
 
@@ -28,6 +29,7 @@ const StyledInput = styled.input`
 
 export default function EditEmail() {
     const { user } = useAuth()
+    const router = useRouter()
     const [value, setValue] = useState('')
 
     console.log(value)
@@ -52,6 +54,7 @@ export default function EditEmail() {
         } catch (error) {
             console.log(error)
         }
+        router.push('/account')
     }
 
     return (

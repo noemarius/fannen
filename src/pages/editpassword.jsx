@@ -7,7 +7,7 @@ import { Layout } from '@/components/Layout'
 import { useAuth } from '@/hooks/auth'
 import { Title } from '@/components/Title'
 import { SubmitButton } from '@/components/SubmitButton'
-
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 
 import styled from 'styled-components'
@@ -28,6 +28,7 @@ const StyledInput = styled.input`
 
 export default function EditPassword() {
     const { user } = useAuth()
+    const router = useRouter()
     const [value, setValue] = useState('')
 
     console.log(value)
@@ -52,6 +53,7 @@ export default function EditPassword() {
         } catch (error) {
             console.log(error)
         }
+        router.push('/account')
     }
 
     return (
