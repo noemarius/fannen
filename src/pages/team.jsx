@@ -20,21 +20,19 @@ export default function Team() {
                             height="220"
                             width="150"
                         />
-
                         <Member
                             title="Zakariya Bouaroua:"
                             size="20px"
-                            text="Zakariya developed the backend part of the fannen.lu site with php and the Laravel framework. Passionate about code and the logic linked to it, Zakariya brought his meticulousness and his sense of logic to develop the database as well as the backend structure of this site."
+                            text="Zakariya develops the backend part of the fannen.lu site with php and the Laravel framework. Passionate about code and the logic linked to it, Zakariya brought his meticulousness and his sense of logic to develop the database as well as the backend structure of this site."
                             image="/sample.jpeg"
                             height="220"
                             width="150"
                             directionTablet="row-reverse"
                         />
-
                         <Member
-                            title="Ricardo Lopes:"
+                            title="Sophia Azzouti:"
                             size="20px"
-                            text="Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus quam voluptatibus aliquid dolorum nemo quas a sed assumenda perferendis debitis.Lorem ipsum, dolor sit amet consectetur adipisicing elit. Necessitatibus quam voluptatibus aliquid dolorum nemo quas a sed assumenda perferendis debitis."
+                            text="Sophie is responsible for the design and the UI/UX part of Fannen. She's a tech enthusiast and likes to design flyers and websites in her free time."
                             image="/sample.jpeg"
                             height="220"
                             width="150"
