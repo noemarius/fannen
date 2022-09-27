@@ -21,6 +21,7 @@ export function Dropdown(props) {
                     border-radius: 50%;
                     height: 40px;
                     width: 40px;
+                    cursor: pointer;
                 }
 
                 .dropdownMenu {
