@@ -3,7 +3,7 @@ import { Text } from './Text'
 
 const Submit = styled.input.attrs(props => ({
     type: 'submit',
-    value: props.value || "Update",
+    value: props.value || 'Update',
 }))`
     align-items: center;
     background-color: #39b7ff;
@@ -25,7 +25,7 @@ const Submit = styled.input.attrs(props => ({
 export function SubmitButton(props) {
     return (
         <>
-            <Submit value={props.value}/>
+            <Submit value={props.value} onClick={props.click} />
         </>
     )
 }

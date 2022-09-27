@@ -10,6 +10,8 @@ import { SubmitButton } from '@/components/SubmitButton'
 import { useRouter } from 'next/router'
 import { useState } from 'react'
 
+import { toast } from 'react-toastify'
+
 import styled from 'styled-components'
 
 const StyledForm = styled.form.attrs({
@@ -35,7 +37,6 @@ export default function EditUsername() {
 
     const handleSubmit = async () => {
         event.preventDefault()
-
         // store the states in the form data
         const formData = {
             name: value,
@@ -49,6 +50,15 @@ export default function EditUsername() {
                 {
                     'Content-Type': 'multipart/form-data',
                 },
+                toast.success('Successfully updated!', {
+                    position: 'top-right',
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                }),
             )
         } catch (error) {
             console.log(error)
