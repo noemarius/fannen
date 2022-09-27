@@ -7,7 +7,7 @@ import { device } from './Device'
 import { BlankHeader } from './BlankHeader'
 
 const Content = styled.div`
-    width: 90%;
+    width: 100%;
     height: auto;
     flex: 1;
 
@@ -35,11 +35,24 @@ export function HomeLayout(props) {
                 />
                 <title>{props.pageTitle}</title>
             </Head>
-            <AppWrap>
-                <BlankHeader />
-                <Content width={props.width} widthTablet={props.widthTablet}>{props.children}</Content>
-                <Footer />
-            </AppWrap>
+            <div className="background">
+                <AppWrap>
+                    <BlankHeader />
+                    <Content
+                        width={props.width}
+                        widthTablet={props.widthTablet}>
+                        {props.children}
+                    </Content>
+                    <Footer />
+                </AppWrap>
+            </div>
+            <style jsx>{`
+                .background {
+                    background: url('lux.jpeg') no-repeat center
+                        center fixed;
+                    background-size: cover;
+                }
+            `}</style>
         </>
     )
 }

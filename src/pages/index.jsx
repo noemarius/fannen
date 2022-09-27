@@ -19,6 +19,11 @@ export default function Home() {
                     </Container>
                 </Container>
             </HomeLayout>
+            <style jsx>{`
+                body {
+                    background-image: url("/fannen.png");
+                }
+                `}</style>
         </>
     )
 }
