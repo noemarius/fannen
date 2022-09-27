@@ -10,13 +10,16 @@ import Input from '@/components/Input'
 import InputError from '@/../vendor/laravel/breeze/stubs/inertia-react/resources/js/Components/InputError'
 import Label from '@/components/Label'
 import Link from 'next/link'
-import { CheckBox } from '@mui/icons-material'
+import { useRouter } from 'next/router'
+
+import { toast } from 'react-toastify'
 
 export default function Register() {
     const { user, register } = useAuth({
         middleware: 'guest',
         redirectIfAuthenticated: '/dashboard',
     })
+    const router = useRouter()
 
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
@@ -43,6 +46,16 @@ export default function Register() {
             role,
             setErrors,
         })
+        toast.success('Successfully registered!', {
+            position: 'top-right',
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        })
+        router.push('/dashboard')
     }
 
     return (
