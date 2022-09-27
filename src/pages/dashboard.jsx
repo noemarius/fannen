@@ -18,6 +18,7 @@ import { Container } from '@/components/Container'
 import { Layout } from '@/components/Layout'
 import { SubmitButton } from '@/components/SubmitButton'
 import { Title } from '@/components/Title'
+import { toast } from 'react-toastify'
 import { useState, useEffect } from 'react'
 import { useAuth } from '@/hooks/auth'
 
@@ -116,6 +117,15 @@ export default function Dashboard() {
                     {
                         'Content-Type': 'multipart/form-data',
                     },
+                    toast.success('Successfully added a comment! Validation is pending...', {
+                        position: 'top-right',
+                        autoClose: 7000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    }),
                 )
             } catch (error) {
                 console.log(error)
@@ -137,6 +147,15 @@ export default function Dashboard() {
                     {
                         'Content-Type': 'multipart/form-data',
                     },
+                    toast.success('Successfully added a comment!', {
+                        position: 'top-right',
+                        autoClose: 5000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                    }),
                 )
             } catch (error) {
                 console.log(error)
